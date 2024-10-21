@@ -1,4 +1,5 @@
 #Script para el seminario de fuentes
+library(dplyr)
 library(tidyverse)
 library(rjson)
 library(pxR)
