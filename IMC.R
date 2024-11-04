@@ -16,3 +16,10 @@ IMC %>%
   gather_object %>% 
   json_types %>% 
   count(name, type)
+str(IMC)
+
+
+
+# Verificar los cambios
+str(IMC$MetaData)
+names(IMC$MetaData[[1]])
