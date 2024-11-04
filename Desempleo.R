@@ -7,6 +7,6 @@ Desempleo <- read.px("INPUT/DATA/Desempleo.px")
 str(Desempleo)
 
 # Convertir a un data frame para trabajar con los datos
-df <- as.data.frame(Desempleo)
-df
-view(df)
+df11 <- as.data.frame(Desempleo)
+df11
+view(df1)
