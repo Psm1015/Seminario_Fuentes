@@ -12,11 +12,17 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Introducción
+La obesidad es una enfermedad crónica común que se caracteriza por una acumulación anormal de grasa en el cuerpo, que no es saludable.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Esta necesidad puede surgir a partir de una variedad de situaciones y condiciones, y la atención psicológica puede ser buscada para abordar problemas como el estrés, la ansiedad, la depresión, los trastornos del estado de ánimo, las dificultades en las relaciones, traumas, entre otros.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+En este caso nos centraremos en estudiar como diferentes factores como el salario o la temperatura media afecta a la NAT.
+
+Para medir la necesidad de atención psiscológica utilizamos el número de visitas al psicólogo, la disponibillidad de psicólogos y la población.
+
+
+
 
 ```{r cars}
 summary(cars)
