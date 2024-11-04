@@ -1,841 +1,1921 @@
-[{"Nombre":"Ambos sexos, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+[{"Nombre":"Ambos sexos, TOTAL, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Ambos sexos, TOTAL, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
 , "Data":[{"Valor":2.08}
 ]
 }
-,{"Nombre":"Ambos sexos, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Ambos sexos, TOTAL, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
 , "Data":[{"Valor":44.28}
 ]
 }
-,{"Nombre":"Ambos sexos, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Ambos sexos, TOTAL, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
 , "Data":[{"Valor":37.63}
 ]
 }
-,{"Nombre":"Ambos sexos, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Ambos sexos, TOTAL, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
 , "Data":[{"Valor":16.01}
 ]
 }
-,{"Nombre":"Ambos sexos, Trabajando, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Ambos sexos, TOTAL, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, Trabajando, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Ambos sexos, TOTAL, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":1.7}
+, "Data":[{"Valor":1.49}
 ]
 }
-,{"Nombre":"Ambos sexos, Trabajando, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Ambos sexos, TOTAL, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":47.63}
+, "Data":[{"Valor":34.85}
 ]
 }
-,{"Nombre":"Ambos sexos, Trabajando, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Ambos sexos, TOTAL, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":36.91}
+, "Data":[{"Valor":42.14}
 ]
 }
-,{"Nombre":"Ambos sexos, Trabajando, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Ambos sexos, TOTAL, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":13.76}
+, "Data":[{"Valor":21.52}
 ]
 }
-,{"Nombre":"Ambos sexos, En desempleo, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Ambos sexos, TOTAL, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, En desempleo, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Ambos sexos, TOTAL, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":3.27}
+, "Data":[{"Valor":2.65}
 ]
 }
-,{"Nombre":"Ambos sexos, En desempleo, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Ambos sexos, TOTAL, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":43.67}
+, "Data":[{"Valor":48.55}
 ]
 }
-,{"Nombre":"Ambos sexos, En desempleo, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Ambos sexos, TOTAL, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":32.76}
+, "Data":[{"Valor":35.77}
 ]
 }
-,{"Nombre":"Ambos sexos, En desempleo, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Ambos sexos, TOTAL, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.29}
+, "Data":[{"Valor":13.03}
 ]
 }
-,{"Nombre":"Ambos sexos, Jubilado/a o prejubilado/a, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Ambos sexos, TOTAL, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, Jubilado/a o prejubilado/a, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Ambos sexos, TOTAL, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":1.13}
+, "Data":[{"Valor":2.52}
 ]
 }
-,{"Nombre":"Ambos sexos, Jubilado/a o prejubilado/a, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Ambos sexos, TOTAL, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":31.39}
+, "Data":[{"Valor":55.1}
 ]
 }
-,{"Nombre":"Ambos sexos, Jubilado/a o prejubilado/a, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Ambos sexos, TOTAL, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":46.96}
+, "Data":[{"Valor":32.31}
 ]
 }
-,{"Nombre":"Ambos sexos, Jubilado/a o prejubilado/a, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Ambos sexos, TOTAL, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.52}
+, "Data":[{"Valor":10.06}
 ]
 }
-,{"Nombre":"Ambos sexos, Estudiando, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, Estudiando, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":6.02}
+, "Data":[{"Valor":5.93}
 ]
 }
-,{"Nombre":"Ambos sexos, Estudiando, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":72.56}
+, "Data":[{"Valor":69.17}
 ]
 }
-,{"Nombre":"Ambos sexos, Estudiando, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":17.64}
+, "Data":[{"Valor":20.3}
 ]
 }
-,{"Nombre":"Ambos sexos, Estudiando, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":3.79}
+, "Data":[{"Valor":4.61}
 ]
 }
-,{"Nombre":"Ambos sexos, Incapacitado/a para trabajar, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, Incapacitado/a para trabajar, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":3.36}
+, "Data":[{"Valor":6.37}
 ]
 }
-,{"Nombre":"Ambos sexos, Incapacitado/a para trabajar, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":32.51}
+, "Data":[{"Valor":61.5}
 ]
 }
-,{"Nombre":"Ambos sexos, Incapacitado/a para trabajar, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":40.92}
+, "Data":[{"Valor":23.5}
 ]
 }
-,{"Nombre":"Ambos sexos, Incapacitado/a para trabajar, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":23.2}
+, "Data":[{"Valor":8.63}
 ]
 }
-,{"Nombre":"Ambos sexos, Labores del hogar, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, Labores del hogar, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":2.17}
+, "Data":[{"Valor":5.79}
 ]
 }
-,{"Nombre":"Ambos sexos, Labores del hogar, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":39.18}
+, "Data":[{"Valor":72.19}
 ]
 }
-,{"Nombre":"Ambos sexos, Labores del hogar, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":38.35}
+, "Data":[{"Valor":18.8}
 ]
 }
-,{"Nombre":"Ambos sexos, Labores del hogar, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.29}
+, "Data":[{"Valor":3.21}
 ]
 }
-,{"Nombre":"Ambos sexos, Otros, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Ambos sexos, Otros, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":2.66}
+, "Data":[{"Valor":5.63}
 ]
 }
-,{"Nombre":"Ambos sexos, Otros, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":35.52}
+, "Data":[{"Valor":72.66}
 ]
 }
-,{"Nombre":"Ambos sexos, Otros, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":49.32}
+, "Data":[{"Valor":19.44}
 ]
 }
-,{"Nombre":"Ambos sexos, Otros, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Ambos sexos, De 18 a 24 años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":12.5}
+, "Data":[{"Valor":2.26}
 ]
 }
-,{"Nombre":"Hombres, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.89}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":45.28}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":37.03}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":15.8}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.2}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":36.2}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":41.18}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":21.42}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":2.04}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":43.9}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":38.74}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":15.32}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":2.5}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":55.44}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":31.73}
+]
+}
+,{"Nombre":"Ambos sexos, De 25 a 64 años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":10.33}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.22}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":31.76}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":46.04}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":20.99}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.24}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":28.69}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":46.48}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":23.59}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.22}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":38.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":45.59}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":15.19}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.09}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":42.86}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":44.1}
+]
+}
+,{"Nombre":"Ambos sexos, De 65 y más años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Ambos sexos", "Codigo":"ambossexos"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":11.95}
+]
+}
+,{"Nombre":"Hombres, TOTAL, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, TOTAL, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
 , "Data":[{"Valor":0.84}
 ]
 }
-,{"Nombre":"Hombres, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Hombres, TOTAL, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
 , "Data":[{"Valor":37.76}
 ]
 }
-,{"Nombre":"Hombres, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Hombres, TOTAL, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
 , "Data":[{"Valor":44.9}
 ]
 }
-,{"Nombre":"Hombres, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Hombres, TOTAL, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
 , "Data":[{"Valor":16.5}
 ]
 }
-,{"Nombre":"Hombres, Trabajando, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Hombres, TOTAL, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, Trabajando, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Hombres, TOTAL, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":0.48}
+, "Data":[{"Valor":0.97}
 ]
 }
-,{"Nombre":"Hombres, Trabajando, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Hombres, TOTAL, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":38.94}
+, "Data":[{"Valor":30.75}
 ]
 }
-,{"Nombre":"Hombres, Trabajando, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Hombres, TOTAL, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":45.02}
+, "Data":[{"Valor":47.06}
 ]
 }
-,{"Nombre":"Hombres, Trabajando, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Hombres, TOTAL, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":15.56}
+, "Data":[{"Valor":21.22}
 ]
 }
-,{"Nombre":"Hombres, En desempleo, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Hombres, TOTAL, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, En desempleo, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Hombres, TOTAL, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":1.74}
+, "Data":[{"Valor":0.86}
 ]
 }
-,{"Nombre":"Hombres, En desempleo, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Hombres, TOTAL, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":38.56}
+, "Data":[{"Valor":41.42}
 ]
 }
-,{"Nombre":"Hombres, En desempleo, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Hombres, TOTAL, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":40.07}
+, "Data":[{"Valor":43.96}
 ]
 }
-,{"Nombre":"Hombres, En desempleo, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Hombres, TOTAL, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":19.62}
+, "Data":[{"Valor":13.77}
 ]
 }
-,{"Nombre":"Hombres, Jubilado/a o prejubilado/a, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Hombres, TOTAL, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, Jubilado/a o prejubilado/a, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Hombres, TOTAL, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":0.76}
+, "Data":[{"Valor":0.63}
 ]
 }
-,{"Nombre":"Hombres, Jubilado/a o prejubilado/a, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Hombres, TOTAL, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":26.48}
+, "Data":[{"Valor":45.79}
 ]
 }
-,{"Nombre":"Hombres, Jubilado/a o prejubilado/a, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Hombres, TOTAL, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":52.55}
+, "Data":[{"Valor":42.27}
 ]
 }
-,{"Nombre":"Hombres, Jubilado/a o prejubilado/a, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Hombres, TOTAL, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.21}
+, "Data":[{"Valor":11.3}
 ]
 }
-,{"Nombre":"Hombres, Estudiando, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Hombres, De 18 a 24 años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, Estudiando, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Hombres, De 18 a 24 años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":2.99}
+, "Data":[{"Valor":3.26}
 ]
 }
-,{"Nombre":"Hombres, Estudiando, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Hombres, De 18 a 24 años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":72.71}
+, "Data":[{"Valor":68.85}
 ]
 }
-,{"Nombre":"Hombres, Estudiando, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Hombres, De 18 a 24 años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":21.44}
+, "Data":[{"Valor":23.32}
 ]
 }
-,{"Nombre":"Hombres, Estudiando, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Hombres, De 18 a 24 años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":2.85}
+, "Data":[{"Valor":4.57}
 ]
 }
-,{"Nombre":"Hombres, Incapacitado/a para trabajar, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, Incapacitado/a para trabajar, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":1.72}
+, "Data":[{"Valor":5.62}
 ]
 }
-,{"Nombre":"Hombres, Incapacitado/a para trabajar, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":32.15}
+, "Data":[{"Valor":59.38}
 ]
 }
-,{"Nombre":"Hombres, Incapacitado/a para trabajar, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":44.6}
+, "Data":[{"Valor":27.8}
 ]
 }
-,{"Nombre":"Hombres, Incapacitado/a para trabajar, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":21.54}
+, "Data":[{"Valor":7.2}
 ]
 }
-,{"Nombre":"Hombres, Labores del hogar, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, Labores del hogar, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":0.0}
+, "Data":[{"Valor":2.27}
 ]
 }
-,{"Nombre":"Hombres, Labores del hogar, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":43.05}
+, "Data":[{"Valor":72.83}
 ]
 }
-,{"Nombre":"Hombres, Labores del hogar, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":35.38}
+, "Data":[{"Valor":21.48}
 ]
 }
-,{"Nombre":"Hombres, Labores del hogar, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Hombres, De 18 a 24 años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":21.57}
+, "Data":[{"Valor":3.41}
 ]
 }
-,{"Nombre":"Hombres, Otros, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Hombres, De 18 a 24 años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Hombres, Otros, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Hombres, De 18 a 24 años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":0.0}
+, "Data":[{"Valor":1.5}
 ]
 }
-,{"Nombre":"Hombres, Otros, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Hombres, De 18 a 24 años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":35.96}
+, "Data":[{"Valor":75.79}
 ]
 }
-,{"Nombre":"Hombres, Otros, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Hombres, De 18 a 24 años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":50.86}
+, "Data":[{"Valor":19.9}
 ]
 }
-,{"Nombre":"Hombres, Otros, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Hombres, De 18 a 24 años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":13.18}
+, "Data":[{"Valor":2.81}
 ]
 }
-,{"Nombre":"Mujeres, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Hombres, De 25 a 64 años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Hombres, De 25 a 64 años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.54}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":36.96}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":45.38}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":17.12}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.63}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":30.92}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":46.22}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":22.22}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.52}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":34.67}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":48.55}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":16.26}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.46}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":45.62}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":42.31}
+]
+}
+,{"Nombre":"Hombres, De 25 a 64 años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":11.62}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.81}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":26.91}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":52.69}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":19.58}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.7}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":24.31}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":52.89}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":22.09}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.5}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":29.33}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":54.02}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":16.15}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.44}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":34.97}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":50.98}
+]
+}
+,{"Nombre":"Hombres, De 65 y más años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Hombres", "Codigo":"hombres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":12.61}
+]
+}
+,{"Nombre":"Mujeres, TOTAL, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, TOTAL, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
 , "Data":[{"Valor":3.28}
 ]
 }
-,{"Nombre":"Mujeres, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Mujeres, TOTAL, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
 , "Data":[{"Valor":50.63}
 ]
 }
-,{"Nombre":"Mujeres, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Mujeres, TOTAL, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
 , "Data":[{"Valor":30.56}
 ]
 }
-,{"Nombre":"Mujeres, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"TOTAL", "Codigo":"total"}
+,{"Nombre":"Mujeres, TOTAL, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
 , "Data":[{"Valor":15.54}
 ]
 }
-,{"Nombre":"Mujeres, Trabajando, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Mujeres, TOTAL, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, Trabajando, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Mujeres, TOTAL, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":3.19}
+, "Data":[{"Valor":2.01}
 ]
 }
-,{"Nombre":"Mujeres, Trabajando, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Mujeres, TOTAL, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":58.31}
+, "Data":[{"Valor":38.95}
 ]
 }
-,{"Nombre":"Mujeres, Trabajando, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Mujeres, TOTAL, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":26.94}
+, "Data":[{"Valor":37.23}
 ]
 }
-,{"Nombre":"Mujeres, Trabajando, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Trabajando", "Codigo":"trabajando"}
+,{"Nombre":"Mujeres, TOTAL, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":11.56}
+, "Data":[{"Valor":21.81}
 ]
 }
-,{"Nombre":"Mujeres, En desempleo, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Mujeres, TOTAL, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, En desempleo, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Mujeres, TOTAL, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":4.79}
+, "Data":[{"Valor":4.44}
 ]
 }
-,{"Nombre":"Mujeres, En desempleo, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Mujeres, TOTAL, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":48.74}
+, "Data":[{"Valor":55.65}
 ]
 }
-,{"Nombre":"Mujeres, En desempleo, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Mujeres, TOTAL, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":25.51}
+, "Data":[{"Valor":27.62}
 ]
 }
-,{"Nombre":"Mujeres, En desempleo, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"En desempleo", "Codigo":"endesempleo"}
+,{"Nombre":"Mujeres, TOTAL, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.96}
+, "Data":[{"Valor":12.29}
 ]
 }
-,{"Nombre":"Mujeres, Jubilado/a o prejubilado/a, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Mujeres, TOTAL, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, Jubilado/a o prejubilado/a, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Mujeres, TOTAL, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":1.59}
+, "Data":[{"Valor":4.26}
 ]
 }
-,{"Nombre":"Mujeres, Jubilado/a o prejubilado/a, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Mujeres, TOTAL, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":37.51}
+, "Data":[{"Valor":63.65}
 ]
 }
-,{"Nombre":"Mujeres, Jubilado/a o prejubilado/a, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Mujeres, TOTAL, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":39.98}
+, "Data":[{"Valor":23.17}
 ]
 }
-,{"Nombre":"Mujeres, Jubilado/a o prejubilado/a, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Jubilado/a o prejubilado/a", "Codigo":"jubiladoaoprejubiladoa"}
+,{"Nombre":"Mujeres, TOTAL, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.92}
+, "Data":[{"Valor":8.92}
 ]
 }
-,{"Nombre":"Mujeres, Estudiando, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Mujeres, De 18 a 24 años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, Estudiando, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Mujeres, De 18 a 24 años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":8.65}
+, "Data":[{"Valor":8.87}
 ]
 }
-,{"Nombre":"Mujeres, Estudiando, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Mujeres, De 18 a 24 años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":72.43}
+, "Data":[{"Valor":69.52}
 ]
 }
-,{"Nombre":"Mujeres, Estudiando, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Mujeres, De 18 a 24 años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":14.33}
+, "Data":[{"Valor":16.96}
 ]
 }
-,{"Nombre":"Mujeres, Estudiando, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Estudiando", "Codigo":"estudiando"}
+,{"Nombre":"Mujeres, De 18 a 24 años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":4.6}
+, "Data":[{"Valor":4.65}
 ]
 }
-,{"Nombre":"Mujeres, Incapacitado/a para trabajar, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, Incapacitado/a para trabajar, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":5.74}
+, "Data":[{"Valor":7.48}
 ]
 }
-,{"Nombre":"Mujeres, Incapacitado/a para trabajar, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":33.04}
+, "Data":[{"Valor":64.65}
 ]
 }
-,{"Nombre":"Mujeres, Incapacitado/a para trabajar, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":35.6}
+, "Data":[{"Valor":17.1}
 ]
 }
-,{"Nombre":"Mujeres, Incapacitado/a para trabajar, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Incapacitado/a para trabajar", "Codigo":"incapacitadoaparatrabajar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":25.62}
+, "Data":[{"Valor":10.77}
 ]
 }
-,{"Nombre":"Mujeres, Labores del hogar, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, Labores del hogar, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":2.2}
+, "Data":[{"Valor":9.48}
 ]
 }
-,{"Nombre":"Mujeres, Labores del hogar, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":39.13}
+, "Data":[{"Valor":71.53}
 ]
 }
-,{"Nombre":"Mujeres, Labores del hogar, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":38.39}
+, "Data":[{"Valor":16.0}
 ]
 }
-,{"Nombre":"Mujeres, Labores del hogar, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Labores del hogar", "Codigo":"laboresdelhogar"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":20.28}
+, "Data":[{"Valor":3.0}
 ]
 }
-,{"Nombre":"Mujeres, Otros, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
 ]
 , "Data":[{"Valor":100.0}
 ]
 }
-,{"Nombre":"Mujeres, Otros, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
 ]
-, "Data":[{"Valor":4.57}
+, "Data":[{"Valor":8.98}
 ]
 }
-,{"Nombre":"Mujeres, Otros, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
 ]
-, "Data":[{"Valor":35.2}
+, "Data":[{"Valor":70.12}
 ]
 }
-,{"Nombre":"Mujeres, Otros, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
 ]
-, "Data":[{"Valor":48.22}
+, "Data":[{"Valor":19.08}
 ]
 }
-,{"Nombre":"Mujeres, Otros, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
-,{"T3_Variable":"actividad económica", "Nombre":"Otros", "Codigo":"otros"}
+,{"Nombre":"Mujeres, De 18 a 24 años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 18 a 24 años", "Codigo":"de18a24anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
 ,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
 ]
-, "Data":[{"Valor":12.01}
+, "Data":[{"Valor":1.82}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":3.24}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":53.67}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":28.62}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":14.47}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.86}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":42.42}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":35.25}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":20.47}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":3.53}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":52.95}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":29.12}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":14.4}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":4.28}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":64.03}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":22.48}
+]
+}
+,{"Nombre":"Mujeres, De 25 a 64 años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 25 a 64 años", "Codigo":"de25a64anos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":9.2}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, TOTAL, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, TOTAL, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.55}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, TOTAL, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":35.78}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, TOTAL, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":40.52}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, TOTAL, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"TOTAL", "Codigo":"total"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":22.15}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Básico e inferior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Básico e inferior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.63}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Básico e inferior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":31.85}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Básico e inferior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":41.84}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Básico e inferior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Básico e inferior", "Codigo":"basicoeinferior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":24.68}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Intermedio, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Intermedio, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":1.94}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Intermedio, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":46.68}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Intermedio, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":37.15}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Intermedio, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Intermedio", "Codigo":"intermedio"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":14.23}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Superior, TOTAL", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"TOTAL", "Codigo":"total"}
+]
+, "Data":[{"Valor":100.0}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Superior, Peso insuficiente (IMC<18,5 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Peso insuficiente (IMC<18,5 kg/m2)", "Codigo":"pesoinsuficienteimc185kgm2"}
+]
+, "Data":[{"Valor":0.57}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Superior, Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)", "Codigo":"normopeso185kgm2imc25kgm2"}
+]
+, "Data":[{"Valor":54.59}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Superior, Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)", "Codigo":"sobrepeso25kgm2imc30kgm2"}
+]
+, "Data":[{"Valor":33.87}
+]
+}
+,{"Nombre":"Mujeres, De 65 y más años, Superior, Obesidad (IMC>=30 kg/m2)", "MetaData":[{"T3_Variable":"sexo", "Nombre":"Mujeres", "Codigo":"mujeres"}
+,{"T3_Variable":"edad", "Nombre":"De 65 y más años", "Codigo":"de65ymasanos"}
+,{"T3_Variable":"nivel de estudios", "Nombre":"Superior", "Codigo":"superior"}
+,{"T3_Variable":"masa corporal adultos", "Nombre":"Obesidad (IMC>=30 kg/m2)", "Codigo":"obesidadimc30kgm2"}
+]
+, "Data":[{"Valor":10.97}
 ]
 }
 ]
