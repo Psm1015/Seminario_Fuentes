@@ -12,14 +12,16 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Introducción
+## **Introducción**
 La obesidad es una enfermedad crónica común que se caracteriza por una acumulación anormal de grasa en el cuerpo, que no es saludable.
 
-Esta necesidad puede surgir a partir de una variedad de situaciones y condiciones, y la atención psicológica puede ser buscada para abordar problemas como el estrés, la ansiedad, la depresión, los trastornos del estado de ánimo, las dificultades en las relaciones, traumas, entre otros.
+Aunque existen influencias genéticas, conductuales, metabólicas y hormonales en el peso corporal, la obesidad ocurre cuando se ingieren más calorías de las que se queman con las actividades diarias típicas y el ejercicio. El cuerpo almacena ese exceso de calorías en forma de grasa.
 
-En este caso nos centraremos en estudiar como diferentes factores como el salario o la temperatura media afecta a la NAT.
+En este caso se realizará un estudio de como se ve afectada la obesidad en relación con el desempleo y la alimentación  respecto a la edad.
 
-Para medir la necesidad de atención psiscológica utilizamos el número de visitas al psicólogo, la disponibillidad de psicólogos y la población.
+## **Objetivo general**
+
+
 
 
 
