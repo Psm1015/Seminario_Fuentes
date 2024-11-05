@@ -7,6 +7,14 @@ library(rjson)
 library(jsonlite)
 
 IMC<- fromJSON("INPUT/DATA/Indice-masa-corporal.json")
+glimpse(IMC)
+glimpse(unlist(IMC$MetaData))
+a <- unlist(IMC$MetaData)
+spread_all(unlist(IMC$MetaData))
+print(a)
+
+
+
 spread_all(IMC, json.column = "MetaData")
 view(IMC)
 IMC %>% 
