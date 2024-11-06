@@ -6,6 +6,10 @@ library(tidyjson)
 library(rjson)
 library(jsonlite)
 
+
+prueba<-fromJSON("INPUT/DATA/datos.json")
+str(prueba)
+
 IMC<- fromJSON("INPUT/DATA/Indice-masa-corporal.json")
 glimpse(IMC)
 glimpse(unlist(IMC$MetaData))
