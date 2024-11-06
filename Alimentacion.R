@@ -8,6 +8,7 @@ library(rjson)
 Alimentacion <- fromJSON("INPUT/DATA/Alimentacion.json") 
 str(Alimentacion)
 view(Alimentacion)
+spread_all(Alimentacion)
 
 
 # Cambiar los rangos de edad
