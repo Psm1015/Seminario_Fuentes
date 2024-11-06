@@ -4,13 +4,20 @@ library(tidyverse)
 library(tidyr)
 library(tidyjson)
 library(rjson)
-library(jsonlite)
 
 
-prueba<-fromJSON("INPUT/DATA/datos.json")
+
+prueba<-fromJSON("INPUT/DATA/contratos-agroambiente-clima-sac.json")
 str(prueba)
+View(prueba)
 
-IMC<- fromJSON("INPUT/DATA/Indice-masa-corporal.json")
+
+?fromJSON
+IMC<-fromJSON("INPUT/DATA/Indice-masa-corporal.json")
+str(IMC)
+View(IMC)
+spread_all(IMC)
+
 glimpse(IMC)
 glimpse(unlist(IMC$MetaData))
 a <- unlist(IMC$MetaData)
