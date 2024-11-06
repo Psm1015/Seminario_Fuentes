@@ -3,6 +3,7 @@ library(tidyverse)
 library(tidyr)
 library(tidyjson)
 library(rjson)
+library(RJSONIO)
 
 
 Alimentacion <- fromJSON("INPUT/DATA/Alimentacion.json") 
