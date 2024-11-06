@@ -4,7 +4,7 @@ library(tidyverse)
 library(tidyr)
 library(tidyjson)
 library(rjson)
-
+library(RJSONIO)
 
 
 prueba<-fromJSON("INPUT/DATA/contratos-agroambiente-clima-sac.json")
