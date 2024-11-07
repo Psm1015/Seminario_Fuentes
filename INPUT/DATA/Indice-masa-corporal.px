@@ -1,0 +1,34 @@
+AXIS-VERSION="2006";
+CREATION-DATE="20240213";
+CHARSET="ANSI";
+SUBJECT-AREA="CARACTERÍSTICAS FÍSICAS";
+SUBJECT-CODE="null";
+MATRIX="01005";
+TITLE="Índice de masa corporal población adulta según sexo, grupo de edad y nivel de estudios. Población de 18 y más años.";
+CONTENTS="Índice de masa cor";
+CODEPAGE="iso-8859-15";
+DESCRIPTION="";
+COPYRIGHT=YES;
+NOTE="Índice de masa corporal IMC = [peso Kg / estatura m al cuadrado]## El símbolo"
+" '.' debe interpretarse como dato que no se proporciona por muestra insuficie"
+"nte# El símbolo '..' debe interpretarse como dato que no se recoge para esa c"
+"lasificación de la tabla# Los datos correspondientes a celdas con menos de 35"
+" mil personas han de ser tomados con precaución, ya que pueden estar afectado"
+"s de elevados errores de muestreo";
+DECIMALS=2;
+SHOWDECIMALS=2;
+STUB="Sexo","Edad","Nivel de estudios";
+HEADING="Masa corporal adultos";
+VALUES("Sexo")="Ambos sexos","Hombres","Mujeres";
+VALUES("Edad")="TOTAL","De 18 a 24 años","De 25 a 64 años","De 65 y más años";
+VALUES("Nivel de estudios")="TOTAL","Básico e inferior","Intermedio","Superior";
+VALUES("Masa corporal adultos")="TOTAL","Peso insuficiente (IMC<18,5 kg/m2)",
+"Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)","Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)",
+"Obesidad (IMC>=30 kg/m2)";
+SOURCE="Instituto Nacional de Estadística";
+UNITS="porcentaje";
+DATA=100.0 2.08 44.28 37.63 16.01 100.0 1.49 34.85 42.14 21.52 100.0 2.65 48.55 35.77 13.03 100.0 2.52 55.1 32.31 10.06 100.0 5.93 69.17 20.3 4.61 100.0 6.37 61.5 23.5 8.63 100.0 5.79 72.19 18.8 3.21 100.0 5.63 72.66 19.44 2.26 100.0 1.89 45.28 37.03 15.8 100.0 1.2 36.2 41.18 21.42
+ 100.0 2.04 43.9 38.74 15.32 100.0 2.5 55.44 31.73 10.33 100.0 1.22 31.76 46.04 20.99 100.0 1.24 28.69 46.48 23.59 100.0 1.22 38.0 45.59 15.19 100.0 1.09 42.86 44.1 11.95 100.0 0.84 37.76 44.9 16.5 100.0 0.97 30.75 47.06 21.22 100.0 0.86 41.42 43.96 13.77 100.0 0.63 45.79 42.27 11.3
+ 100.0 3.26 68.85 23.32 4.57 100.0 5.62 59.38 27.8 7.2 100.0 2.27 72.83 21.48 3.41 100.0 1.5 75.79 19.9 2.81 100.0 0.54 36.96 45.38 17.12 100.0 0.63 30.92 46.22 22.22 100.0 0.52 34.67 48.55 16.26 100.0 0.46 45.62 42.31 11.62 100.0 0.81 26.91 52.69 19.58 100.0 0.7 24.31 52.89 22.09
+ 100.0 0.5 29.33 54.02 16.15 100.0 1.44 34.97 50.98 12.61 100.0 3.28 50.63 30.56 15.54 100.0 2.01 38.95 37.23 21.81 100.0 4.44 55.65 27.62 12.29 100.0 4.26 63.65 23.17 8.92 100.0 8.87 69.52 16.96 4.65 100.0 7.48 64.65 17.1 10.77 100.0 9.48 71.53 16.0 3.0 100.0 8.98 70.12 19.08 1.82
+ 100.0 3.24 53.67 28.62 14.47 100.0 1.86 42.42 35.25 20.47 100.0 3.53 52.95 29.12 14.4 100.0 4.28 64.03 22.48 9.2 100.0 1.55 35.78 40.52 22.15 100.0 1.63 31.85 41.84 24.68 100.0 1.94 46.68 37.15 14.23 100.0 0.57 54.59 33.87 10.97;
