@@ -1,143 +1,49 @@
-#Script para el seminario de fuentes
 library(dplyr)
 library(tidyverse)
-library(tidyr)
-library(tidyjson)
-library(rjson)
-library(RJSONIO)
+library(pxR)
 
+IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1")
 
-#prueba<-fromJSON("INPUT/DATA/contratos-agroambiente-clima-sac.json")
-#str(prueba)
-#View(prueba)
+IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
 
-
-?fromJSON
-IMC<-fromJSON("INPUT/DATA/Indice-masa-corporal.json")
 str(IMC)
-View(IMC)
-spread_all(IMC)
+IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
+IMC_texto_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
 
-#Pruebas para poner bien los datos.
-IMC %>% 
-  spread_all() %>% 
-  gather_object %>% 
-  json_types %>% 
-  count(name, type)
+archivo_utf8 <- tempfile(fileext = ".px")
+writeLines(IMC_texto_utf8, archivo_utf8)
 
-IMC %>%
-  enter_object(Data) %>%
-  gather_array %>%
-  spread_all %>%
-  select(-document.id, -array.index)
+# Lee el archivo temporal con read.px
+datos_IMC <- read.px(archivo_utf8)
 
-#Esto codigo ns si está bien
-IMC %>%
-  spread_all() %>%         # Expande todos los elementos al nivel principal
-  enter_object("Data") %>% # Entra al objeto "Data" para procesarlo
-  gather_array() %>%       # Extrae los elementos del array "Data"
-  spread_all() %>%         # Expande los elementos de "Data" si contienen objetos
-  bind_rows(               # Combina con otros elementos si fuera necesario
-    IMC %>%
-      enter_object("MetaData") %>%
-      gather_array() %>%
-      spread_all()
-  ) %>%
-  select(-document.id, -array.index)
+#str(datos$Edad)
+
+# Ver la estructura del archivo cargado
+# str(Desempleo)
+#a <-unlist(Desempleo)
+#a
+# Convertir a un data frame para trabajar con los datos
+
+#Rango de edades: 18 a 24, 25 a 64, 65 o más
 
 
+DF <- as.data.frame(datos_IMC)
+DF
+view(DF)
 
-# Paso 1: Expande el objeto principal IMC (donde están "Nombre", "MetaData", "Data")
-IMC_expanded <- IMC %>%
-  spread_all()  # Expande los campos principales (Nombre, MetaData, Data)
-
-expanded_json <- IMC_expanded %>%
-  select(document.id, Nombre, ..JSON) %>%    # Seleccionamos las columnas relevantes
-  enter_object("..JSON") %>%                  # Entra en la columna que contiene objetos JSON
-  spread_all()                                # Expande todos los elementos dentro del JSON
-
-# Verifica la expansión
-head(expanded_json)
-
-IMC_expanded %>% 
-  gather_object("..JSON") %>% 
-  json_types()
-
-final_result <- expanded_json %>%
-  select(-document.id) %>%
-  bind_cols(
-    IMC_expanded %>% select(document.id)  # Incluimos de nuevo `document.id` si es necesario
-  )
-
-# Ver el resultado final
-View(final_result)
+datos_IMC_df <- DF[-(1:90), ]
+datos_IMC_df
+view(datos_IMC_df)
 
 
-# Verificar la estructura después de la expansión
-# Esto es solo para fines de verificación
-head(IMC_expanded)
+media_por_edad <- datos_IMC_df %>%
+  group_by(Edad) %>%       # Agrupar por la columna 'Edad'
+  summarise(media_valor = mean(value, na.rm = TRUE))  # Calcular la media de la columna 'value'
 
-# Paso 2: Expande el objeto MetaData (que contiene variables como "T3_Variable", "Nombre", "Codigo")
-MetaData_expanded <- IMC_expanded %>%
-  enter_object("..JSON") %>%
-  gather_array() %>%
-  spread_all()  # Expande los subcomponentes de MetaData
+# Mostrar los resultados
+print(media_por_edad)
 
-Nuevo_expanded <-  MetaData_expanded%>%
-  enter_object("..JSON") %>%
-  gather_array() %>%
-  spread_all()  # Expande los subcomponentes de MetaData
-
-View(Nuevo_expanded)
-# Verifica los datos de MetaData después de la expansión
-# Esto es solo para fines de verificación
-head(MetaData_expanded)
-
-# Paso 3: Expande el objeto Data (donde están los valores numéricos)
-Data_expanded <- IMC_expanded %>%
-  enter_object("Data") %>%
-  gather_array() %>%
-  spread_all()  # Expande los valores numéricos de Data
-
-# Verifica los datos de Data después de la expansión
-# Esto es solo para fines de verificación
-head(Data_expanded)
-
-# Paso 4: Combina los datos de MetaData y Data en un solo dataframe
-final_result <- IMC_expanded %>%
-  select(Nombre) %>%  # Seleccionamos la columna 'Nombre' (como encabezado o categoría)
-  bind_cols(MetaData_expanded) %>%  # Combina MetaData con los valores de Nombre
-  bind_cols(Data_expanded)  # Combina los valores numéricos de Data
-
-# Ver el resultado final
-View(final_result)
-View(IMC_expanded)
-colnames(IMC_expanded)
+datos_IMC_df$Edad <- as.factor(datos_IMC_df$Edad)
 
 
 
-
-glimpse(IMC)
-glimpse(unlist(IMC$MetaData))
-a <- unlist(IMC$MetaData)
-spread_all(unlist(IMC$MetaData))
-print(a)
-
-
-
-spread_all(IMC, json.column = "MetaData")
-view(IMC)
-IMC %>% 
-     spread_all() %>% 
-     View()
-IMC %>% 
-  gather_object %>% 
-  json_types %>% 
-  count(name, type)
-str(IMC)
-
-
-
-# Verificar los cambios
-str(IMC$MetaData)
-names(IMC$MetaData[[1]])
