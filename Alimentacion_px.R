@@ -31,14 +31,24 @@ DF <- as.data.frame(datos)
 DF
 view(DF)
 
-datos_df <- DF[-(1:90), ]
+
+datos_df <- DF %>%
+  mutate(Grupo_edad = case_when(
+    Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
+    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
+    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
+  ))
 datos_df
 view(datos_df)
 
-datos_df1 <- datos_df %>%
-  mutate(grupo_edad = case_when(
-    datos_df$Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os"
+df_sin_NA <- datos_df %>% filter(!is.na(Grupo_edad))
+df_sin_NA
+view(df_sin_NA)
 
-  ))
-datos_df1
-view(datos_df1)
+Alimentacion_df <- df_sin_NA %>% select(-Edad)
+view(Alimentacion_df)
