@@ -54,19 +54,9 @@ media_por_sexo <- tapply(datos_obesidad$value, datos_obesidad$Sexo, mean, na.rm 
 print(media_por_sexo)
 
 
-#La obesidad de hombres y mujeres de forma individual es la siguiente
-media_hombres <- mean(datos_obesidad$value[datos_obesidad$Sexo == "Hombres"], na.rm = TRUE)
-media_mujeres <- mean(datos_obesidad$value[datos_obesidad$Sexo == "Mujeres"], na.rm = TRUE)
-cat("Media obesidad en Hombres:", media_hombres, "\n")
-cat("Media obesidad en Mujeres:", media_mujeres, "\n")
 
-#Esto da mal
-media_por_edad <- datos_IMC_df %>%
-  group_by(Edad) %>%       # Agrupar por la columna 'Edad'
-  summarise(media_valor = mean(value, na.rm = TRUE))  # Calcular la media de la columna 'value'
 
-# Mostrar los resultados
-print(media_por_edad)
+
 
 datos_IMC_df$Edad <- as.factor(datos_IMC_df$Edad)
 
