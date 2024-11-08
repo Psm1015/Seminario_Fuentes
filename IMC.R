@@ -43,6 +43,22 @@ datos_obesidad <- datos_IMC_df %>%
   )
 View(datos_obesidad)
 
+#La media del porcentaje de obesidad es la siguiente
+media_obesidad <- mean(datos_obesidad$value, na.rm = TRUE)
+print(media_obesidad)
+
+#La media de obesidad por hombres y mujeres es la siguiente
+datos_obesidad$Sexo <- droplevels(datos_obesidad$Sexo)#Al tener en los datos iniciales la columna
+#Sexo con los niveles ambos sexos, hombres y mujeres, tenemos que eliminar eses nivel.
+media_por_sexo <- tapply(datos_obesidad$value, datos_obesidad$Sexo, mean, na.rm = TRUE)
+print(media_por_sexo)
+
+
+#La obesidad de hombres y mujeres de forma individual es la siguiente
+media_hombres <- mean(datos_obesidad$value[datos_obesidad$Sexo == "Hombres"], na.rm = TRUE)
+media_mujeres <- mean(datos_obesidad$value[datos_obesidad$Sexo == "Mujeres"], na.rm = TRUE)
+cat("Media obesidad en Hombres:", media_hombres, "\n")
+cat("Media obesidad en Mujeres:", media_mujeres, "\n")
 
 #Esto da mal
 media_por_edad <- datos_IMC_df %>%
