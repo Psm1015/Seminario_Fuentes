@@ -2,16 +2,12 @@ library(dplyr)
 library(tidyverse)
 library(pxR)
 
-IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1")
 
+IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
 IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
 
-str(IMC)
-IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
-IMC_texto_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
-
 archivo_utf8 <- tempfile(fileext = ".px")
-writeLines(IMC_texto_utf8, archivo_utf8)
+writeLines(IMC_utf8, archivo_utf8)
 
 # Lee el archivo temporal con read.px
 datos_IMC <- read.px(archivo_utf8)
@@ -31,11 +27,24 @@ DF <- as.data.frame(datos_IMC)
 DF
 view(DF)
 
-datos_IMC_df <- DF[-(1:90), ]
+datos_IMC_df <- DF[-(1:20), ]
 datos_IMC_df
 view(datos_IMC_df)
 
 
+
+#Datos sin ambos sexos y sin los totales de sexo edad y estudios
+datos_obesidad <- datos_IMC_df %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    # Solo obesidad
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL"                            # Excluir nivel de estudios total
+  )
+View(datos_obesidad)
+
+
+#Esto da mal
 media_por_edad <- datos_IMC_df %>%
   group_by(Edad) %>%       # Agrupar por la columna 'Edad'
   summarise(media_valor = mean(value, na.rm = TRUE))  # Calcular la media de la columna 'value'
