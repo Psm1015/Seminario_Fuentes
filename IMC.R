@@ -49,9 +49,79 @@ print(media_obesidad)
 
 #La media de obesidad por hombres y mujeres es la siguiente
 datos_obesidad$Sexo <- droplevels(datos_obesidad$Sexo)#Al tener en los datos iniciales la columna
-#Sexo con los niveles ambos sexos, hombres y mujeres, tenemos que eliminar eses nivel.
+#Sexo con los niveles ambos sexos, hombres y mujeres, tenemos que eliminar el nivel ambos sexos,
+#y droplevels elimina los niveles que no se usan en el dataframe.
 media_por_sexo <- tapply(datos_obesidad$value, datos_obesidad$Sexo, mean, na.rm = TRUE)
 print(media_por_sexo)
+
+
+#La media de obesidad por nivel de estudios
+datos_obesidad$Nivel.de.estudios <- droplevels(datos_obesidad$Nivel.de.estudios)
+#El droplevels para eliminar el nivel TOTAL
+media_por_estudios <- tapply(datos_obesidad$value, datos_obesidad$Nivel.de.estudios, mean, na.rm = TRUE)
+print(media_por_estudios)
+
+
+#La media de obesidad por edad
+datos_obesidad$Edad <- droplevels(datos_obesidad$Edad)
+#El droplevels para eliminar el nivel TOTAL
+media_por_edad <- tapply(datos_obesidad$value, datos_obesidad$Edad, mean, na.rm = TRUE)
+print(media_por_edad)
+
+
+media_por_edad_estudios <- aggregate(
+  value ~ Edad + Nivel.de.estudios, 
+  data = datos_obesidad, 
+  FUN = mean, 
+  na.rm = TRUE
+)
+print(media_por_edad_estudios)
+#Con este código mostramos los datos anteriores de mejor forma.
+tabla_media_edad_estudios <- xtabs(value ~ Edad + Nivel.de.estudios, data = media_por_edad_estudios)
+print(tabla_media_edad_estudios)
+
+
+#Para mostrar por edad, nivel de estudios y sexo.
+media_por_grupo <- aggregate(
+  value ~ Nivel.de.estudios + Sexo + Edad, 
+  data = datos_obesidad, 
+  FUN = mean, 
+  na.rm = TRUE
+)
+print(media_por_grupo)
+
+tabla_media_todos <- xtabs(value ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
+print(tabla_media_todos)
+
+#Para crear una gráfica con esos datos
+datos_obesidad <- data.frame(
+  Edad = rep(c("De 18 a 24 años", "De 25 a 64 años", "De 65 y más años"), each = 6),
+  Sexo = rep(c("Hombres", "Mujeres"), times = 9),
+  Nivel.de.estudios = rep(c("Básico e inferior", "Intermedio", "Superior"), times = 6),
+  value = c(7.20, 10.77, 3.41, 3.00, 2.81, 1.82, 
+            22.22, 20.47, 16.26, 14.40, 11.62, 9.20, 
+            22.09, 24.68, 16.15, 14.23, 12.61, 10.97)
+)
+
+library(ggplot2)
+
+ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Edad) +
+  labs(
+    title = "Media de valores de obesidad por Nivel de estudios, Sexo y Edad",
+    x = "Nivel de estudios",
+    y = "Valor de obesidad promedio"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+
+
+
 
 
 
