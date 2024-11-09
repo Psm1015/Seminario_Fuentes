@@ -98,9 +98,9 @@ datos_obesidad <- data.frame(
   Edad = rep(c("De 18 a 24 años", "De 25 a 64 años", "De 65 y más años"), each = 6),
   Sexo = rep(c("Hombres", "Mujeres"), times = 9),
   Nivel.de.estudios = rep(c("Básico e inferior", "Intermedio", "Superior"), times = 6),
-  value = c(7.20, 10.77, 3.41, 3.00, 2.81, 1.82, 
-            22.22, 20.47, 16.26, 14.40, 11.62, 9.20, 
-            22.09, 24.68, 16.15, 14.23, 12.61, 10.97)
+  value = c(7.20, 3.00, 2.81, 10.77, 3.41, 1.82, 
+            22.22, 14.40, 11.62, 20.47, 16.26, 9.20, 
+            22.09, 14.23, 12.61, 24.68, 16.15, 10.97)
 )
 
 library(ggplot2)
