@@ -20,8 +20,9 @@ Aunque existen influencias genéticas, conductuales, metabólicas y hormonales e
 En este caso se realizará un estudio de como se ve afectada la obesidad en relación con el desempleo y la alimentación  respecto a la edad.
 
 ## **Objetivo general**
-
-
+• Relación entre la obesidad, nivel de estudios, sexo y edad.
+• Relación entre desempleo y obesidad.
+• Relación entre alimentación y rangos de edad.
 
 
 
