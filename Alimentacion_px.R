@@ -52,3 +52,15 @@ view(df_sin_NA)
 
 Alimentacion_df <- df_sin_NA %>% select(-Edad)
 view(Alimentacion_df)
+
+datos_Alimentacion_duplicaciones <-  Alimentacion_df %>%
+  filter(
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Frecuencia != "TOTAL",                                  # Excluir edad total
+  )
+view(datos_Alimentacion_duplicaciones)
+
+datos_Alimentacion <- datos_Alimentacion_duplicaciones %>%
+  group_by(Frecuencia, Alimentos, Sexo, Grupo_edad) %>%
+  summarise(value = mean(value, na.rm = TRUE), .groups = 'drop')
+view(datos_Alimentacion)
