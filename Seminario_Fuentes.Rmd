@@ -120,5 +120,6 @@ ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 ```
+
 Viendo este resultado se pueden sacar diferentes conclusiones sobre que porcentaje de personas padecen obesidad relacionado con la edad, nivel de estudios y sexo.
 
