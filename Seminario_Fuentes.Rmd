@@ -24,6 +24,46 @@ En este caso se realizará un estudio de como se ve afectada la obesidad en rela
 • Relación entre desempleo y obesidad.
 • Relación entre alimentación y rangos de edad.
 
+## **Paquetes utilizados**
+Explícación de las distintas librerias utilizadas durante el desarrollo del proyecto:
+
+1. library(dplyr)
+Dplyr nos permite seleccionar, modificar, filtrar y agrupar los datos con los que hemos trabajado de forma sencilla.
+
+```{r , eval = TRUE,message=FALSE}
+library(dplyr)
+```
+
+2. library(tidyverse)
+Utilizamos tidyverse para importar, transformar y manipular los datos con los que trabajamos.
+
+```{r , eval = TRUE,message=FALSE,warning=FALSE}
+library(tidyverse)
+```
+
+3. library(pxR)
+Nos permite leer y manipular acrhivos que se encuentran en formato pc axis.
+
+```{r , eval = TRUE,message=FALSE,warning=FALSE}
+library(pxR)
+```
+
+## **Manipulación de datos**
+Los archivox .px son un formato estándar para almacenar datos estadísticos en forma de tablas multidimensionales.
+Iniciálmente nuestros datos px no se encontraban en una codificacion UTF-8 y nos daba problemas al intentar visualizar los datos al inicio ya que contienen carácteres extraños como la 'ñ'.
+Para solucionar nuestro problema convertimos la coficación de nuestros archivos, los cuales estaban en 'ISO-8859-1' a la codificación 'UTF-8'.
+De esta forma ya podiamos visualizar y manipular nuestros datos.
+
+## **Análisis de datos**
+En el archvido desempleo trabajaremos solo con los datos obtenidos del año 2021 en función del tiempo de búsqueda de empleo.
+
+En el archivo alimentación analizaremos las distintas frecuencias con las que las personas del mismo rango de edades anterior consumen carne, pescado, dulces etc
+
+En el archivo IMC (indice de masa corporal) estudiaremos el peso corporal de las personas según su nivel de estudios.
+
+En todos ellos trabajaremos con unos rangos de edades de 8 a 24 años, 25 a 64 años y de 65 o más años.
+
+
 
 
 
