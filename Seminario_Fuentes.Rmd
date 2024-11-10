@@ -21,7 +21,9 @@ En este caso se realizará un estudio de como se ve afectada la obesidad en rela
 
 ## **Objetivo general**
 • Relación entre la obesidad, nivel de estudios, sexo y edad.
+
 • Relación entre desempleo y obesidad.
+
 • Relación entre alimentación y rangos de edad.
 
 ## **Paquetes utilizados**
