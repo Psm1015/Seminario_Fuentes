@@ -48,6 +48,13 @@ Nos permite leer y manipular acrhivos que se encuentran en formato pc axis.
 library(pxR)
 ```
 
+4. library(ggplot2)
+Utilizamos esta librería para representar mediante gráficos los datos.
+
+```{r , eval = TRUE,message=FALSE,warning=FALSE}
+library(ggplot2)
+```
+
 ## **Manipulación de datos**
 Los archivox .px son un formato estándar para almacenar datos estadísticos en forma de tablas multidimensionales.
 Iniciálmente nuestros datos px no se encontraban en una codificacion UTF-8 y nos daba problemas al intentar visualizar los datos al inicio ya que contienen carácteres extraños como la 'ñ'.

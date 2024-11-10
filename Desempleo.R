@@ -2,8 +2,6 @@ library(dplyr)
 library(tidyverse)
 library(pxR)
 
-#Desempleo <- "INPUT/DATA/Desempleo.px"
-#archivo <- read.px(Desempleo)
 
 #Chatgpt (el código que está comentado es lo que había antes)
 #Promt usado: estoy tratando de leer un archivo pc axis en rstudio y me sale el siguiente error. 
@@ -64,10 +62,10 @@ view(datos_Desempleo)
 #Gráficas
 library(ggplot2)
 
-# Gráfica de desempleo por grupo de edad en 2001
+# Gráfica de desempleo por grupo de edad en 2021
 ggplot(datos_Desempleo, aes(x = Grupo_edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Desempleo por Grupo de Edad en 2001", x = "Grupo de Edad", y = "Cantidad de Desempleo") +
+  labs(title = "Desempleo por Grupo de Edad en 2021", x = "Grupo de Edad", y = "Cantidad de Desempleo") +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
