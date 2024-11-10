@@ -3,9 +3,7 @@ library(tidyverse)
 library(pxR)
 
 
-#Chatgpt (el código que está comentado es lo que había antes)
-#Promt usado: estoy tratando de leer un archivo pc axis en rstudio y me sale el siguiente error. 
-#Quiero que me propongas una solución para poder leer el archivo
+
 archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
 archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 

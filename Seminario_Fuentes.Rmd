@@ -21,7 +21,9 @@ En este caso se realizará un estudio de como se ve afectada la obesidad en rela
 
 ## **Objetivo general**
 • Relación entre la obesidad, nivel de estudios, sexo y edad.
+
 • Relación entre desempleo y obesidad.
+
 • Relación entre alimentación y rangos de edad.
 
 ## **Paquetes utilizados**
@@ -71,3 +73,9 @@ En el archivo IMC (indice de masa corporal) estudiaremos el peso corporal de las
 En todos ellos trabajaremos con unos rangos de edades de 8 a 24 años, 25 a 64 años y de 65 o más años.
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> a14f728ecff7fa466eed6c347f473fa6bf222abe
