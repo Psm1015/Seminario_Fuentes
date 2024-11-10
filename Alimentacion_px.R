@@ -31,36 +31,86 @@ DF <- as.data.frame(datos)
 DF
 view(DF)
 
+# Filter para quitar diversos rangos de edad
+DF1 <- DF %>%
+  filter(!(Edad %in% c("De 25 a 34 aÃ±os", "De 45 a 54 aÃ±os", "De 55 a 64 aÃ±os", "De 75 y mÃ¡s aÃ±os")))
+DF1
+view(DF1)
 
-datos_df <- DF %>%
-  mutate(Grupo_edad = case_when(
+# Crear otra columna (Grupo_Edad) cambiando los rangos de Edad
+datos_df <- DF1 %>%
+mutate(Grupo_edad = case_when(
     Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
-    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
     Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
-    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
-    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
-    Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#   Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
     Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
-    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
+#    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
   ))
 datos_df
 view(datos_df)
 
-df_sin_NA <- datos_df %>% filter(!is.na(Grupo_edad))
+# ELIMINAR TODAS LAS FILAS QUE TENGAN NA EN LA COLUMNA Grupo_edad
+df_sin_NA <- datos_df %>% 
+  filter(!is.na(Grupo_edad))
 df_sin_NA
 view(df_sin_NA)
 
-Alimentacion_df <- df_sin_NA %>% select(-Edad)
+#ELIMINAR LA COLUMNA EDAD
+Alimentacion_df <- df_sin_NA %>% 
+  select(-Edad)
 view(Alimentacion_df)
 
-datos_Alimentacion_duplicaciones <-  Alimentacion_df %>%
+datos_Alimentacion <-  Alimentacion_df %>%
   filter(
-    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
-    Frecuencia != "TOTAL",                                  # Excluir edad total
+    Frecuencia != "TOTAL",                                  # Excluir frecuencia total
   )
-view(datos_Alimentacion_duplicaciones)
-
-datos_Alimentacion <- datos_Alimentacion_duplicaciones %>%
-  group_by(Frecuencia, Alimentos, Sexo, Grupo_edad) %>%
-  summarise(value = mean(value, na.rm = TRUE), .groups = 'drop')
 view(datos_Alimentacion)
+
+#datos_Alimentacion <- datos_Alimentacion_duplicaciones %>%
+#  group_by(Frecuencia, Alimentos, Sexo, Grupo_edad) %>%
+#  summarise(value = mean(value, na.rm = TRUE), .groups = 'drop')
+#view(datos_Alimentacion)
+
+# GRÁFICA QUE RELACIONA QUE COME CADA RANGO DE EDAD A DIARIO.
+library(ggplot2)
+Alimentacion_ADiario <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "A diario",
+    (!(Alimentos %in% c("Productos lÃ¡cteos", "Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
+ 
+  )
+view(Alimentacion_ADiario)
+
+ggplot(Alimentacion_ADiario, aes(x = Grupo_edad, y = value, fill = Alimentos)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ Sexo) +
+  labs(title = "Porcentaje de Consumo Diario de Alimentos por Rango de Edad y Sexo",
+       x = "Rango de Edad",
+       y = "Porcentaje de Consumo Diario") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_brewer(palette = "Set3")
+
+# GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME PESCADO 
+# 3 O MÁS VECES A LA SEMANA PERO NO A DIARIO
+Alimentacion_pescado <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "3 o mÃ¡s veces a la semana pero no a diario",
+    Alimentos == "Pescado"
+  )
+view (Alimentacion_pescado)
+
+ggplot(Alimentacion_pescado, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
