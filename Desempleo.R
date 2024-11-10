@@ -3,9 +3,7 @@ library(tidyverse)
 library(pxR)
 
 
-#Chatgpt (el código que está comentado es lo que había antes)
-#Promt usado: estoy tratando de leer un archivo pc axis en rstudio y me sale el siguiente error. 
-#Quiero que me propongas una solución para poder leer el archivo
+
 archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
 archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 
@@ -77,7 +75,7 @@ ggplot(datos_Desempleo, aes(x = Grupo_edad, y = value, fill = Sexo)) +
 ggplot(datos_Desempleo, aes(x = Periodo, y = value, fill = Grupo_edad)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Tendencia del Desempleo por Grupo de Edad", x = "Año", y = "Cantidad de Desempleo") +
-  scale_fill_manual(values = c("18 a 24 aÃ±os" = "steelblue", "25 a 64 aÃ±os" = "salmon", "65 o mÃ¡s" = "#CDDC39")) +
+  scale_fill_manual(values = c("18 a 24 aÃ±os" = "steelblue", "25 a 64 aÃ±os" = "salmon", "65 o mÃ¡s" = "yellow")) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
