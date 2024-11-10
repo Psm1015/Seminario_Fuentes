@@ -1,75 +1,158 @@
 library(dplyr)
 library(tidyverse)
-library(tidyr)
-library(purrr)
-library(tidyjson)
-library(rjson)
-library(RJSONIO)
+library(pxR)
 
+Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1")
 
-Alimentacion <- fromJSON("INPUT/DATA/Alimentacion.json") 
+Alimentacion_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
+
 str(Alimentacion)
-view(Alimentacion)
-head(Alimentacion)
+Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
+archivo_texto_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
 
-Alimentacion %>% 
-  spread_all() %>% 
-  View()
+archivo_utf8 <- tempfile(fileext = ".px")
+writeLines(archivo_texto_utf8, archivo_utf8)
 
-Alimentacion %>% 
-  spread_all() %>% 
-  gather_object %>% 
-  json_types %>% 
-  count(name, type)
+# Lee el archivo temporal con read.px
+datos <- read.px(archivo_utf8)
 
-resultado <- Alimentacion %>%
-  enter_object("Data") %>%
-  gather_array() %>%
-  unnest_wider(json.column = ..JSON) %>%  # Especificamos la columna correcta
-  enter_object("MetaData") %>%
-  gather_array() %>%
-  unnest_wider(json.column = ..JSON) %>%  # Igual para MetaData
-  select(-document.id, -array.index)  # Eliminar columnas innecesarias
+#str(datos$Edad)
 
-# Inspeccionar el resultado
-glimpse(resultado)
+# Ver la estructura del archivo cargado
+# str(Desempleo)
+#a <-unlist(Desempleo)
+#a
+# Convertir a un data frame para trabajar con los datos
+
+#Rango de edades: 18 a 24, 25 a 64, 65 o más
 
 
-# Inspeccionar la estructura del resultado
-glimpse(resultado)
+DF <- as.data.frame(datos)
+DF
+view(DF)
 
-# Inspeccionar la estructura del resultado
-glimpse(resultado)
+# Filter para quitar diversos rangos de edad
+DF1 <- DF %>%
+  filter(!(Edad %in% c("De 25 a 34 aÃ±os", "De 45 a 54 aÃ±os", "De 55 a 64 aÃ±os", "De 75 y mÃ¡s aÃ±os")))
+DF1
+view(DF1)
 
-# Inspeccionar la estructura de los datos antes de usar View()
-glimpse(resultado)  # Muestra una vista compacta de las primeras filas
-head(resultado)  # Muestra las primeras filas de los datos
-
-Alimentacion_na %>% 
-  spread_all() %>% 
-  gather_object %>% 
-  json_types %>% 
-  count(name, type)
-
-Alimentacion %>% enter_object(MetaData) %>% glimpse()
-
-Alimentacion %>%
-  enter_object(MetaData) %>%
-  unnest_wider(..JSON, names_sep = "_") %>%  # Generar nombres automáticos con el separador "_"
-  select(-document.id) %>%  # Eliminar document.id si no lo necesitas
-  view()  # Mostrar los resultados
-  
-# Cambiar los rangos de edad
-Alimentacion_full <- Alimentacion %>%
-  mutate(MetaData = case_when(
-    MetaData %in% c('De 15 a 24 años', 'De 18 a 24 años') ~ '18 a 24',
-    MetaData %in% c('De 25 a 34 años', 'De 35 a 44 años', 'De 45 a 54 años', 'De 55 a 64 años') ~ '25 a 64',
-    MetaData %in% c('De 65 a 74 años', 'De 75 años o más') ~ '65 o más',
-    TRUE ~ MetaData # Mantener el valor actual si no coincide con ningún rango
+# Crear otra columna (Grupo_Edad) cambiando los rangos de Edad
+datos_df <- DF1 %>%
+mutate(Grupo_edad = case_when(
+    Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
+#    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#   Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
+#    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
   ))
+datos_df
+view(datos_df)
 
-# Ver la estructura de los datos después de la modificación
-str(Alimentacion_full)
+# ELIMINAR TODAS LAS FILAS QUE TENGAN NA EN LA COLUMNA Grupo_edad
+df_sin_NA <- datos_df %>% 
+  filter(!is.na(Grupo_edad))
+df_sin_NA
+view(df_sin_NA)
 
-# Ver algunos resultados para confirmar el cambio
-View(Alimentacion_full)
+#ELIMINAR LA COLUMNA EDAD
+Alimentacion_df <- df_sin_NA %>% 
+  select(-Edad)
+view(Alimentacion_df)
+
+datos_Alimentacion <-  Alimentacion_df %>%
+  filter(
+    Frecuencia != "TOTAL",                                  # Excluir frecuencia total
+  )
+view(datos_Alimentacion)
+
+#datos_Alimentacion <- datos_Alimentacion_duplicaciones %>%
+#  group_by(Frecuencia, Alimentos, Sexo, Grupo_edad) %>%
+#  summarise(value = mean(value, na.rm = TRUE), .groups = 'drop')
+#view(datos_Alimentacion)
+
+# GRÁFICA QUE RELACIONA QUE COME CADA RANGO DE EDAD A DIARIO.
+library(ggplot2)
+Alimentacion_ADiario <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "A diario",
+    (!(Alimentos %in% c("Productos lÃ¡cteos", "Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
+ 
+  )
+view(Alimentacion_ADiario)
+
+ggplot(Alimentacion_ADiario, aes(x = Grupo_edad, y = value, fill = Alimentos)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ Sexo) +
+  labs(title = "Porcentaje de Consumo Diario de Alimentos por Rango de Edad y Sexo",
+       x = "Rango de Edad",
+       y = "Porcentaje de Consumo Diario") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_brewer(palette = "Set3")
+
+# GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME PESCADO 
+# 3 O MÁS VECES A LA SEMANA PERO NO A DIARIO
+Alimentacion_pescado <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "3 o mÃ¡s veces a la semana pero no a diario",
+    Alimentos == "Pescado"
+  )
+view (Alimentacion_pescado)
+
+ggplot(Alimentacion_pescado, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+# GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME CARNE 
+# 3 O MÁS VECES A LA SEMANA PERO NO A DIARIO
+Alimentacion_carne <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "3 o mÃ¡s veces a la semana pero no a diario",
+    Alimentos == "Carne"
+  )
+view(Alimentacion_carne)
+ggplot(Alimentacion_carne, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Carne 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+# GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME COMIDA RAPIDA  
+# 1 O 2 VECES A LA SEMANA
+Alimentacion_rapida <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "1 o 2 veces a la semana",
+    Alimentos == "Comida rÃ¡pida"
+  )
+
+ggplot(Alimentacion_rapida, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de comida rapida 1 o 2 veces a la Semana",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
