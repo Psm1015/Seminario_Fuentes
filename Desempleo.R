@@ -77,7 +77,7 @@ ggplot(datos_Desempleo, aes(x = Grupo_edad, y = value, fill = Sexo)) +
 ggplot(datos_Desempleo, aes(x = Periodo, y = value, fill = Grupo_edad)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Tendencia del Desempleo por Grupo de Edad", x = "Año", y = "Cantidad de Desempleo") +
-  scale_fill_manual(values = c("18 a 24 aÃ±os" = "steelblue", "25 a 64 aÃ±os" = "salmon", "65 o mÃ¡s" = "#CDDC39")) +
+  scale_fill_manual(values = c("18 a 24 aÃ±os" = "steelblue", "25 a 64 aÃ±os" = "salmon", "65 o mÃ¡s" = "yellow")) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
