@@ -32,28 +32,28 @@ Explícación de las distintas librerias utilizadas durante el desarrollo del pr
 1. library(dplyr)
 Dplyr nos permite seleccionar, modificar, filtrar y agrupar los datos con los que hemos trabajado de forma sencilla.
 
-```{r , eval = TRUE,message=FALSE}
+```{r , eval = FALSE}
 library(dplyr)
 ```
 
 2. library(tidyverse)
 Utilizamos tidyverse para importar, transformar y manipular los datos con los que trabajamos.
 
-```{r , eval = TRUE,message=FALSE,warning=FALSE}
+```{r , eval = FALSE}
 library(tidyverse)
 ```
 
 3. library(pxR)
 Nos permite leer y manipular acrhivos que se encuentran en formato pc axis.
 
-```{r , eval = TRUE,message=FALSE,warning=FALSE}
+```{r , eval = FALSE}
 library(pxR)
 ```
 
 4. library(ggplot2)
 Utilizamos esta librería para representar mediante gráficos los datos.
 
-```{r , eval = TRUE,message=FALSE,warning=FALSE}
+```{r , eval = FALSE}
 library(ggplot2)
 ```
 
@@ -72,10 +72,53 @@ En el archivo IMC (indice de masa corporal) estudiaremos el peso corporal de las
 
 En todos ellos trabajaremos con unos rangos de edades de 8 a 24 años, 25 a 64 años y de 65 o más años.
 
+## **Importación de datos**
+En este apartado, se proporciona el código necesario para importar los archivos pc-axis de IMC, alimentación y desempleo
 
-<<<<<<< HEAD
-=======
+- IMC
+```{r , eval = TRUE, warning = FALSE}
+IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1")
+IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
+```
 
+- Alimentación
+```{r , eval = TRUE, warning = FALSE}
+Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1")
+Alimentacion_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
+```
 
+- Desempleo
+```{r , eval = FALSE, warning = FALSE}
+archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
+archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
+```
 
->>>>>>> a14f728ecff7fa466eed6c347f473fa6bf222abe
+## **Resultados**
+En este apartado se van a mostrar los resultados de las estudio realizado en los diferentes sets de datos. En primer lugar, se mostrará el resultado del estudio de IMC. 
+
+```{r , echo = FALSE}
+datos_obesidad <- data.frame(
+  Edad = rep(c("De 18 a 24 años", "De 25 a 64 años", "De 65 y más años"), each = 6),
+  Sexo = rep(c("Hombres", "Mujeres"), times = 9),
+  Nivel.de.estudios = rep(c("Básico e inferior", "Intermedio", "Superior"), times = 6),
+  value = c(7.20, 3.00, 2.81, 10.77, 3.41, 1.82, 
+            22.22, 14.40, 11.62, 20.47, 16.26, 9.20, 
+            22.09, 14.23, 12.61, 24.68, 16.15, 10.97)
+)
+library(ggplot2)
+ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Edad) +
+  labs(
+    title = "Media de valores de obesidad por Nivel de estudios, Sexo y Edad",
+    x = "Nivel de estudios",
+    y = "Valor de obesidad promedio"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+Viendo este resultado se pueden sacar diferentes conclusiones sobre que porcentaje de personas padecen obesidad relacionado con la edad, nivel de estudios y sexo.
+
