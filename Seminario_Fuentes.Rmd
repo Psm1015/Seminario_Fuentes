@@ -12,6 +12,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## **URL repositorio GitHub**
+https://github.com/Psm1015/Seminario_Fuentes.git
+
 ## **Introducción**
 La obesidad es una enfermedad crónica común que se caracteriza por una acumulación anormal de grasa en el cuerpo, que no es saludable.
 
