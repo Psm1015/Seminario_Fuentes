@@ -15,6 +15,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ## **URL repositorio GitHub**
 https://github.com/Psm1015/Seminario_Fuentes.git
 
+## **Datos utilizadas**
+En este apartado es donde se indican las URL´s que se van a utilizar durante el desarrollo de este proyecto. 
+
+- [Datos obesidad](https://datos.gob.es/es/catalogo/ea0010587-indice-de-masa-corporal-poblacion-adulta-segun-sexo-grupo-de-edad-y-nivel-de-estudios-poblacion-de-18-y-mas-anos-identificador-api-t15-p420-a2019-p06-l0-01005-px1)
+
+- [Datos desempleo](https://datos.gob.es/es/catalogo/ea0010587-parados-por-tiempo-de-busqueda-de-empleo-sexo-y-grupo-de-edad-epa-identificador-api-66002)
+
+- [Datos alimentación](https://datos.gob.es/es/catalogo/ea0010587-patron-de-consumo-de-determinados-alimentos-segun-sexo-y-grupo-de-edad-poblacion-de-15-y-mas-anos-identificador-api-t15-p420-a2019-p06-l0-05001-px1)
+
 ## **Introducción**
 La obesidad es una enfermedad crónica común que se caracteriza por una acumulación anormal de grasa en el cuerpo, que no es saludable.
 
