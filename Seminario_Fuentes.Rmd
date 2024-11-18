@@ -105,6 +105,11 @@ archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
 archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 ```
 
+## **Formateo de datos**
+En este apartado se van a realizar las diferentes operaciones para poder trabajar con los datos estudiados.
+
+
+
 ## **Resultados**
 En este apartado se van a mostrar los resultados de las estudio realizado en los diferentes sets de datos. En primer lugar, se mostrará el resultado del estudio de IMC. 
 
