@@ -150,7 +150,6 @@ datos_Alimentacion <-  Alimentacion_df %>%
 ```
 
 
-
 -Desempleo
 ```{r , eval = FALSE, warning = FALSE}
 datos <- read.px(archivo_utf8)
@@ -175,14 +174,16 @@ Desempleo_full <- df11 %>%
     Edad == "De 65 a 69 aÃ±os" ~ "65 o mÃ¡s",
     Edad =="70 y mÃ¡s aÃ±os" ~ '65 o mÃ¡s',
   ))
+```
 
+Ahora se van a eliminar diversas filas para tener los datos preparados para poder ser trabajados.
+```{r , eval = FALSE, warning = FALSE}
 #Eliminar filas es la que salia el valor NA
 Desempleo_full1 <- Desempleo_full[-c((1:144), (1873:2016), (3745:3888)), ]
 Desempleo_full1
 
 Desempleo_df <- Desempleo_full1 %>% select(-Edad)
 ```
-
 
 
 ## **Resultados**
