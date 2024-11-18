@@ -110,17 +110,6 @@ Debido a como estaban estructurados los datos solo hemos tenido que establecer l
 ```{r , eval = FALSE, warning = FALSE}
 datos <- read.px(archivo_utf8)
 
-#str(datos$Edad)
-
-# Ver la estructura del archivo cargado
-# str(Desempleo)
-#a <-unlist(Desempleo)
-#a
-# Convertir a un data frame para trabajar con los datos
-
-#Rango de edades: 18 a 24, 25 a 64, 65 o más
-
-
 DF <- as.data.frame(datos)
 DF
 
@@ -143,14 +132,33 @@ mutate(Grupo_edad = case_when(
 datos_df
 ```
 
+Ahora se van a eliminar diversas filas para tener los datos preparados para poder ser trabajados.
+```{r , eval = FALSE, warning = FALSE}
+# ELIMINAR TODAS LAS FILAS QUE TENGAN NA EN LA COLUMNA Grupo_edad
+df_sin_NA <- datos_df %>% 
+  filter(!is.na(Grupo_edad))
+df_sin_NA
+view(df_sin_NA)
+
+#ELIMINAR LA COLUMNA EDAD
+Alimentacion_df <- df_sin_NA %>% 
+  select(-Edad)
+view(Alimentacion_df)
+
+datos_Alimentacion <-  Alimentacion_df %>%
+  filter(
+    Frecuencia != "TOTAL",                                  # Excluir frecuencia total
+  )
+```
+
+
+
 -Desempleo
 ```{r , eval = FALSE, warning = FALSE}
 datos <- read.px(archivo_utf8)
 
-
 df11 <- as.data.frame(datos)
 df11
-
 
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
 #Agrpuamineto de las edades por los rangos que hemos deifinifo
@@ -169,7 +177,6 @@ Desempleo_full <- df11 %>%
     Edad == "De 65 a 69 aÃ±os" ~ "65 o mÃ¡s",
     Edad =="70 y mÃ¡s aÃ±os" ~ '65 o mÃ¡s',
   ))
-
 
 #Eliminar filas es la que salia el valor NA
 Desempleo_full1 <- Desempleo_full[-c((1:144), (1873:2016), (3745:3888)), ]
