@@ -92,8 +92,8 @@ media_por_grupo <- aggregate(
 print(media_por_grupo)
 str(media_por_grupo)
 
-#tabla_media_todos <- xtabs(value ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
-#print(tabla_media_todos)
+tabla_media_todos <- xtabs(value ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
+print(tabla_media_todos)
 
 #Para crear una gráfica con esos datos
 
