@@ -75,15 +75,6 @@ Iniciálmente nuestros datos px no se encontraban en una codificacion UTF-8 y no
 Para solucionar nuestro problema convertimos la coficación de nuestros archivos, los cuales estaban en 'ISO-8859-1' a la codificación 'UTF-8'.
 De esta forma ya podiamos visualizar y manipular nuestros datos.
 
-## **Análisis de datos**
-En el archvido desempleo trabajaremos solo con los datos obtenidos del año 2021 en función del tiempo de búsqueda de empleo.
-
-En el archivo alimentación analizaremos las distintas frecuencias con las que las personas del mismo rango de edades anterior consumen carne, pescado, dulces etc
-
-En el archivo IMC (indice de masa corporal) estudiaremos el peso corporal de las personas según su nivel de estudios.
-
-En todos ellos trabajaremos con unos rangos de edades de 8 a 24 años, 25 a 64 años y de 65 o más años.
-
 ## **Importación de datos**
 En este apartado, se proporciona el código necesario para importar los archivos pc-axis de IMC, alimentación y desempleo
 
@@ -105,8 +96,87 @@ archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
 archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 ```
 
-## **Formateo de datos**
-En este apartado se van a realizar las diferentes operaciones para poder trabajar con los datos estudiados.
+## **Análisis de datos**
+En el archvido desempleo trabajaremos solo con los datos obtenidos del año 2021 en función del tiempo de búsqueda de empleo.
+
+En el archivo alimentación analizaremos las distintas frecuencias con las que las personas del mismo rango de edades anterior consumen carne, pescado, dulces etc
+
+En el archivo IMC (indice de masa corporal) estudiaremos el peso corporal de las personas según su nivel de estudios.
+
+En todos ellos trabajaremos con unos rangos de edades de 8 a 24 años, 25 a 64 años y de 65 o más años.
+Debido a como estaban estructurados los datos solo hemos tenido que establecer los rangos de edades en Alimentación y desempleo.
+
+-Alimentación
+```{r , eval = FALSE, warning = FALSE}
+datos <- read.px(archivo_utf8)
+
+#str(datos$Edad)
+
+# Ver la estructura del archivo cargado
+# str(Desempleo)
+#a <-unlist(Desempleo)
+#a
+# Convertir a un data frame para trabajar con los datos
+
+#Rango de edades: 18 a 24, 25 a 64, 65 o más
+
+
+DF <- as.data.frame(datos)
+DF
+
+# Filter para quitar diversos rangos de edad
+DF1 <- DF %>%
+  filter(!(Edad %in% c("De 25 a 34 aÃ±os", "De 45 a 54 aÃ±os", "De 55 a 64 aÃ±os", "De 75 y mÃ¡s aÃ±os")))
+DF1
+
+# Crear otra columna (Grupo_Edad) cambiando los rangos de Edad
+datos_df <- DF1 %>%
+mutate(Grupo_edad = case_when(
+    Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
+#    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#   Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
+    Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
+#    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
+  ))
+datos_df
+```
+
+-Desempleo
+```{r , eval = FALSE, warning = FALSE}
+datos <- read.px(archivo_utf8)
+
+
+df11 <- as.data.frame(datos)
+df11
+
+
+#Rango de edades: 18 a 24, 25 a 64, 65 o más
+#Agrpuamineto de las edades por los rangos que hemos deifinifo
+Desempleo_full <- df11 %>%
+  mutate(Grupo_edad = case_when(
+    Edad == "De 16 a 19 aÃ±os" ~ "18 a 24 aÃ±os",
+    Edad == "De 20 a 24 aÃ±os" ~ "18 a 24 aÃ±os",
+    Edad == "De 25 a 29 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 30 a 34 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 35 a 39 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 40 a 44 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 45 a 49 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 50 a 54 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 55 a 59 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 60 a 64 aÃ±os" ~ "25 a 64 aÃ±os",
+    Edad == "De 65 a 69 aÃ±os" ~ "65 o mÃ¡s",
+    Edad =="70 y mÃ¡s aÃ±os" ~ '65 o mÃ¡s',
+  ))
+
+
+#Eliminar filas es la que salia el valor NA
+Desempleo_full1 <- Desempleo_full[-c((1:144), (1873:2016), (3745:3888)), ]
+Desempleo_full1
+
+Desempleo_df <- Desempleo_full1 %>% select(-Edad)
+```
 
 
 
