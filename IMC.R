@@ -90,52 +90,59 @@ media_por_grupo <- aggregate(
   na.rm = TRUE
 )
 print(media_por_grupo)
+str(media_por_grupo)
 
-tabla_media_todos <- xtabs(value ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
-print(tabla_media_todos)
+#tabla_media_todos <- xtabs(value ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
+#print(tabla_media_todos)
 
 #Para crear una gráfica con esos datos
-datos_obesidad <- data.frame(
-  Edad = rep(c("De 18 a 24 años", "De 25 a 64 años", "De 65 y más años"), each = 6),
-  Sexo = rep(c("Hombres", "Mujeres"), times = 9),
-  Nivel.de.estudios = rep(c("Básico e inferior", "Intermedio", "Superior"), times = 6),
-  value = c(7.20, 3.00, 2.81, 10.77, 3.41, 1.82, 
-            22.22, 14.40, 11.62, 20.47, 16.26, 9.20, 
-            22.09, 14.23, 12.61, 24.68, 16.15, 10.97)
-)
+
+#datos_obesidad <- data.frame(
+#  Edad = rep(c("De 18 a 24 años", "De 25 a 64 años", "De 65 y más años"), each = 6),
+#  Sexo = rep(c("Hombres", "Mujeres"), times = 9),
+#  Nivel.de.estudios = rep(c("Básico e inferior", "Intermedio", "Superior"), times = 6),
+#  value = c(7.20, 3.00, 2.81, 10.77, 3.41, 1.82, 
+#            22.22, 14.40, 11.62, 20.47, 16.26, 9.20, 
+#            22.09, 14.23, 12.61, 24.68, 16.15, 10.97)
+#)
 
 library(ggplot2)
 
-ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
+#ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
+#  geom_bar(stat = "identity", position = "dodge") +
+#  facet_wrap(~ Edad) +
+#  labs(
+#    title = "Media de valores de obesidad por Nivel de estudios, Sexo y Edad",
+#    x = "Nivel de estudios",
+#    y = "Valor de obesidad promedio"
+#  ) +
+#  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
+#  theme_minimal() +
+#  theme(
+#    axis.text.x = element_text(angle = 45, hjust = 1)
+#  )
+
+
+df_tabla_media <- as.data.frame(as.table(tabla_media_todos))
+str(df_tabla_media)
+
+ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ Edad) +
+  facet_wrap(~ Edad) +  # Dividir por grupos de edad
   labs(
-    title = "Media de valores de obesidad por Nivel de estudios, Sexo y Edad",
+    title = "Distribución por Nivel de Estudios, Edad y Sexo",
     x = "Nivel de estudios",
-    y = "Valor de obesidad promedio"
+    y = "Valor"
   ) +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    legend.position = "bottom",   # Leyenda en la parte inferior
+    text = element_text(size = 12),
+    strip.text = element_text(size = 10),  # Tamaño del título en los facetes
+    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x
   )
 
-
-df_tabla_media <- as.data.frame(as.table(tabla_media_todos))
-
-ggplot(df_tabla_media, aes(x = Edad, y = Freq, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ Nivel.de.estudios) +
-  labs(
-    title = "Distribución por Nivel de Estudios, Edad y Sexo",
-    x = "Edad",
-    y = "Valor"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "bottom",
-    text = element_text(size = 12)
-  )
 
 
 
