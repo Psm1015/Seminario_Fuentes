@@ -138,12 +138,10 @@ Ahora se van a eliminar diversas filas para tener los datos preparados para pode
 df_sin_NA <- datos_df %>% 
   filter(!is.na(Grupo_edad))
 df_sin_NA
-view(df_sin_NA)
 
 #ELIMINAR LA COLUMNA EDAD
 Alimentacion_df <- df_sin_NA %>% 
   select(-Edad)
-view(Alimentacion_df)
 
 datos_Alimentacion <-  Alimentacion_df %>%
   filter(
