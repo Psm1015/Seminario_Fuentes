@@ -76,6 +76,7 @@ media_por_edad_estudios <- aggregate(
   na.rm = TRUE
 )
 print(media_por_edad_estudios)
+str(media_por_edad_estudios)
 #Con este código mostramos los datos anteriores de mejor forma.
 tabla_media_edad_estudios <- xtabs(value ~ Edad + Nivel.de.estudios, data = media_por_edad_estudios)
 print(tabla_media_edad_estudios)
@@ -119,6 +120,22 @@ ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
+
+df_tabla_media <- as.data.frame(as.table(tabla_media_todos))
+
+ggplot(df_tabla_media, aes(x = Edad, y = Freq, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Nivel.de.estudios) +
+  labs(
+    title = "Distribución por Nivel de Estudios, Edad y Sexo",
+    x = "Edad",
+    y = "Valor"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    text = element_text(size = 12)
+  )
 
 
 
