@@ -38,22 +38,39 @@ DF1
 view(DF1)
 
 # Crear otra columna (Grupo_Edad) cambiando los rangos de Edad
-datos_df <- DF1 %>%
-mutate(Grupo_edad = case_when(
-    Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
+#datos_df <- DF1 %>%
+#mutate(Grupo_edad = case_when(
+#    Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
 #    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
-    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
+#    Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
 #    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
 #   Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
-    Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
+#    Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
 #    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
-  ))
-datos_df
-view(datos_df)
+#  ))
+#datos_df
+#view(datos_df)
+datos_df1 <- DF1 %>%
+  transmute(
+    Edad = case_when(
+      Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 aÃ±os",
+      #    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
+      Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 aÃ±os",
+      #    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
+      #   Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
+      Edad == "De 65 a 74 aÃ±os" ~ "De 65 y mÃ¡s aÃ±os",
+      #    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
+    ),
+    Frecuencia = Frecuencia,
+    Alimentos = Alimentos,
+    Sexo = Sexo,
+    value = value
+  )
+view(datos_df1)
 
 # ELIMINAR TODAS LAS FILAS QUE TENGAN NA EN LA COLUMNA Grupo_edad
-df_sin_NA <- datos_df %>% 
-  filter(!is.na(Grupo_edad))
+df_sin_NA <- datos_df1 %>% 
+  filter(!is.na(Edad))
 df_sin_NA
 view(df_sin_NA)
 
@@ -62,7 +79,7 @@ Alimentacion_df <- df_sin_NA %>%
   select(-Edad)
 view(Alimentacion_df)
 
-datos_Alimentacion <-  Alimentacion_df %>%
+datos_Alimentacion <-  df_sin_NA%>%
   filter(
     Frecuencia != "TOTAL",                                  # Excluir frecuencia total
   )
@@ -83,7 +100,7 @@ Alimentacion_ADiario <- datos_Alimentacion %>%
   )
 view(Alimentacion_ADiario)
 
-ggplot(Alimentacion_ADiario, aes(x = Grupo_edad, y = value, fill = Alimentos)) +
+ggplot(Alimentacion_ADiario, aes(x = Edad, y = value, fill = Alimentos)) +
   geom_bar(stat = "identity", position = "stack") +
   facet_wrap(~ Sexo) +
   labs(title = "Porcentaje de Consumo Diario de Alimentos por Rango de Edad y Sexo",
@@ -102,7 +119,7 @@ Alimentacion_pescado <- datos_Alimentacion %>%
   )
 view (Alimentacion_pescado)
 
-ggplot(Alimentacion_pescado, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
     title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
@@ -123,7 +140,7 @@ Alimentacion_carne <- datos_Alimentacion %>%
     Alimentos == "Carne"
   )
 view(Alimentacion_carne)
-ggplot(Alimentacion_carne, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
     title = "Porcentaje de Consumo de Carne 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
@@ -143,8 +160,8 @@ Alimentacion_rapida <- datos_Alimentacion %>%
     Frecuencia == "1 o 2 veces a la semana",
     Alimentos == "Comida rÃ¡pida"
   )
-
-ggplot(Alimentacion_rapida, aes(x = Grupo_edad, y = value, fill = Sexo)) +
+view(Alimentacion_rapida)
+ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
     title = "Porcentaje de Consumo de comida rapida 1 o 2 veces a la Semana",
@@ -156,3 +173,11 @@ ggplot(Alimentacion_rapida, aes(x = Grupo_edad, y = value, fill = Sexo)) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
+Alimentacion_IMC <- inner_join(
+  Alimentacion_rapida,  # Primer DataFrame
+  df_tabla_media,
+  by = join_by(Edad, Sexo)# Segundo DataFrame  ,  # Tipo de join: "inner"  # Para diferenciar las columnas con el mismo nombre
+)
+view(df_combined)
+
