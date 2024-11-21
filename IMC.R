@@ -44,7 +44,7 @@ DF <- DF_mal %>%
       Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
     )),
     Sexo = Sexo,
-    value = value
+    Porcentaje.personas = value
   )
 view(DF)
 
@@ -69,33 +69,33 @@ datos_obesidad <- datos_IMC_df %>%
 View(datos_obesidad)
 
 #La media del porcentaje de obesidad es la siguiente
-media_obesidad <- mean(datos_obesidad$value, na.rm = TRUE)
+media_obesidad <- mean(datos_obesidad$Porcentaje.personas, na.rm = TRUE)
 print(media_obesidad)
 
 #La media de obesidad por hombres y mujeres es la siguiente
 datos_obesidad$Sexo <- droplevels(datos_obesidad$Sexo)#Al tener en los datos iniciales la columna
 #Sexo con los niveles ambos sexos, hombres y mujeres, tenemos que eliminar el nivel ambos sexos,
 #y droplevels elimina los niveles que no se usan en el dataframe.
-media_por_sexo <- tapply(datos_obesidad$value, datos_obesidad$Sexo, mean, na.rm = TRUE)
+media_por_sexo <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Sexo, mean, na.rm = TRUE)
 print(media_por_sexo)
 
 
 #La media de obesidad por nivel de estudios
 datos_obesidad$Nivel.de.estudios <- droplevels(datos_obesidad$Nivel.de.estudios)
 #El droplevels para eliminar el nivel TOTAL
-media_por_estudios <- tapply(datos_obesidad$value, datos_obesidad$Nivel.de.estudios, mean, na.rm = TRUE)
+media_por_estudios <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Nivel.de.estudios, mean, na.rm = TRUE)
 print(media_por_estudios)
 
 
 #La media de obesidad por edad
 datos_obesidad$Edad <- droplevels(datos_obesidad$Edad)
 #El droplevels para eliminar el nivel TOTAL
-media_por_edad <- tapply(datos_obesidad$value, datos_obesidad$Edad, mean, na.rm = TRUE)
+media_por_edad <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Edad, mean, na.rm = TRUE)
 print(media_por_edad)
 
 
 media_por_edad_estudios <- aggregate(
-  value ~ Edad + Nivel.de.estudios, 
+  Porcentaje.personas ~ Edad + Nivel.de.estudios, 
   data = datos_obesidad, 
   FUN = mean, 
   na.rm = TRUE
@@ -103,13 +103,13 @@ media_por_edad_estudios <- aggregate(
 print(media_por_edad_estudios)
 str(media_por_edad_estudios)
 #Con este código mostramos los datos anteriores de mejor forma.
-tabla_media_edad_estudios <- xtabs(value ~ Edad + Nivel.de.estudios, data = media_por_edad_estudios)
+tabla_media_edad_estudios <- xtabs(Porcentaje.personas ~ Edad + Nivel.de.estudios, data = media_por_edad_estudios)
 print(tabla_media_edad_estudios)
 
 
 #Para mostrar por edad, nivel de estudios y sexo.
 media_por_grupo <- aggregate(
-  value ~ Nivel.de.estudios + Sexo + Edad, 
+  Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, 
   data = datos_obesidad, 
   FUN = mean, 
   na.rm = TRUE
@@ -117,7 +117,7 @@ media_por_grupo <- aggregate(
 print(media_por_grupo)
 str(media_por_grupo)
 
-tabla_media_todos <- xtabs(value ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
+tabla_media_todos <- xtabs(Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
 print(tabla_media_todos)
 
 #Para crear una gráfica con esos datos
@@ -157,7 +157,7 @@ ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   labs(
     title = "Distribución por Nivel de Estudios, Edad y Sexo",
     x = "Nivel de estudios",
-    y = "Valor"
+    y = "Porcentaje de personas"
   ) +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
