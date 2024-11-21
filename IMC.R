@@ -23,9 +23,34 @@ datos_IMC <- read.px(archivo_utf8)
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
 
 
-DF <- as.data.frame(datos_IMC)
-DF
+DF_mal <- as.data.frame(datos_IMC)
+DF_mal
+view(DF_mal)
+
+#Cambiar de anios a años
+DF <- DF_mal %>%
+  transmute(
+    Masa.corporal.adultos = Masa.corporal.adultos,
+    Nivel.de.estudios = factor(case_when(
+      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
+      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
+      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
+      Nivel.de.estudios == "Superior" ~ "Superior",
+    )),
+    Edad = factor(case_when(
+      Edad == "TOTAL" ~ "TOTAL",
+      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
+      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
+      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
+    )),
+    Sexo = Sexo,
+    value = value
+  )
 view(DF)
+
+
+
+
 
 datos_IMC_df <- DF[-(1:20), ]
 datos_IMC_df
