@@ -4,6 +4,7 @@ library(pxR)
 
 
 IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
+
 IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
 
 archivo_utf8 <- tempfile(fileext = ".px")
@@ -151,6 +152,7 @@ library(ggplot2)
 df_tabla_media <- as.data.frame(as.table(tabla_media_todos))
 str(df_tabla_media)
 
+
 ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_wrap(~ Edad) +  # Dividir por grupos de edad
@@ -162,9 +164,9 @@ ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
-    legend.position = "bottom",   # Leyenda en la parte inferior
-    text = element_text(size = 12),
-    strip.text = element_text(size = 10),  # Tamaño del título en los facetes
+    #legend.position = "bottom",   # Leyenda en la parte inferior
+    #text = element_text(size = 12),
+    #strip.text = element_text(size = 10),  # Tamaño del título en los facetes
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x
   )
 
