@@ -208,8 +208,17 @@ C.Rapida_Obesidad <- Alimentacion_IMC %>%
     Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    # Solo obesidad
     Sexo != "Ambos sexos",                                  # Excluir ambos sexos
     Edad != "TOTAL",                                        # Excluir edad total
-    Nivel.de.estudios != "TOTAL"                            # Excluir nivel de estudios total
-  )
+    Nivel.de.estudios != "TOTAL")                           # Excluir nivel de estudios total
 View(C.Rapida_Obesidad)
 
-
+ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) + 
+  geom_bar(stat = "identity", width = 1) + 
+  coord_polar() + 
+  theme_minimal() + 
+  labs(
+    title = "Porcentaje de personas con obesidad\nsegún nivel de estudios y sexo",
+    x = NULL,
+    y = NULL,
+    fill = "Nivel de estudios"
+  ) +
+  facet_wrap(~Sexo)   # Crear gráficos separados por sexo
