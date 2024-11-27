@@ -2,6 +2,7 @@ library(dplyr)
 library(tidyverse)
 library(pxR)
 
+
 Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1")
 
 Alimentacion_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
@@ -118,6 +119,11 @@ Alimentacion_ADiario <- datos_Alimentacion %>%
     (!(Alimentos %in% c("Productos lÃ¡cteos", "Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
  
   )
+Alimentacion_ADiario <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "A diario",
+    Alimentos %in% c("Carne", "Comida rápida", "Dulces", "Fruta fresca(excluye zumos", "Pescado",
+                 "Refrescos con azúcar", "Verduras, ensaladas y hortalizas"))
 view(Alimentacion_ADiario)
 
 ggplot(Alimentacion_ADiario, aes(x = Edad, y = value, fill = Alimentos)) +
@@ -129,6 +135,14 @@ ggplot(Alimentacion_ADiario, aes(x = Edad, y = value, fill = Alimentos)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_brewer(palette = "Set3")
+
+ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value )) +
+  geom_bar(aes(fill = Alimentos), position = "dodge", s)
+
+# Para un gráfico de barras donde 'value' es la altura de las barras y 'Edad' es el eje x
+ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value)) +
+  geom_bar(aes(fill = Alimentos), position = "dodge", stat = "identity")  # Añadir stat = "identity"
+
 
 # GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME PESCADO 
 # 3 O MÁS VECES A LA SEMANA PERO NO A DIARIO
@@ -219,6 +233,32 @@ ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) +
     title = "Porcentaje de personas con obesidad\nsegún nivel de estudios y sexo",
     x = NULL,
     y = NULL,
-    fill = "Nivel de estudios"
+    fill = "Edad"
   ) +
   facet_wrap(~Sexo)   # Crear gráficos separados por sexo
+#  theme(axis.text.x = element_blank()) 
+
+C.Rapida_Obesidad2 <- C.Rapida_Obesidad %>%
+  select(Edad,Sexo, value, Porcentaje.personas)
+view(C.Rapida_Obesidad2)
+
+library(dplyr)
+Obesidad_CRapida <- C.Rapida_Obesidad2 %>% 
+  as_tibble() %>% 
+  group_by(Edad, Sexo, value) %>%  # Agrupar por Edad y Sexo
+  dplyr::summarise(Media_Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
+
+view(Obesidad_CRapida)
+
+
+C.Rapida_Obesidad3 <- C.Rapida_Obesidad %>%
+  select(Sexo, value, Nivel.de.estudios, Porcentaje.personas)
+view(C.Rapida_Obesidad3)
+
+Obesidad_CRapida2 <- C.Rapida_Obesidad3 %>% 
+  as_tibble() %>% 
+  group_by(Sexo, Nivel.de.estudios) %>%  # Agrupar por Edad y Sexo
+  dplyr::summarise(Media_Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE),
+                   Media_Valor = mean(value, na.rm = TRUE))
+view(Obesidad_CRapida2)
+
