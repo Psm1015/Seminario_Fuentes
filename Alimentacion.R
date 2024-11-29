@@ -330,3 +330,40 @@ Obesidad_CRapida2 <- C.Rapida_Obesidad3 %>%
                    Media_Valor = mean(value, na.rm = TRUE))
 view(Obesidad_CRapida2)
 
+library(dplyr)
+Porcentaje_alimentacion <- datos_Alimentacion %>% 
+  as_tibble() %>% 
+  filter(Sexo != "Ambos sexos")%>%
+  group_by(Alimentos, Sexo) %>%  # Agrupar por Edad y Sexo
+  dplyr::summarise(Media_valor = mean(value, na.rm = TRUE))
+view(Porcentaje_alimentacion)
+
+# Reorganizar los datos para tener las medias de Hombres y Mujeres en columnas separadas
+df_wide <- Porcentaje_alimentacion %>%
+  pivot_wider(names_from = Sexo, values_from = Media_valor)
+
+# Calcular las variables necesarias para la pirámide
+Right <- df_wide$Hombres  # Valores de los hombres
+Left <- -df_wide$Mujeres  # Valores negativos para las mujeres
+Center <- df_wide$Alimentos  # Nombres de los alimentos
+
+titulo <- "Promedio de Consumo por Alimento (Hombres vs Mujeres)"
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+# Graficar la pirámide con la función 'pyramids' (supuesto)
+pyramids(Right = Right,
+         Left = Left,
+         Center = Center,
+         Clab = "Alimentos",
+         Rlab = paste0("Hombres\n(", sum(df_wide$Hombres, na.rm = TRUE), ")"),
+         Llab = paste0("Mujeres\n(", sum(df_wide$Mujeres, na.rm = TRUE), ")"),
+         Rcol = "gold",
+         Lcol = "skyblue",
+         main = titulo)
+
+
+
+
+
+
