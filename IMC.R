@@ -208,6 +208,23 @@ ggplot(data = IMC_grafica2_sin_niveles, aes(x = Sexo, y = Porcentaje.personas)) 
        title = "Porcentaje de personas") 
 
 
+IMC_grafica3_sin_niveles <- datos_IMC_grafica2 %>%
+  group_by(Masa.corporal.adultos) %>%
+  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
+
+View(IMC_grafica3_sin_niveles)
+
+ggplot(data = IMC_grafica3_sin_niveles) + 
+  geom_bar(
+    mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Porcentaje.personas),
+    stat = "identity",  # Usa los valores de y directamente
+    show.legend = TRUE,
+    width = 1
+  ) + 
+  theme(aspect.ratio = 1) +
+  labs(x = "", y = "") +
+  coord_polar()
+
 
 
 
