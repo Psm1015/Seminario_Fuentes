@@ -330,6 +330,11 @@ Obesidad_CRapida2 <- C.Rapida_Obesidad3 %>%
                    Media_Valor = mean(value, na.rm = TRUE))
 view(Obesidad_CRapida2)
 
+ggplot(data = Obesidad_CRapida2, aes(x = Nivel.de.estudios, y = Media_Porcentaje.personas)) +
+  geom_point(aes(colour = factor(Sexo), shape = factor(Media_Valor)))
+
+
+
 library(dplyr)
 Porcentaje_alimentacion <- datos_Alimentacion %>% 
   as_tibble() %>% 
