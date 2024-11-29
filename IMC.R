@@ -208,25 +208,41 @@ ggplot(data = IMC_grafica2_sin_niveles, aes(x = Sexo, y = Porcentaje.personas)) 
        title = "Porcentaje de personas") 
 
 
+#CREACIÓN GRÁFICA POLAR QUE REPRESENTA EL PORCENTAJE QUE HAY DE PESOS
 IMC_grafica3_sin_niveles <- datos_IMC_grafica2 %>%
   group_by(Masa.corporal.adultos) %>%
   dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
 
-View(IMC_grafica3_sin_niveles)
+#View(IMC_grafica3_sin_niveles)
 
 ggplot(data = IMC_grafica3_sin_niveles) + 
   geom_bar(
-    mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Porcentaje.personas),
+    mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
     stat = "identity",  # Usa los valores de y directamente
     show.legend = TRUE,
     width = 1
   ) + 
+  scale_fill_manual(
+    values = c(
+      "Peso insuficiente (IMC<18,5 kg/m2)" = "red",
+      "Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)" = "green",
+      "Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)" = "orange",
+      "Obesidad (IMC>=30 kg/m2)" = "blue"
+    )
+  ) +
   theme(aspect.ratio = 1) +
-  labs(x = "", y = "") +
-  coord_polar()
+  labs(
+    title="Porcentaje de pesos",
+    x = "Masa corporal de adultos", 
+    fill = "Masa corporal de adultos") +
+  
+  coord_polar()+
+  theme(axis.text.x = element_blank()) 
 
 
 
+
+  
 
 
 
