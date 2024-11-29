@@ -14,9 +14,9 @@ writeLines(archivo_texto_utf8, archivo_utf8)
 datos <- read.px(archivo_utf8)
 
 
-df11 <- as.data.frame(datos)
-df11
-view(df11)
+Desempleo_frame <- as.data.frame(datos)
+Desempleo_frame
+#view(Desempleo_frame)
 
 
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
@@ -39,7 +39,7 @@ view(df11)
 #view(Desempleo_full)
 #colnames(Desempleo_full)
 
-Desempleo_full1 <- df11 %>%
+Desempleo_agrup <- Desempleo_frame %>%
   transmute(
     Edad = case_when(
       Edad == "De 16 a 19 aÃ±os" ~ "De 18 a 24 años",
@@ -62,33 +62,33 @@ Desempleo_full1 <- df11 %>%
     Sexo = Sexo,
     value = value,
   )
-view(Desempleo_full1)
+#view(Desempleo_agrup)
 
 
 #Eliminar filas es la que salia el valor NA
-Desempleo_full11 <- Desempleo_full1[-c((1:144), (1873:2016), (3745:3888)), ]
-Desempleo_full11
-view(Desempleo_full11)
+Desempleo_no_NA <- Desempleo_agrup[-c((1:144), (1873:2016), (3745:3888)), ]
+Desempleo_no_NA
+#view(Desempleo_no_NA)
 
 #Desempleo_df <- Desempleo_full11 %>% select(-Edad)
 #view(Desempleo_df)
 
 
 #Para eliminar los valores de ambos sexos y total
-datos_Desempleo <-  Desempleo_full11 %>%
+Desempleo_data <-  Desempleo_no_NA %>%
   filter(
     Sexo != "Ambos sexos",                                  
     Tiempo.de.bÃºsqueda.de.empleo != "Total",
     Periodo == "2021"                             
   )
-view(datos_Desempleo)
+#view(Desempleo_data)
 
 
 #Gráficas
 library(ggplot2)
 
 # Gráfica de desempleo por grupo de edad en 2021
-ggplot(datos_Desempleo, aes(x = Edad, y = value, fill = Sexo)) +
+ggplot(Desempleo_data, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Desempleo por Grupo de Edad en 2021", x = "Grupo de Edad", y = "Cantidad de Desempleo") +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
@@ -99,7 +99,7 @@ ggplot(datos_Desempleo, aes(x = Edad, y = value, fill = Sexo)) +
 
 
 #Gráfica para observar la tendencia de desempleo en distintos periodos
-ggplot(datos_Desempleo, aes(x = Periodo, y = value, fill = Edad)) +
+ggplot(Desempleo_data, aes(x = Periodo, y = value, fill = Edad)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Tendencia del Desempleo por Edad", x = "Año", y = "Cantidad de Desempleo") +
   scale_fill_manual(values = c("De 18 a 24 años" = "steelblue", "De 25 a 64 años" = "salmon", "65 o más" = "yellow")) +
@@ -111,7 +111,7 @@ ggplot(datos_Desempleo, aes(x = Periodo, y = value, fill = Edad)) +
 
 
 #Gráfica para comparar el desempleo entre hombres y mujeres en 2001 confiltro Grupo_edad
-ggplot(datos_Desempleo %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
+ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity") +
   labs(title = "Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2001)", x = "Sexo", y = "Cantidad de Desempleo") +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
@@ -122,13 +122,13 @@ ggplot(datos_Desempleo %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y =
 
 
 Desempleo_IMC <- inner_join(
-  datos_Desempleo, 
+  Desempleo_data, 
   datos_IMC_df, 
   by = join_by(Edad, Sexo),
   relationship = "many-to-many" #generará un nuevo data frame con todas las combinaciones de 
                                 #filas coincidentes entre los dos marcos de datos
 )
-view(Desempleo_IMC)
+#view(Desempleo_IMC)
 
 
 
