@@ -16,7 +16,7 @@ datos <- read.px(archivo_utf8)
 
 Desempleo_frame <- as.data.frame(datos)
 Desempleo_frame
-#view(Desempleo_frame)
+view(Desempleo_frame)
 
 
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
@@ -44,7 +44,6 @@ Desempleo_agrup <- Desempleo_frame %>%
     Edad = case_when(
       Edad == "De 16 a 19 aÃ±os" ~ "De 18 a 24 años",
       Edad == "De 20 a 24 aÃ±os" ~ "De 18 a 24 años",
-      #    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
       Edad == "De 25 a 29 aÃ±os" ~ "De 25 a 64 años",
       Edad == "De 30 a 34 aÃ±os" ~ "De 25 a 64 años",
       Edad == "De 35 a 39 aÃ±os" ~ "De 25 a 64 años",
@@ -56,12 +55,24 @@ Desempleo_agrup <- Desempleo_frame %>%
       Edad == "De 65 a 69 aÃ±os" ~ "65 o más",
       Edad == "70 y mÃ¡s aÃ±os" ~ "65 o más",
     ),
+    Tiempo.de.bÃºsqueda.de.empleo = case_when(
+      Tiempo.de.bÃºsqueda.de.empleo == "2 aÃ±os o mÃ¡s" ~ "2 años o más",
+      Tiempo.de.bÃºsqueda.de.empleo == "Ya ha encontrado empleo" ~ "Ya ha encontrado empleo",
+      Tiempo.de.bÃºsqueda.de.empleo == "De 1 mes a menos de 3 meses" ~ "De 1 mes a menos de 3 meses",
+      Tiempo.de.bÃºsqueda.de.empleo == "De 3 meses a menos de 6 meses" ~ "De 3 meses a menos de 6 meses",
+      Tiempo.de.bÃºsqueda.de.empleo == "De 6 meses a menos de 1 aÃ±o" ~ "De 6 meses a menos de 1 año",
+      Tiempo.de.bÃºsqueda.de.empleo == "De 1 aÃ±o a menos de 2 aÃ±os" ~ "De 1 año a menos de 2 años",
+      Tiempo.de.bÃºsqueda.de.empleo == "Total" ~ "Total",
+      
+    ),
     Periodo = Periodo,
     Tiempo.de.bÃºsqueda.de.empleo=Tiempo.de.bÃºsqueda.de.empleo,
     Edad = Edad,
     Sexo = Sexo,
-    value = value,
-  )
+    value = value, 
+  )%>%
+  mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
+  select(-Tiempo.de.bÃºsqueda.de.empleo)
 #view(Desempleo_agrup)
 
 
