@@ -13,6 +13,7 @@ writeLines(IMC_utf8, archivo_utf8)
 # Lee el archivo temporal con read.px
 datos_IMC <- read.px(archivo_utf8)
 
+
 #str(datos$Edad)
 
 # Ver la estructura del archivo cargado
@@ -26,7 +27,7 @@ datos_IMC <- read.px(archivo_utf8)
 
 DF_mal <- as.data.frame(datos_IMC)
 DF_mal
-view(DF_mal)
+#view(DF_mal)
 
 #Cambiar de anios a años
 DF <- DF_mal %>%
@@ -55,7 +56,7 @@ view(DF)
 
 datos_IMC_df <- DF[-(1:20), ]
 datos_IMC_df
-view(datos_IMC_df)
+#view(datos_IMC_df)
 
 
 
@@ -67,7 +68,7 @@ datos_obesidad <- datos_IMC_df %>%
     Edad != "TOTAL",                                        # Excluir edad total
     Nivel.de.estudios != "TOTAL"                            # Excluir nivel de estudios total
   )
-View(datos_obesidad)
+#View(datos_obesidad)
 
 #La media del porcentaje de obesidad es la siguiente
 media_obesidad <- mean(datos_obesidad$Porcentaje.personas, na.rm = TRUE)
@@ -171,6 +172,40 @@ ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   )
 
 
+
+
+#PARA MOSTRAR UN GRÁFICO CON EL IMC POR EDADES CON PUNTOS
+
+datos_IMC_grafica2 <- datos_IMC_df %>%
+  filter(
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
+    Masa.corporal.adultos != "TOTAL"
+  )
+
+#View(datos_IMC_grafica2)
+
+
+#Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
+datos_IMC_grafica2$Sexo <- droplevels(datos_IMC_grafica2$Sexo)
+datos_IMC_grafica2$Edad <- droplevels(datos_IMC_grafica2$Edad)
+datos_IMC_grafica2$Nivel.de.estudios <- droplevels(datos_IMC_grafica2$Nivel.de.estudios)
+datos_IMC_grafica2$Masa.corporal.adultos <- droplevels(datos_IMC_grafica2$Masa.corporal.adultos)
+
+
+IMC_grafica2_sin_niveles <- datos_IMC_grafica2 %>%
+  group_by(Masa.corporal.adultos, Edad, Sexo) %>%
+  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
+
+#View(IMC_grafica2_sin_niveles)
+
+ggplot(data = IMC_grafica2_sin_niveles, aes(x = Sexo, y = Porcentaje.personas)) +
+  geom_point() +
+  geom_smooth()+
+  labs(x = "Sexo",                 # Etiqueta eje X
+       y = "Porcentaje de Personas",        # Etiqueta eje Y
+       title = "Porcentaje de personas") 
 
 
 
