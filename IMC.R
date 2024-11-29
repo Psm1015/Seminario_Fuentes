@@ -14,20 +14,10 @@ writeLines(IMC_utf8, archivo_utf8)
 datos_IMC <- read.px(archivo_utf8)
 
 
-#str(datos$Edad)
-
-# Ver la estructura del archivo cargado
-# str(Desempleo)
-#a <-unlist(Desempleo)
-#a
-# Convertir a un data frame para trabajar con los datos
-
-#Rango de edades: 18 a 24, 25 a 64, 65 o más
-
-
 DF_mal <- as.data.frame(datos_IMC)
 DF_mal
 #view(DF_mal)
+
 
 #Cambiar de anios a años
 DF <- DF_mal %>%
@@ -48,12 +38,10 @@ DF <- DF_mal %>%
     Sexo = Sexo,
     Porcentaje.personas = value
   )
-view(DF)
+#view(DF)
 
 
-
-
-
+#Eliminar las 20 primeras filas que salen mal
 datos_IMC_df <- DF[-(1:20), ]
 datos_IMC_df
 #view(datos_IMC_df)
@@ -69,6 +57,8 @@ datos_obesidad <- datos_IMC_df %>%
     Nivel.de.estudios != "TOTAL"                            # Excluir nivel de estudios total
   )
 #View(datos_obesidad)
+
+
 
 #La media del porcentaje de obesidad es la siguiente
 media_obesidad <- mean(datos_obesidad$Porcentaje.personas, na.rm = TRUE)
@@ -109,7 +99,7 @@ tabla_media_edad_estudios <- xtabs(Porcentaje.personas ~ Edad + Nivel.de.estudio
 print(tabla_media_edad_estudios)
 
 
-#Para mostrar por edad, nivel de estudios y sexo.
+#GRÁFICO QUE RELACIONA OBESIDAD, NIVEL DE ESTUDIOS, SEXO Y EDAD
 media_por_grupo <- aggregate(
   Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, 
   data = datos_obesidad, 
@@ -121,33 +111,6 @@ str(media_por_grupo)
 
 tabla_media_todos <- xtabs(Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
 print(tabla_media_todos)
-
-#Para crear una gráfica con esos datos
-
-#datos_obesidad <- data.frame(
-#  Edad = rep(c("De 18 a 24 años", "De 25 a 64 años", "De 65 y más años"), each = 6),
-#  Sexo = rep(c("Hombres", "Mujeres"), times = 9),
-#  Nivel.de.estudios = rep(c("Básico e inferior", "Intermedio", "Superior"), times = 6),
-#  value = c(7.20, 3.00, 2.81, 10.77, 3.41, 1.82, 
-#            22.22, 14.40, 11.62, 20.47, 16.26, 9.20, 
-#            22.09, 14.23, 12.61, 24.68, 16.15, 10.97)
-#)
-
-library(ggplot2)
-
-#ggplot(datos_obesidad, aes(x = Nivel.de.estudios, y = value, fill = Sexo)) +
-#  geom_bar(stat = "identity", position = "dodge") +
-#  facet_wrap(~ Edad) +
-#  labs(
-#    title = "Media de valores de obesidad por Nivel de estudios, Sexo y Edad",
-#    x = "Nivel de estudios",
-#    y = "Valor de obesidad promedio"
-#  ) +
-#  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
-#  theme_minimal() +
-#  theme(
-#    axis.text.x = element_text(angle = 45, hjust = 1)
-#  )
 
 
 df_tabla_media <- as.data.frame(as.table(tabla_media_todos))
@@ -165,47 +128,13 @@ ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
-    #legend.position = "bottom",   # Leyenda en la parte inferior
-    #text = element_text(size = 12),
-    #strip.text = element_text(size = 10),  # Tamaño del título en los facetes
-    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x
+    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
   )
 
 
 
 
-#PARA MOSTRAR UN GRÁFICO CON EL IMC POR EDADES CON PUNTOS
 
-datos_IMC_grafica2 <- datos_IMC_df %>%
-  filter(
-    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
-    Edad != "TOTAL",                                        # Excluir edad total
-    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
-    Masa.corporal.adultos != "TOTAL"
-  )
-
-#View(datos_IMC_grafica2)
-
-
-#Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
-datos_IMC_grafica2$Sexo <- droplevels(datos_IMC_grafica2$Sexo)
-datos_IMC_grafica2$Edad <- droplevels(datos_IMC_grafica2$Edad)
-datos_IMC_grafica2$Nivel.de.estudios <- droplevels(datos_IMC_grafica2$Nivel.de.estudios)
-datos_IMC_grafica2$Masa.corporal.adultos <- droplevels(datos_IMC_grafica2$Masa.corporal.adultos)
-
-
-IMC_grafica2_sin_niveles <- datos_IMC_grafica2 %>%
-  group_by(Masa.corporal.adultos, Edad, Sexo) %>%
-  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
-
-#View(IMC_grafica2_sin_niveles)
-
-ggplot(data = IMC_grafica2_sin_niveles, aes(x = Sexo, y = Porcentaje.personas)) +
-  geom_point() +
-  geom_smooth()+
-  labs(x = "Sexo",                 # Etiqueta eje X
-       y = "Porcentaje de Personas",        # Etiqueta eje Y
-       title = "Porcentaje de personas") 
 
 
 
@@ -265,6 +194,16 @@ ggplot(data = IMC_grafica3_sin_niveles) +
 
 
 #GRÁFICA DE OBESIDAD Y PRODUCTOS AZUCARADOS
+Alimentacion_IMC <- left_join(
+  datos_Alimentacion,  # Primer DataFrame
+  datos_IMC_df,
+  by = join_by(Edad, Sexo)# Segundo DataFrame  ,  # Tipo de join: "inner"  # Para diferenciar las columnas con el mismo nombre
+)
+#View(Alimentacion_IMC)
+
+Alimentacion_IMC_sin_na<-Alimentacion_IMC%>%
+  drop_na()
+#View(Alimentacion_IMC_sin_na)
 
 Alim_IMC_filtrados1<- Alimentacion_IMC_sin_na %>%
   drop_na() %>%
