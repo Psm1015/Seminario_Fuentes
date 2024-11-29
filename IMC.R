@@ -208,8 +208,28 @@ ggplot(data = IMC_grafica2_sin_niveles, aes(x = Sexo, y = Porcentaje.personas)) 
        title = "Porcentaje de personas") 
 
 
+
+
+
 #CREACIÓN GRÁFICA POLAR QUE REPRESENTA EL PORCENTAJE QUE HAY DE PESOS
-IMC_grafica3_sin_niveles <- datos_IMC_grafica2 %>%
+
+datos_IMC_grafica3 <- datos_IMC_df %>%
+  filter(
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
+    Masa.corporal.adultos != "TOTAL"
+  )
+
+#View(datos_IMC_grafica2)
+
+#Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
+datos_IMC_grafica3$Sexo <- droplevels(datos_IMC_grafica2$Sexo)
+datos_IMC_grafica3$Edad <- droplevels(datos_IMC_grafica2$Edad)
+datos_IMC_grafica3$Nivel.de.estudios <- droplevels(datos_IMC_grafica2$Nivel.de.estudios)
+datos_IMC_grafica3$Masa.corporal.adultos <- droplevels(datos_IMC_grafica2$Masa.corporal.adultos)
+
+IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
   group_by(Masa.corporal.adultos) %>%
   dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
 
@@ -218,7 +238,7 @@ IMC_grafica3_sin_niveles <- datos_IMC_grafica2 %>%
 ggplot(data = IMC_grafica3_sin_niveles) + 
   geom_bar(
     mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
-    stat = "identity",  # Usa los valores de y directamente
+    stat = "identity",  # Para que se usen los valores de y que ya están calculados, si no da error porque intenta buscar categorías de masa.corporal.adultos
     show.legend = TRUE,
     width = 1
   ) + 
@@ -235,19 +255,87 @@ ggplot(data = IMC_grafica3_sin_niveles) +
     title="Porcentaje de pesos",
     x = "Masa corporal de adultos", 
     fill = "Masa corporal de adultos") +
-  
   coord_polar()+
-  theme(axis.text.x = element_blank()) 
+  theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
 
 
 
 
-  
+
+
+
+#GRÁFICA CON IMC Y ALIMENTACIÓN
+
+Alimentacion_IMC <- left_join(
+  datos_df1,  # Primer DataFrame
+  datos_IMC_df,
+  by = join_by(Edad, Sexo)# Segundo DataFrame  ,  # Tipo de join: "inner"  # Para diferenciar las columnas con el mismo nombre
+)
+view(Alimentacion_IMC)
+
+
+Alim_IMC_filtrados <- Alimentacion_IMC_sin_na %>%
+  drop_na() %>%
+  filter(
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
+    Frecuencia != "TOTAL",
+    Frecuencia =="A diario",
+    Alimentos == "Comida rápida" |
+    Alimentos == "Dulces" |
+    Alimentos == "Refrescos con azúcar",
+    Porcentaje.personas != 100
+  ) %>%
+  group_by(Edad, Frecuencia, Alimentos, Sexo, Masa.corporal.adultos, Nivel.de.estudios) 
+
+
+#View(Alim_IMC_filtrados)
+
+ggplot(data = Alim_IMC_filtrados, aes(x = Porcentaje.personas, y = value)) +
+  geom_point(aes(colour = factor(Masa.corporal.adultos)))+
+  geom_smooth(method = "loess", colour = "blue", se = TRUE) +
+  labs(
+    title = "",
+    x="Valor",
+    y="Porcentajes de personas"
+  )
 
 
 
 
-datos_IMC_df$Edad <- as.factor(datos_IMC_df$Edad)
+
+
+
+#GRÁFICA DE OBESIDAD Y PRODUCTOS AZUCARADOS
+
+Alim_IMC_filtrados1<- Alimentacion_IMC_sin_na %>%
+  drop_na() %>%
+  filter(
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
+    Frecuencia != "TOTAL",
+    Frecuencia =="A diario",
+    Alimentos == "Comida rápida" |
+    Alimentos == "Dulces" |
+    Alimentos == "Refrescos con azúcar",
+    Porcentaje.personas != 100,
+    Masa.corporal.adultos=="Obesidad (IMC>=30 kg/m2)"
+  ) %>%
+  group_by(Edad, Frecuencia, Alimentos, Sexo, Masa.corporal.adultos, Nivel.de.estudios) 
+
+#View(Alim_IMC_filtrados1)
+
+ggplot(data = Alim_IMC_filtrados1, aes(x = Porcentaje.personas, y = value)) +
+  geom_point(aes(colour = factor(Sexo)))+
+  geom_smooth(method = "loess", colour = "blue", se = TRUE) +
+  labs(
+    title = "Relación obesidad y consumo diario de productos azucarados",
+    x="Porcentajes de personas con obesidad",
+    y="Porcentaje de personas que consumen productos azucarados a diario"
+  )
+
 
 
 
