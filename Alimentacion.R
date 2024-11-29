@@ -136,12 +136,30 @@ ggplot(Alimentacion_ADiario, aes(x = Edad, y = value, fill = Alimentos)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_brewer(palette = "Set3")
 
-ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value )) +
-  geom_bar(aes(fill = Alimentos), position = "dodge", s)
 
+Alimentacion_ADiario <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "A diario",
+    (!(Alimentos %in% c("Productos lÃ¡cteos", "Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
+    
+  )
 # Para un gráfico de barras donde 'value' es la altura de las barras y 'Edad' es el eje x
-ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value)) +
+Grafica_AlimentosXDia<-ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value)) +
   geom_bar(aes(fill = Alimentos), position = "dodge", stat = "identity")  # Añadir stat = "identity"
+
+Grafica_AlimentosXDia
+# Guardar este gráfico en OUTPUT/Figures/Alimentacion
+ggsave(
+  filename = "Alimentos_A_Diario.jpeg",
+  plot = Grafica_AlimentosXDia ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 
 # GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME PESCADO 
@@ -153,7 +171,7 @@ Alimentacion_pescado <- datos_Alimentacion %>%
   )
 view (Alimentacion_pescado)
 
-ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
+Grafica_Pescado <- ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
     title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
@@ -165,6 +183,18 @@ ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+Grafica_Pescado
+ggsave(
+  filename = "Pescado_3oMasVeces.jpeg",
+  plot = Grafica_Pescado ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 # GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME CARNE 
 # 3 O MÁS VECES A LA SEMANA PERO NO A DIARIO
@@ -174,7 +204,7 @@ Alimentacion_carne <- datos_Alimentacion %>%
     Alimentos == "Carne"
   )
 view(Alimentacion_carne)
-ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
+Grafica_Carne <- ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
     title = "Porcentaje de Consumo de Carne 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
@@ -186,6 +216,19 @@ ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+Grafica_Carne
+
+ggsave(
+  filename = "Carne_3oMasVeces.jpeg",
+  plot = Grafica_Carne ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 # GRÁFICA QUE RELACIONA EL PORCENTAJE DE PERSONAS POR SEXO Y RANGO DE EDAD QUE COME COMIDA RAPIDA  
 # 1 O 2 VECES A LA SEMANA
@@ -195,7 +238,7 @@ Alimentacion_rapida <- datos_Alimentacion %>%
     Alimentos == "Comida rápida"
   )
 view(Alimentacion_rapida)
-ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
+Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
     title = "Porcentaje de Consumo de comida rapida 1 o 2 veces a la Semana",
@@ -208,7 +251,21 @@ ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
-Alimentacion_IMC <- inner_join(
+Grafica_CRapida
+
+ggsave(
+  filename = "Comida_Rapida_3oMAsVeces.jpeg",
+  plot = Grafica_CRapida ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+Alimentacion_IMC <- left_join(
   Alimentacion_rapida,  # Primer DataFrame
   datos_IMC_df,
   by = join_by(Edad, Sexo)# Segundo DataFrame  ,  # Tipo de join: "inner"  # Para diferenciar las columnas con el mismo nombre
@@ -225,7 +282,7 @@ C.Rapida_Obesidad <- Alimentacion_IMC %>%
     Nivel.de.estudios != "TOTAL")                           # Excluir nivel de estudios total
 View(C.Rapida_Obesidad)
 
-ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) + 
+Grafica_CRapida_IMC <- ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) + 
   geom_bar(stat = "identity", width = 1) + 
   coord_polar() + 
   theme_minimal() + 
@@ -237,6 +294,17 @@ ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) +
   ) +
   facet_wrap(~Sexo)   # Crear gráficos separados por sexo
 #  theme(axis.text.x = element_blank()) 
+ggsave(
+  filename = "ComidaRapida_Vs_IMC.jpeg",
+  plot = Grafica_CRapida_IMC ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 C.Rapida_Obesidad2 <- C.Rapida_Obesidad %>%
   select(Edad,Sexo, value, Porcentaje.personas)
