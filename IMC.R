@@ -99,6 +99,16 @@ tabla_media_edad_estudios <- xtabs(Porcentaje.personas ~ Edad + Nivel.de.estudio
 print(tabla_media_edad_estudios)
 
 
+
+
+
+
+
+
+
+
+
+
 #GRÁFICO QUE RELACIONA OBESIDAD, NIVEL DE ESTUDIOS, SEXO Y EDAD
 media_por_grupo <- aggregate(
   Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, 
@@ -130,6 +140,8 @@ ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
   )
+
+
 
 
 
@@ -186,6 +198,9 @@ ggplot(data = IMC_grafica3_sin_niveles) +
     fill = "Masa corporal de adultos") +
   coord_polar()+
   theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
+
+
+
 
 
 
