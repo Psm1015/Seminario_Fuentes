@@ -407,6 +407,27 @@ En primer lugar hemos realizado una gráfica para analizar el porcentaje de pers
 
 ```{r , echo = FALSE}
 library(dplyr)
+DF_mal <- as.data.frame(datos_IMC)
+
+DF <- DF_mal %>%
+  transmute(
+    Masa.corporal.adultos = Masa.corporal.adultos,
+    Nivel.de.estudios = factor(case_when(
+      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
+      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
+      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
+      Nivel.de.estudios == "Superior" ~ "Superior",
+    )),
+    Edad = factor(case_when(
+      Edad == "TOTAL" ~ "TOTAL",
+      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
+      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
+      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
+    )),
+    Sexo = Sexo,
+    Porcentaje.personas = value
+  )
+datos_IMC_df <- DF[-(1:20), ]
 datos_IMC_grafica3 <- datos_IMC_df %>%
   filter(
     Sexo != "Ambos sexos",                                  
