@@ -106,13 +106,26 @@ ggplot(Desempleo_data, aes(x = Periodo, y = value, fill = Edad)) +
 
 
 #GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
-ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
+Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
   labs(title = "Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+Desempleo_HM
+
+ggsave(
+  filename = "Desempleo_Hombres_Mujeres.jpeg",
+  plot = Desempleo_HM ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 
 #RELACIÓN TIMEPO BÚSQUEDA DE EMPLEO CON IMC
@@ -137,7 +150,7 @@ Desempleo_IMC_filtrado<- Desempleo_IMC%>%
 #view(Desempleo_IMC_filtrado)
 
 #GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
-ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
+Desempleo_obesidad <- ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
   geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
   facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
   labs(
@@ -149,7 +162,19 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y =
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
   )
+Desempleo_obesidad
 
+ggsave(
+  filename = "Desempleo_obesidad.jpeg",
+  plot = Desempleo_obesidad ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 
 #RELACIÓN TIEMPO DE BÚSQUEDA DE EMPLEO CON ALIMENTOS
