@@ -405,7 +405,7 @@ En este apartado se van a mostrar los resultados de lss estudios realizados en l
 
 En primer lugar hemos realizado una gráfica para analizar el porcentaje de personas que tienen un determinado peso.
 
-```{r , echo = FALSE, warning=FALSE}
+```{r , echo = FALSE, warning=FALSE, message=FALSE}
 library(dplyr)
 library(tidyverse)
 library(pxR)
