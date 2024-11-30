@@ -406,11 +406,12 @@ En este apartado se van a mostrar los resultados de lss estudios realizados en l
 En primer lugar hemos realizado una gráfica para analizar el porcentaje de personas que tienen un determinado peso.
 
 ```{r , echo = FALSE}
+library(dplyr)
 datos_IMC_grafica3 <- datos_IMC_df %>%
   filter(
-    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
-    Edad != "TOTAL",                                        # Excluir edad total
-    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
+    Sexo != "Ambos sexos",                                  
+    Edad != "TOTAL",                                        
+    Nivel.de.estudios != "TOTAL",                           
     Masa.corporal.adultos != "TOTAL"
   )
 
@@ -431,7 +432,7 @@ IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
 Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) + 
   geom_bar(
     mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
-    stat = "identity",  # Para que se usen los valores de y que ya están calculados, si no da error porque intenta buscar categorías de masa.corporal.adultos
+    stat = "identity",  
     show.legend = TRUE,
     width = 1
   ) + 
@@ -449,7 +450,7 @@ Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) +
     x = "Masa corporal de adultos", 
     fill = "Masa corporal de adultos") +
   coord_polar()+
-  theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
+  theme(axis.text.x = element_blank()) 
 Porcentaje_pesos
 
 ```
