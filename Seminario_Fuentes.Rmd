@@ -13,6 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## **Índice**
+  1. URL repositorio GitHub
+  2. Datos utilizados
+  3. Introducción 
+  4. Objetivo general
+  5. Paquetes utilizados
+  6. Manipulación de datos
+  7. Importación de datos
+  8. Análisis de datos
+  9. Resultados
 
 ## **1. URL repositorio GitHub**
 https://github.com/Psm1015/Seminario_Fuentes.git
@@ -278,7 +287,7 @@ Desempleo_data <-  Desempleo_no_NA %>%
   )
 ```
 
-#### ** 8.2.4 Comparación de desempleo entre hombres y mujeres en 2021**
+#### **8.2.4 Comparación de desempleo entre hombres y mujeres en 2021**
 Mostramos un gráfico en el que se compara el desempleo entre hombres y mujeres de un grupo de edad de 18 a 24 años durante el 2021.
 
 ```{r , eval = FALSE, warning = FALSE}
@@ -338,7 +347,7 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y =
 
 ### **8.3 IMC**
 
-## **Resultados**
+## **9. Resultados**
 En este apartado se van a mostrar los resultados de las estudio realizado en los diferentes sets de datos. En primer lugar, se mostrará el resultado del estudio de IMC. 
 
 ```{r , echo = FALSE}
