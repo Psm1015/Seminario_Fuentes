@@ -30,13 +30,13 @@ datos <- read.px(archivo_utf8)
 
 DF <- as.data.frame(datos)
 DF
-view(DF)
+#view(DF)
 
 # Filter para quitar diversos rangos de edad
 DF1 <- DF %>%
   filter(!(Edad %in% c("De 25 a 34 aÃ±os", "De 45 a 54 aÃ±os", "De 55 a 64 aÃ±os", "De 75 y mÃ¡s aÃ±os")))
 DF1
-view(DF1)
+#view(DF1)
 
 # Crear otra columna (Grupo_Edad) cambiando los rangos de Edad
 #datos_df <- DF1 %>%
@@ -91,20 +91,20 @@ datos_df1 <- DF1 %>%
     Sexo = Sexo,
     value = value
   )
-view(datos_df1)
+#view(datos_df1)
 
 # ELIMINAR TODAS LAS FILAS QUE TENGAN NA EN LA COLUMNA Edad
 df_sin_NA <- datos_df1 %>% 
   filter(!is.na(Edad))
 df_sin_NA
-view(df_sin_NA)
+#view(df_sin_NA)
 
 
 datos_Alimentacion <-  df_sin_NA%>%
   filter(
     Frecuencia != "TOTAL",                                  # Excluir frecuencia total
   )
-view(datos_Alimentacion)
+#view(datos_Alimentacion)
 
 #datos_Alimentacion <- datos_Alimentacion_duplicaciones %>%
 #  group_by(Frecuencia, Alimentos, Sexo, Grupo_edad) %>%
@@ -124,7 +124,7 @@ Alimentacion_ADiario <- datos_Alimentacion %>%
     Frecuencia == "A diario",
     Alimentos %in% c("Carne", "Comida rápida", "Dulces", "Fruta fresca(excluye zumos", "Pescado",
                  "Refrescos con azúcar", "Verduras, ensaladas y hortalizas"))
-view(Alimentacion_ADiario)
+#view(Alimentacion_ADiario)
 
 ggplot(Alimentacion_ADiario, aes(x = Edad, y = value, fill = Alimentos)) +
   geom_bar(stat = "identity", position = "stack") +
@@ -169,7 +169,7 @@ Alimentacion_pescado <- datos_Alimentacion %>%
     Frecuencia == "3 o más veces a la semana pero no a diario",
     Alimentos == "Pescado"
   )
-view (Alimentacion_pescado)
+#view (Alimentacion_pescado)
 
 Grafica_Pescado <- ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
@@ -203,7 +203,7 @@ Alimentacion_carne <- datos_Alimentacion %>%
     Frecuencia == "3 o más veces a la semana pero no a diario",
     Alimentos == "Carne"
   )
-view(Alimentacion_carne)
+#view(Alimentacion_carne)
 Grafica_Carne <- ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
@@ -237,7 +237,7 @@ Alimentacion_rapida <- datos_Alimentacion %>%
     Frecuencia == "1 o 2 veces a la semana",
     Alimentos == "Comida rápida"
   )
-view(Alimentacion_rapida)
+#view(Alimentacion_rapida)
 Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +  
   labs(
@@ -266,9 +266,9 @@ ggsave(
 )
 
 Alimentacion_IMC <- left_join(
-  Alimentacion_rapida,  # Primer DataFrame
+  Alimentacion_rapida,  
   datos_IMC_df,
-  by = join_by(Edad, Sexo)# Segundo DataFrame  ,  # Tipo de join: "inner"  # Para diferenciar las columnas con el mismo nombre
+  by = join_by(Edad, Sexo)
 )
 view(Alimentacion_IMC)
 
@@ -280,7 +280,7 @@ C.Rapida_Obesidad <- Alimentacion_IMC %>%
     Sexo != "Ambos sexos",                                  # Excluir ambos sexos
     Edad != "TOTAL",                                        # Excluir edad total
     Nivel.de.estudios != "TOTAL")                           # Excluir nivel de estudios total
-View(C.Rapida_Obesidad)
+#View(C.Rapida_Obesidad)
 
 Grafica_CRapida_IMC <- ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) + 
   geom_bar(stat = "identity", width = 1) + 
@@ -294,6 +294,8 @@ Grafica_CRapida_IMC <- ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.pe
   ) +
   facet_wrap(~Sexo)   # Crear gráficos separados por sexo
 #  theme(axis.text.x = element_blank()) 
+
+Grafica_CRapida_IMC
 ggsave(
   filename = "ComidaRapida_Vs_IMC.jpeg",
   plot = Grafica_CRapida_IMC ,
@@ -308,7 +310,7 @@ ggsave(
 
 C.Rapida_Obesidad2 <- C.Rapida_Obesidad %>%
   select(Edad,Sexo, value, Porcentaje.personas)
-view(C.Rapida_Obesidad2)
+#view(C.Rapida_Obesidad2)
 
 library(dplyr)
 Obesidad_CRapida <- C.Rapida_Obesidad2 %>% 
@@ -316,19 +318,19 @@ Obesidad_CRapida <- C.Rapida_Obesidad2 %>%
   group_by(Edad, Sexo, value) %>%  # Agrupar por Edad y Sexo
   dplyr::summarise(Media_Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
 
-view(Obesidad_CRapida)
+#view(Obesidad_CRapida)
 
 
 C.Rapida_Obesidad3 <- C.Rapida_Obesidad %>%
   select(Sexo, value, Nivel.de.estudios, Porcentaje.personas)
-view(C.Rapida_Obesidad3)
+#view(C.Rapida_Obesidad3)
 
 Obesidad_CRapida2 <- C.Rapida_Obesidad3 %>% 
   as_tibble() %>% 
   group_by(Sexo, Nivel.de.estudios) %>%  # Agrupar por Edad y Sexo
   dplyr::summarise(Media_Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE),
                    Media_Valor = mean(value, na.rm = TRUE))
-view(Obesidad_CRapida2)
+#view(Obesidad_CRapida2)
 
 ggplot(data = Obesidad_CRapida2, aes(x = Nivel.de.estudios, y = Media_Porcentaje.personas)) +
   geom_point(aes(colour = factor(Sexo), shape = factor(Media_Valor)))
@@ -343,30 +345,22 @@ Porcentaje_alimentacion <- datos_Alimentacion %>%
   dplyr::summarise(Media_valor = mean(value, na.rm = TRUE))
 view(Porcentaje_alimentacion)
 
-# Reorganizar los datos para tener las medias de Hombres y Mujeres en columnas separadas
-df_wide <- Porcentaje_alimentacion %>%
-  pivot_wider(names_from = Sexo, values_from = Media_valor)
+IMC_Vs_Alimentacion <- left_join(
+  datos_Alimentacion,
+  datos_IMC_df,
+  by = join_by(Edad, Sexo)
+) 
 
-# Calcular las variables necesarias para la pirámide
-Right <- df_wide$Hombres  # Valores de los hombres
-Left <- -df_wide$Mujeres  # Valores negativos para las mujeres
-Center <- df_wide$Alimentos  # Nombres de los alimentos
+view(IMC_Vs_Alimentacion)
 
-titulo <- "Promedio de Consumo por Alimento (Hombres vs Mujeres)"
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-# Graficar la pirámide con la función 'pyramids' (supuesto)
-pyramids(Right = Right,
-         Left = Left,
-         Center = Center,
-         Clab = "Alimentos",
-         Rlab = paste0("Hombres\n(", sum(df_wide$Hombres, na.rm = TRUE), ")"),
-         Llab = paste0("Mujeres\n(", sum(df_wide$Mujeres, na.rm = TRUE), ")"),
-         Rcol = "gold",
-         Lcol = "skyblue",
-         main = titulo)
+IMC_Vs_CRapida <- IMC_Vs_Alimentacion %>%
+  filter(Sexo != "Ambos sexos",                                  
+         Edad != "TOTAL",                                        
+         Nivel.de.estudios != "TOTAL",                           
+         Frecuencia != "TOTAL",
+         Alimentos == "Comida rápida")
 
+view(IMC_Vs_Alimentacion)
 
 
 
