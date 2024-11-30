@@ -256,14 +256,15 @@ ggplot(data = Alim_IMC_filtrados1, aes(x = Porcentaje.personas, y = value)) +
 
 
 
-#INTENTO GRÁFICA DESEMPLEO Y ALIMENTACIÓN
+
+#INTENTO GRÁFICA DESEMPLEO Y IMC
 #View(Desempleo_data)
 
 Desempleo_IMC <- left_join(
   datos_IMC_df,
   Desempleo_data, 
   by = join_by(Edad, Sexo))
-View(Desempleo_IMC)
+#View(Desempleo_IMC)
 
 Desmepleo_IMC_filtrado<- Desempleo_IMC%>%
   drop_na()%>%
@@ -277,8 +278,8 @@ Desmepleo_IMC_filtrado<- Desempleo_IMC%>%
   #group_by(Tiempo_de_búsqueda_de_empleo,Edad)%>%
   #summarise(media = mean(Porcentaje.personas, na.rm = TRUE))
 
-View(Desmepleo_IMC_filtrado)
-
+#View(Desmepleo_IMC_filtrado)
+#Esta gráfica no tiene sentido, no poner
 ggplot(data = Desmepleo_IMC_filtrado, aes(x = Porcentaje.personas, y = value)) +
   geom_point(aes(colour = factor(Sexo)))+
   geom_smooth(method = "loess", colour = "blue", se = TRUE) +
@@ -292,14 +293,13 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Porcentaje.personas, y = value)) +
 
 
 ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value)) +
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge", aes(fill = factor(Sexo))) +
   facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
   labs(
-    title = "Distribución por Nivel de Estudios, Edad y Sexo",
+    title = "Obesidad y desempleo",
     x = "Porcentaje de personas",
     y = "Miles de personas en desempleo"
   ) +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
