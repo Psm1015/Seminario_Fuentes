@@ -13,13 +13,13 @@ writeLines(IMC_utf8, archivo_utf8)
 # Lee el archivo temporal con read.px
 datos_IMC <- read.px(archivo_utf8)
 
-
+#Este dataframe tiene mal los nombres.
 DF_mal <- as.data.frame(datos_IMC)
 DF_mal
 #view(DF_mal)
 
 
-#Cambiar de anios a años
+#Cambiar de anios a años y de BÃ¡sico a básico
 DF <- DF_mal %>%
   transmute(
     Masa.corporal.adultos = Masa.corporal.adultos,
@@ -48,18 +48,18 @@ datos_IMC_df
 
 
 
-#Datos sin ambos sexos y sin los totales de sexo edad y estudios
+#Datos sin ambos sexos, sin los totales de edad y estudios y con los datos de obesidad
 datos_obesidad <- datos_IMC_df %>%
   filter(
-    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    # Solo obesidad
-    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
-    Edad != "TOTAL",                                        # Excluir edad total
-    Nivel.de.estudios != "TOTAL"                            # Excluir nivel de estudios total
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+    Sexo != "Ambos sexos",                                  
+    Edad != "TOTAL",                                        
+    Nivel.de.estudios != "TOTAL"                            
   )
 #View(datos_obesidad)
 
 
-
+#DIFERENTES CÁLCULOS SIN IMPORTANCIO
 #La media del porcentaje de obesidad es la siguiente
 media_obesidad <- mean(datos_obesidad$Porcentaje.personas, na.rm = TRUE)
 print(media_obesidad)
@@ -86,65 +86,6 @@ media_por_edad <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Edad
 print(media_por_edad)
 
 
-media_por_edad_estudios <- aggregate(
-  Porcentaje.personas ~ Edad + Nivel.de.estudios, 
-  data = datos_obesidad, 
-  FUN = mean, 
-  na.rm = TRUE
-)
-print(media_por_edad_estudios)
-str(media_por_edad_estudios)
-#Con este código mostramos los datos anteriores de mejor forma.
-tabla_media_edad_estudios <- xtabs(Porcentaje.personas ~ Edad + Nivel.de.estudios, data = media_por_edad_estudios)
-print(tabla_media_edad_estudios)
-
-
-
-
-
-
-
-
-
-
-
-
-#GRÁFICO QUE RELACIONA OBESIDAD, NIVEL DE ESTUDIOS, SEXO Y EDAD
-media_por_grupo <- aggregate(
-  Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, 
-  data = datos_obesidad, 
-  FUN = mean, 
-  na.rm = TRUE
-)
-print(media_por_grupo)
-str(media_por_grupo)
-
-tabla_media_todos <- xtabs(Porcentaje.personas ~ Nivel.de.estudios + Sexo + Edad, data = media_por_grupo)
-print(tabla_media_todos)
-
-
-df_tabla_media <- as.data.frame(as.table(tabla_media_todos))
-str(df_tabla_media)
-
-
-ggplot(df_tabla_media, aes(x = Nivel.de.estudios, y = Freq, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ Edad) +  # Dividir por grupos de edad
-  labs(
-    title = "Distribución por Nivel de Estudios, Edad y Sexo",
-    x = "Nivel de estudios",
-    y = "Porcentaje de personas"
-  ) +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
-  )
-
-
-
-
-
 
 
 
@@ -165,10 +106,10 @@ datos_IMC_grafica3 <- datos_IMC_df %>%
 #View(datos_IMC_grafica2)
 
 #Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
-datos_IMC_grafica3$Sexo <- droplevels(datos_IMC_grafica2$Sexo)
-datos_IMC_grafica3$Edad <- droplevels(datos_IMC_grafica2$Edad)
-datos_IMC_grafica3$Nivel.de.estudios <- droplevels(datos_IMC_grafica2$Nivel.de.estudios)
-datos_IMC_grafica3$Masa.corporal.adultos <- droplevels(datos_IMC_grafica2$Masa.corporal.adultos)
+datos_IMC_grafica3$Sexo <- droplevels(datos_IMC_grafica3$Sexo)
+datos_IMC_grafica3$Edad <- droplevels(datos_IMC_grafica3$Edad)
+datos_IMC_grafica3$Nivel.de.estudios <- droplevels(datos_IMC_grafica3$Nivel.de.estudios)
+datos_IMC_grafica3$Masa.corporal.adultos <- droplevels(datos_IMC_grafica3$Masa.corporal.adultos)
 
 IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
   group_by(Masa.corporal.adultos) %>%
@@ -198,6 +139,48 @@ ggplot(data = IMC_grafica3_sin_niveles) +
     fill = "Masa corporal de adultos") +
   coord_polar()+
   theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#GRÁFICO QUE RELACIONA OBESIDAD, NIVEL DE ESTUDIOS, SEXO Y EDAD
+media_por_grupo <- datos_obesidad %>%
+  group_by(Nivel.de.estudios, Sexo, Edad) %>%
+  dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
+
+print(media_por_grupo)
+str(media_por_grupo)
+#View(media_por_grupo5)
+
+ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Edad) +  # Dividir por grupos de edad
+  labs(
+    title = "Distribución por Nivel de Estudios, Edad y Sexo",
+    x = "Nivel de estudios",
+    y = "Porcentaje de personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
+  )
+
+
+
+
+
 
 
 
