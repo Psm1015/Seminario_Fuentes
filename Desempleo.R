@@ -16,29 +16,10 @@ datos <- read.px(archivo_utf8)
 
 Desempleo_frame <- as.data.frame(datos)
 Desempleo_frame
-view(Desempleo_frame)
+#view(Desempleo_frame)
 
 
-#Rango de edades: 18 a 24, 25 a 64, 65 o más
-#Agrpuamineto de las edades por los rangos que hemos deifinifo
-#Desempleo_full <- df11 %>%
- # mutate(Grupo_edad = case_when(
-  #  Edad == "De 16 a 19 aÃ±os" ~ "18 a 24 aÃ±os",
-   # Edad == "De 20 a 24 aÃ±os" ~ "18 a 24 aÃ±os",
-    #Edad == "De 25 a 29 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 30 a 34 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 35 a 39 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 40 a 44 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 45 a 49 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 50 a 54 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 55 a 59 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 60 a 64 aÃ±os" ~ "25 a 64 aÃ±os",
-    #Edad == "De 65 a 69 aÃ±os" ~ "65 o mÃ¡s",
-    #Edad =="70 y mÃ¡s aÃ±os" ~ '65 o mÃ¡s',
- # ))
-#view(Desempleo_full)
-#colnames(Desempleo_full)
-
+#Agrupación de los rangos de edades y correción de caraceteres extraños
 Desempleo_agrup <- Desempleo_frame %>%
   transmute(
     Edad = case_when(
@@ -71,6 +52,7 @@ Desempleo_agrup <- Desempleo_frame %>%
     Sexo = Sexo,
     value = value, 
   )%>%
+  #Cambio del nombre de la columna tiempo de búsqueda de empleo
   mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
   select(-Tiempo.de.bÃºsqueda.de.empleo)
 #view(Desempleo_agrup)
@@ -81,11 +63,9 @@ Desempleo_no_NA <- Desempleo_agrup[-c((1:144), (1873:2016), (3745:3888)), ]
 Desempleo_no_NA
 #view(Desempleo_no_NA)
 
-#Desempleo_df <- Desempleo_full11 %>% select(-Edad)
-#view(Desempleo_df)
 
 
-#Para eliminar los valores de ambos sexos y total
+#Elimino los valores de ambos sexos y total, y selecciono solo los datos del 2021
 Desempleo_data <-  Desempleo_no_NA %>%
   filter(
     Sexo != "Ambos sexos",                                  
@@ -95,25 +75,23 @@ Desempleo_data <-  Desempleo_no_NA %>%
 #view(Desempleo_data)
 
 
-#Gráficas
+#GRÁFICAS
 library(ggplot2)
 
-# Gráfica de desempleo por grupo de edad en 2021
+#GRÁFICA DE DESEMPLEO POR GRUPO DE EDAD EN 2021
 ggplot(Desempleo_data, aes(x = Edad, y = value, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
   labs(title = "Desempleo por Grupo de Edad en 2021", x = "Grupo de Edad", y = "Cantidad de Desempleo") +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
 
-#Gráfica para observar la tendencia de desempleo en distintos periodos
+#GRÁFICA PARA OBSERVAR LA TENDENCIA DE DESEMPLEO EN DSTINTOS PERIODOS
 ggplot(Desempleo_data, aes(x = Periodo, y = value, fill = Edad)) +
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
   labs(title = "Tendencia del Desempleo por Edad", x = "Año", y = "Cantidad de Desempleo") +
-  scale_fill_manual(values = c("De 18 a 24 años" = "steelblue", "De 25 a 64 años" = "salmon", "65 o más" = "yellow")) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
@@ -121,79 +99,46 @@ ggplot(Desempleo_data, aes(x = Periodo, y = value, fill = Edad)) +
 
 
 
-#Gráfica para comparar el desempleo entre hombres y mujeres en 2001 confiltro Grupo_edad
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
 ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2001)", x = "Sexo", y = "Cantidad de Desempleo") +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
+  geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
+  labs(title = "Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
 
-Desempleo_IMC <- inner_join( #relación tiempo de búsqueda de empleo con IMC
+#RELACIÓN TIMEPO BÚSQUEDA DE EMPLEO CON IMC
+Desempleo_IMC <- inner_join( 
   Desempleo_data, 
   datos_IMC_df, 
-  by = join_by(Edad, Sexo),
-  relationship = "many-to-many" #generará un nuevo data frame con todas las combinaciones de 
-                                #filas coincidentes entre los dos marcos de datos
+  by = join_by(Edad, Sexo), 
 )
-view(Desempleo_IMC)
+#view(Desempleo_IMC)
 
 
-
-
-
-# Crear un gráfico de barras
-ggplot(Desempleo_IMC, aes(x = `Tiempo_de_búsqueda_de_empleo`, y = `Porcentaje.personas`, fill = `Masa.corporal.adultos`)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(
-    title = "Relación entre el tiempo de búsqueda de empleo, la masa corporal y el porcentaje de personas",
-    x = "Tiempo de búsqueda de empleo",
-    y = "Porcentaje de personas",
-    fill = "Masa Corporal"
-  ) +
-  theme_minimal() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Para rotar las etiquetas en el eje x si es necesario
-
-
-
-Desmepleo_IMC_filtrado<- Desempleo_IMC%>%
+#Nos quedamos solo con la obesidad y eliminamos los valores total
+Desempleo_IMC_filtrado<- Desempleo_IMC%>%
   drop_na()%>%
   filter(
-    #Tiempo_de_búsqueda_de_empleo=="2 años o más",
     Masa.corporal.adultos=="Obesidad (IMC>=30 kg/m2)",
     Masa.corporal.adultos!="TOTAL",
     Nivel.de.estudios!="TOTAL"
     
   )
-#group_by(Tiempo_de_búsqueda_de_empleo,Edad)%>%
-#summarise(media = mean(Porcentaje.personas, na.rm = TRUE))
 
-View(Desmepleo_IMC_filtrado)
+#view(Desempleo_IMC_filtrado)
 
-ggplot(data = Desmepleo_IMC_filtrado, aes(x = Porcentaje.personas, y = value)) +
-  geom_point(aes(colour = factor(Sexo)))+
-  geom_smooth(method = "loess", colour = "blue", se = TRUE) +
-  labs(
-    title = "Relación obesidad y desempleo",
-    x="Porcentajes de personas con obesidad",
-    y="Miles de personas en desempleo",
-    colour="Sexo"
-  )
-
-
-
+#GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
 ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
   facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
   labs(
-    title = "Distribución por Nivel de Estudios, Edad y Sexo",
-    x = "Porcentaje de personas",
-    y = "Miles de personas en desempleo"
+    title = "Índice de masa corporal según el tiempo de desempleo",
+    x = "Tiempo de desempleo", #creo que está mal
+    y = "Personas en desempleo"
   ) +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
@@ -201,25 +146,14 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y =
 
 
 
-
-
-
-
-
-
-
-
-
+#RELACIÓN TIEMPO DE BÚSQUEDA DE EMPLEO CON ALIMENTOS
 Desempleo_Alimentacion <- inner_join(
   Desempleo_data, 
   datos_Alimentacion, 
-  by = join_by(Edad,Sexo),    #relación tiempo de búsqueda de empleo con alimentos
-  relationship = "many-to-many"
-#)%>%
-  #select(-Edad, -Periodo, -Sexo, -value.x, -Frecuencia, -value.y
-  )
+  by = join_by(Edad,Sexo),    
+)
 
-view(Desempleo_Alimentacion)
+#view(Desempleo_Alimentacion)
 
 # Crear gráfico de barras que muestra la relación entre el tiempo de búsqueda de empleo, alimentos, frecuencia y sexo
 ggplot(Desempleo_Alimentacion, aes(x = `Frecuencia`, y = Tiempo_de_búsqueda_de_empleo, fill = Sexo)) +
