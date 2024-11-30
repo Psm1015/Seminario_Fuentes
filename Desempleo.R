@@ -16,7 +16,7 @@ datos <- read.px(archivo_utf8)
 
 Desempleo_frame <- as.data.frame(datos)
 Desempleo_frame
-view(Desempleo_frame)
+#view(Desempleo_frame)
 
 
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
@@ -89,7 +89,7 @@ Desempleo_no_NA
 Desempleo_data <-  Desempleo_no_NA %>%
   filter(
     Sexo != "Ambos sexos",                                  
-    Tiempo.de.bÃºsqueda.de.empleo != "Total",
+    Tiempo_de_búsqueda_de_empleo != "Total",
     Periodo == "2021"                             
   )
 #view(Desempleo_data)
@@ -140,6 +140,20 @@ Desempleo_IMC <- inner_join(
                                 #filas coincidentes entre los dos marcos de datos
 )
 #view(Desempleo_IMC)
+
+Desempleo_Alimentacion <- inner_join(
+  Desempleo_data, 
+  datos_Alimentacion, 
+  by = join_by(Edad,Sexo),    #relación tiempo de búsqueda de empleo con alimentos
+  relationship = "many-to-many"
+)%>%
+  select(-Edad, -Periodo, -Sexo, -value.x, -Frecuencia, -value.y)
+
+#view(Desempleo_Alimentacion)
+
+
+
+
 
 
 
