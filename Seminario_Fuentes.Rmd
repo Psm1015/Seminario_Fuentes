@@ -407,6 +407,8 @@ En primer lugar hemos realizado una gráfica para analizar el porcentaje de pers
 
 ```{r , echo = FALSE}
 library(dplyr)
+library(tidyverse)
+library(pxR)
 IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
 
 IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
