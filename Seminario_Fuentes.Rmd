@@ -105,7 +105,7 @@ writeLines(archivo_texto_utf8, archivo_utf8)
 Y por último leemos este archivo temporal
 ```{r , eval = TRUE, warning = FALSE}
 # Lee el archivo temporal con read.px
-datos <- read.px(archivo_utf8)
+#datos <- read.px(archivo_utf8)
 ```
 
 
