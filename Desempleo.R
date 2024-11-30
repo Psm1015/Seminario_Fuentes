@@ -3,11 +3,16 @@ library(tidyverse)
 library(pxR)
 
 
+#Lectura del archivo línea por línea
+archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
 
-archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
+#Modifica la codificación original del texto a la codificación UTF-8
 archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 
+#Creación del archivo temporal .px
 archivo_utf8 <- tempfile(fileext = ".px")
+
+#Se escribe el contenido codificado en UTF-8 al archivo temporal
 writeLines(archivo_texto_utf8, archivo_utf8)
 
 # Lee el archivo temporal con read.px
@@ -59,7 +64,8 @@ Desempleo_agrup <- Desempleo_frame %>%
 
 
 #Eliminar filas es la que salia el valor NA
-Desempleo_no_NA <- Desempleo_agrup[-c((1:144), (1873:2016), (3745:3888)), ]
+Desempleo_no_NA <- Desempleo_agrup%>%
+  drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
 Desempleo_no_NA
 #view(Desempleo_no_NA)
 
