@@ -203,7 +203,7 @@ Desempleo_no_NA
 
 ### **8.2 Desempleo**
 
-Comenzamos creando un dataframe para ver los datos de nuestro archivo de desempleo
+Comenzamos creando un dataframe para ver los datos de nuestro archivo de desempleo.
 
 ```{r , eval = FALSE, warning = FALSE}
 Desempleo_frame <- as.data.frame(datos)
