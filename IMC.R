@@ -59,7 +59,7 @@ datos_obesidad <- datos_IMC_df %>%
 #View(datos_obesidad)
 
 
-#DIFERENTES CÁLCULOS SIN IMPORTANCIO
+#DIFERENTES CÁLCULOS SIN IMPORTANCIA
 #La media del porcentaje de obesidad es la siguiente
 media_obesidad <- mean(datos_obesidad$Porcentaje.personas, na.rm = TRUE)
 print(media_obesidad)
@@ -117,7 +117,7 @@ IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
 
 #View(IMC_grafica3_sin_niveles)
 
-ggplot(data = IMC_grafica3_sin_niveles) + 
+Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) + 
   geom_bar(
     mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
     stat = "identity",  # Para que se usen los valores de y que ya están calculados, si no da error porque intenta buscar categorías de masa.corporal.adultos
@@ -140,7 +140,20 @@ ggplot(data = IMC_grafica3_sin_niveles) +
   coord_polar()+
   theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
 
+Porcentaje_pesos
 
+#Guardamos la gráfica
+ggsave(
+  filename = "Porcentajes_pesos.jpeg",
+  plot = Porcentaje_pesos ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/IMC", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 
 
@@ -163,7 +176,7 @@ print(media_por_grupo)
 str(media_por_grupo)
 #View(media_por_grupo5)
 
-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = Sexo)) +
+Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_wrap(~ Edad) +  # Dividir por grupos de edad
   labs(
@@ -177,7 +190,19 @@ ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = 
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
   )
 
+Relaciones_obesidad
 
+ggsave(
+  filename = "Relaciones obesidad.jpeg",
+  plot = Relaciones_obesidad ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/IMC", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 
 
@@ -221,7 +246,7 @@ Alim_IMC_filtrados1<- Alimentacion_IMC_sin_na %>%
 
 #View(Alim_IMC_filtrados1)
 
-ggplot(data = Alim_IMC_filtrados1, aes(x = Porcentaje.personas, y = value)) +
+Obesidad_azucares<-ggplot(data = Alim_IMC_filtrados1, aes(x = Porcentaje.personas, y = value)) +
   geom_point(aes(colour = factor(Sexo)))+
   geom_smooth(method = "loess", colour = "blue", se = TRUE) +
   labs(
@@ -231,8 +256,20 @@ ggplot(data = Alim_IMC_filtrados1, aes(x = Porcentaje.personas, y = value)) +
     colour="Sexo"
   )
 
+Obesidad_azucares
 
-
+#Guardamos la imágen
+ggsave(
+  filename = "Obesidad_azucares.jpeg",
+  plot = Obesidad_azucares ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/IMC", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 
 
