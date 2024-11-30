@@ -132,13 +132,14 @@ ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = 
   )
 
 
-Desempleo_IMC <- inner_join(
+Desempleo_IMC <- inner_join( #relación tiempo de búsqueda de empleo con IMC
   Desempleo_data, 
   datos_IMC_df, 
   by = join_by(Edad, Sexo),
   relationship = "many-to-many" #generará un nuevo data frame con todas las combinaciones de 
                                 #filas coincidentes entre los dos marcos de datos
-)
+)%>%
+  select(-Edad, -Periodo, -Sexo, -value, -Nivel.de.estudios)
 #view(Desempleo_IMC)
 
 Desempleo_Alimentacion <- inner_join(
