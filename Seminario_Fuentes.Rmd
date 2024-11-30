@@ -401,7 +401,62 @@ datos_obesidad$Edad <- droplevels(datos_obesidad$Edad)
 ```
 
 ## **9. Resultados**
-En este apartado se van a mostrar los resultados de las estudio realizado en los diferentes sets de datos. En primer lugar, se mostrará el resultado del estudio de IMC. 
+En este apartado se van a mostrar los resultados de lss estudios realizados en los diferentes sets de datos. En primer lugar, se mostrará el resultado del estudio de IMC. 
+
+En primer lugar hemos realizado una gráfica para analizar el porcentaje de personas que tienen un determinado peso.
+
+```{r , echo = FALSE}
+datos_IMC_grafica3 <- datos_IMC_df %>%
+  filter(
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
+    Masa.corporal.adultos != "TOTAL"
+  )
+
+#View(datos_IMC_grafica2)
+
+#Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
+datos_IMC_grafica3$Sexo <- droplevels(datos_IMC_grafica3$Sexo)
+datos_IMC_grafica3$Edad <- droplevels(datos_IMC_grafica3$Edad)
+datos_IMC_grafica3$Nivel.de.estudios <- droplevels(datos_IMC_grafica3$Nivel.de.estudios)
+datos_IMC_grafica3$Masa.corporal.adultos <- droplevels(datos_IMC_grafica3$Masa.corporal.adultos)
+
+IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
+  group_by(Masa.corporal.adultos) %>%
+  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
+
+#View(IMC_grafica3_sin_niveles)
+
+Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) + 
+  geom_bar(
+    mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
+    stat = "identity",  # Para que se usen los valores de y que ya están calculados, si no da error porque intenta buscar categorías de masa.corporal.adultos
+    show.legend = TRUE,
+    width = 1
+  ) + 
+  scale_fill_manual(
+    values = c(
+      "Peso insuficiente (IMC<18,5 kg/m2)" = "red",
+      "Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)" = "green",
+      "Sobrepeso (25 kg/m2 <=IMC<30 kg/m2)" = "orange",
+      "Obesidad (IMC>=30 kg/m2)" = "blue"
+    )
+  ) +
+  theme(aspect.ratio = 1) +
+  labs(
+    title="Porcentaje de pesos",
+    x = "Masa corporal de adultos", 
+    fill = "Masa corporal de adultos") +
+  coord_polar()+
+  theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
+Porcentaje_pesos
+
+```
+En esta gráfica se puede apreciar que la mayor parte de la población tiene un peso normal, dentro de los rangos adecuados y más saludables. También se observa que hay un pequeño porcentaje de personas que tienen un índice de masa corporal menor que el recomendado. 
+
+A pesar de esto, destaca que hay un porcentaje muy elevado de personas que tienen un peso mayor del recomendado (sobrepeso y obesidad), dentro de los cuales nosotros nos vamos a centrar en el análisis de la obesidad, que es mucho menor que el sobrepeso,pero que es mucho más preocupante en términos de salud. 
+
 
 ```{r , echo = FALSE}
 datos_obesidad <- data.frame(
