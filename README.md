@@ -31,7 +31,11 @@ Los objetivos principales a analizar en este estudio son:
 Para la manipulación de los datos y el correcto funcionamineto de las funciones utilizadas para llevar a cabo este proyecto, hemos instalado el paquete "pxR", el cuál ha sido necesario para poder leer y trabajar con nuestros archivos pc-axis. De la misma forma, se han hecho uso de las siguiente librerías:
 
 • library(dplyr)
+
 • library(tidyverse)
+
 • library(pxR)
+
 • library(ggplot2)
+
 • library(tidyr)
