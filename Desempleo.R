@@ -16,7 +16,7 @@ datos <- read.px(archivo_utf8)
 
 Desempleo_frame <- as.data.frame(datos)
 Desempleo_frame
-#view(Desempleo_frame)
+view(Desempleo_frame)
 
 
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
@@ -138,19 +138,98 @@ Desempleo_IMC <- inner_join( #relación tiempo de búsqueda de empleo con IMC
   by = join_by(Edad, Sexo),
   relationship = "many-to-many" #generará un nuevo data frame con todas las combinaciones de 
                                 #filas coincidentes entre los dos marcos de datos
-)%>%
-  select(-Edad, -Periodo, -Sexo, -value, -Nivel.de.estudios)
-#view(Desempleo_IMC)
+)
+view(Desempleo_IMC)
+
+
+
+
+
+# Crear un gráfico de barras
+ggplot(Desempleo_IMC, aes(x = `Tiempo_de_búsqueda_de_empleo`, y = `Porcentaje.personas`, fill = `Masa.corporal.adultos`)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Relación entre el tiempo de búsqueda de empleo, la masa corporal y el porcentaje de personas",
+    x = "Tiempo de búsqueda de empleo",
+    y = "Porcentaje de personas",
+    fill = "Masa Corporal"
+  ) +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Para rotar las etiquetas en el eje x si es necesario
+
+
+
+Desmepleo_IMC_filtrado<- Desempleo_IMC%>%
+  drop_na()%>%
+  filter(
+    #Tiempo_de_búsqueda_de_empleo=="2 años o más",
+    Masa.corporal.adultos=="Obesidad (IMC>=30 kg/m2)",
+    Masa.corporal.adultos!="TOTAL",
+    Nivel.de.estudios!="TOTAL"
+    
+  )
+#group_by(Tiempo_de_búsqueda_de_empleo,Edad)%>%
+#summarise(media = mean(Porcentaje.personas, na.rm = TRUE))
+
+View(Desmepleo_IMC_filtrado)
+
+ggplot(data = Desmepleo_IMC_filtrado, aes(x = Porcentaje.personas, y = value)) +
+  geom_point(aes(colour = factor(Sexo)))+
+  geom_smooth(method = "loess", colour = "blue", se = TRUE) +
+  labs(
+    title = "Relación obesidad y desempleo",
+    x="Porcentajes de personas con obesidad",
+    y="Miles de personas en desempleo",
+    colour="Sexo"
+  )
+
+
+
+ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
+  labs(
+    title = "Distribución por Nivel de Estudios, Edad y Sexo",
+    x = "Porcentaje de personas",
+    y = "Miles de personas en desempleo"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
+  )
+
+
+
+
+
+
+
+
+
+
+
 
 Desempleo_Alimentacion <- inner_join(
   Desempleo_data, 
   datos_Alimentacion, 
   by = join_by(Edad,Sexo),    #relación tiempo de búsqueda de empleo con alimentos
   relationship = "many-to-many"
-)%>%
-  select(-Edad, -Periodo, -Sexo, -value.x, -Frecuencia, -value.y)
+#)%>%
+  #select(-Edad, -Periodo, -Sexo, -value.x, -Frecuencia, -value.y
+  )
 
-#view(Desempleo_Alimentacion)
+view(Desempleo_Alimentacion)
+
+# Crear gráfico de barras que muestra la relación entre el tiempo de búsqueda de empleo, alimentos, frecuencia y sexo
+ggplot(Desempleo_Alimentacion, aes(x = `Frecuencia`, y = Tiempo_de_búsqueda_de_empleo, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Relación entre el tiempo de búsqueda de empleo, frecuencia de consumo de alimentos y sexo",
+    x = "Tiempo de búsqueda de empleo",
+    y = "Frecuencia de consumo de alimentos",
+    fill = "Sexo"
+  ) 
 
 
 
