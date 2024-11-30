@@ -347,6 +347,58 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y =
 ```
 
 ### **8.3 IMC**
+Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modificaciones para que sean aptos para trabajar con ellos.
+
+Primero almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
+
+```{r , eval = FALSE, warning = FALSE}
+DF_mal <- as.data.frame(datos_IMC)
+
+DF <- DF_mal %>%
+  transmute(
+    Masa.corporal.adultos = Masa.corporal.adultos,
+    Nivel.de.estudios = factor(case_when(
+      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
+      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
+      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
+      Nivel.de.estudios == "Superior" ~ "Superior",
+    )),
+    Edad = factor(case_when(
+      Edad == "TOTAL" ~ "TOTAL",
+      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
+      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
+      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
+    )),
+    Sexo = Sexo,
+    Porcentaje.personas = value
+  )
+```
+
+Debido a que en las primera 20 filas había errores, se han eliminado estas.
+```{r , eval = FALSE, warning = FALSE}
+datos_IMC_df <- DF[-(1:20), ]
+```
+
+A partir de aquí hemos trabajado con unos datos generales y con unos datos específicos de obesidad.
+
+```{r , eval = FALSE, warning = FALSE}
+datos_obesidad <- datos_IMC_df %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+    Sexo != "Ambos sexos",                                  
+    Edad != "TOTAL",                                        
+    Nivel.de.estudios != "TOTAL"                            
+  )
+```
+
+En estos de obesidad para evitar errores hemos tenido que eliminar los niveles que no usamos en las columnas.
+
+```{r , eval = FALSE, warning = FALSE}
+datos_obesidad$Sexo <- droplevels(datos_obesidad$Sexo)
+datos_obesidad$Nivel.de.estudios <- droplevels(datos_obesidad$Nivel.de.estudios)
+datos_obesidad$Edad <- droplevels(datos_obesidad$Edad)
+
+```
 
 ## **9. Resultados**
 En este apartado se van a mostrar los resultados de las estudio realizado en los diferentes sets de datos. En primer lugar, se mostrará el resultado del estudio de IMC. 
