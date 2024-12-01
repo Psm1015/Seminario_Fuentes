@@ -4,7 +4,7 @@
 
 Repositorio donde se desarrollará el código sobre el seminario a realizar de la asigantura "Fuentes de Datos Biomédicos y Web Semantica" del grado de [Ingeniería de la Salud](https://www.ubu.es/grado-en-ingenieria-de-la-salud) de la [Universidad de Burgos](https://www.ubu.es/).
 ### Autores: Pablo Santamaría, Diego González, Juan Hernando
-## URL`s utilizadas.
+## URLs utilizadas.
 En este apartado es donde se indican las URL´s que se van a utilizar durante el desarrollo de este seminario.git 
 - [Datos obesidad](https://datos.gob.es/es/catalogo/ea0010587-indice-de-masa-corporal-poblacion-adulta-segun-sexo-grupo-de-edad-y-nivel-de-estudios-poblacion-de-18-y-mas-anos-identificador-api-t15-p420-a2019-p06-l0-01005-px1)
 - [Datos desempleo](https://datos.gob.es/es/catalogo/ea0010587-parados-por-tiempo-de-busqueda-de-empleo-sexo-y-grupo-de-edad-epa-identificador-api-66002)
