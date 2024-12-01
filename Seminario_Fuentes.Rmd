@@ -710,6 +710,7 @@ En esta última gráfica podemos ver como hay mayor número de desempleo en homb
 
 Observando las tres gráficas podemos concluir que el desempleo en estos últimos años está siendo un grave problema en la sociedad española sobre todo entre los 25 y 64 años, lo cual puede ser debido a distintos factores económicos, sociales y estrucuturales.
 
+
 ## **10. Conclusiones**
 
 - Conclusión desempleo
@@ -738,5 +739,44 @@ Tanto en las personas que están desempleadas durante 2 años o más, como las q
 
 A partir de este gráfico podemos concluir que en general el índice de masa corporal aumenta en las personas según el tiempo que han estado desempleadas ya que se puede observar como a medida que se reduce el tiempo que han estado desempleadas, tienen un menor índice de masa corporal.
 
-## **11. Referencias**
+## **11. Exportación de datos**
+En este apartado proporcionaremos el código necesario para la exportación de las gráficas como imágenes en formato .jpeg, las cuales se encuentran dentro de la carpeta OUTPUT/Figures.
+
+-Alimentación
+
+-Desempleo
+
+```{r, echo = TRUE}
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
+ggsave(
+  filename = "Desempleo_Hombres_Mujeres.jpeg",
+  plot = Desempleo_HM ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+```
+
+```{r, echo = TRUE}
+#GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
+ggsave(
+  filename = "Desempleo_obesidad.jpeg",
+  plot = Desempleo_obesidad ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+```
+
+-IMC
+
+## **12. Referencias**
 
