@@ -710,12 +710,14 @@ En este gráfico se puede ver que entre 18 y 24 años no hay un alarmante el por
 
 Además, no se observa una relación significativa de la obesidad con el sexo. Solo siendo observable esta diferencia entre 25 y 64 años donde un 10% más de personas obesas que consumen comida rápida son hombres.
 
-- En segundo lugar se van a mostrar los resultados del estudio de desempleo.
+### **9.3 Desempleo**
+
+#### **9.3.1 Comparación de desempleo entre hombres y mujeres de distintos grupos de edad**
 
 A continuación, se muestra una gráfica donde mostramos una comparación entre el desempleo entre hombres y mujeres con en un grupo de edad desde los 18 a los 24 años durante el año 2021
 
 ```{r, echo = TRUE}
-#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD_18_24
 Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
   labs(title = "Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
@@ -731,15 +733,15 @@ Aun así el desempleo en ambos sexos es bastante elevado teniendo en cuenta que 
 Vamos a ver ahora los datos de desempleo en un grupo de edad de los 25 a 64 años.
 
 ```{r, echo = TRUE}
-#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
-Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 25 a 64 años"), aes(x = Sexo, y = value, fill = Sexo)) +
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD_25_64
+Desempleo_HM2 <- ggplot(Desempleo_data %>% filter(Edad == "De 25 a 64 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
   labs(title = "Comparación de Desempleo entre Hombres y Mujeres (25 a 64 años, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
-Desempleo_HM
+Desempleo_HM2
 ```
 
 En esta gráfica el desempleo es algo mayor en las mujeres que en los hombres.
@@ -748,24 +750,22 @@ Aunque el desempleo sea mayor en hombres que en mujeres, el número de personas 
 Por último observaremos los datos para las personas mayores de 65 años.
 
 ```{r, echo = TRUE}
-#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
-Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "65 o más"), aes(x = Sexo, y = value, fill = Sexo)) +
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD_65
+Desempleo_HM3 <- ggplot(Desempleo_data %>% filter(Edad == "65 o más"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
   labs(title = "Comparación de Desempleo entre Hombres y Mujeres (65 o más, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
-Desempleo_HM
+Desempleo_HM3
 ```
 
 En esta última gráfica podemos ver como hay mayor número de desempleo en hombres que en mujeres aunque la cantidad de personas desempleadas en muchisimo menor debido a la cercana edad de jubilación.
 
 Observando las tres gráficas podemos concluir que el desempleo en estos últimos años está siendo un grave problema en la sociedad española sobre todo entre los 25 y 64 años, lo cual puede ser debido a distintos factores económicos, sociales y estrucuturales.
 
-## **10. Conclusiones**
-
-- Conclusión desempleo
+#### **9.3.2 Relación de imc entre hombres y mujeres según el timepo de desempleo**
 
 Ahora vamos a observar la relación de imc entre hombres y mujeres según el timepo de desempleo.   
 
@@ -790,6 +790,11 @@ Las personas que han estado desempleadas 2 años o más son las que más índice
 Tanto en las personas que están desempleadas durante 2 años o más, como las que están de 1 año a menos de 2 años, el imc es mayor en las mujeres. Mientras que en los tiempos cortos de desempleo el imc es mayor en los hombres.
 
 A partir de este gráfico podemos concluir que en general el índice de masa corporal aumenta en las personas según el tiempo que han estado desempleadas ya que se puede observar como a medida que se reduce el tiempo que han estado desempleadas, tienen un menor índice de masa corporal.
+
+## **10. Conclusión**
+
+
+
 
 ## **11. Exportación de datos**
 En este apartado proporcionaremos el código necesario para la exportación de las gráficas como imágenes en formato .jpeg, las cuales se encuentran dentro de la carpeta OUTPUT/Figures.
@@ -881,14 +886,12 @@ ggsave(
 )
 ```
 
-### **11.2 Desempleo**
+### **11.3 Desempleo**
 
 ```{r, echo = TRUE}
-#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
 ggsave(
-  filename = "Desempleo_Hombres_Mujeres.jpeg",
+  filename = "Desempleo_Hombres_Mujeres_18_24.jpeg",
   plot = Desempleo_HM ,
-  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
   path = "OUTPUT/Figures/Desempleo", # ruta relativa
   scale = 0.5,
   width = 40,
@@ -896,10 +899,29 @@ ggsave(
   units = "cm",
   dpi = 320
 )
-```
 
-```{r, echo = TRUE}
-#GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
+ggsave(
+  filename = "Desempleo_Hombres_Mujeres_25_64.jpeg",
+  plot = Desempleo_HM2,
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+ggsave(
+  filename = "Desempleo_Hombres_Mujeres_65.jpeg",
+  plot = Desempleo_HM3,
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
 ggsave(
   filename = "Desempleo_obesidad.jpeg",
   plot = Desempleo_obesidad ,
