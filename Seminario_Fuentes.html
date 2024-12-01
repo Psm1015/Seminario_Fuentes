@@ -1547,16 +1547,55 @@ desarrollo del proyecto:</p>
 agrupar los datos con los que hemos trabajado de forma sencilla.</li>
 </ol>
 <pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>library(tidyverse) Utilizamos tidyverse para importar, transformar y
 manipular los datos con los que trabajamos.</li>
 </ol>
 <pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ forcats   1.0.0     ✔ readr     2.1.5
+## ✔ ggplot2   3.5.1     ✔ stringr   1.5.1
+## ✔ lubridate 1.9.3     ✔ tibble    3.2.1
+## ✔ purrr     1.0.2     ✔ tidyr     1.3.1
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>library(pxR) Nos permite leer y manipular acrhivos que se encuentran
 en formato pc axis.</li>
 </ol>
 <pre class="r"><code>library(pxR)</code></pre>
+<pre><code>## Loading required package: reshape2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;reshape2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     smiths</code></pre>
+<pre><code>## Loading required package: RJSONIO</code></pre>
+<pre><code>## Loading required package: plyr</code></pre>
+<pre><code>## ------------------------------------------------------------------------------</code></pre>
+<pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
+## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+## library(plyr); library(dplyr)</code></pre>
+<pre><code>## ------------------------------------------------------------------------------</code></pre>
+<pre><code>## 
+## Attaching package: &#39;plyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     compact</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>library(ggplot2) Utilizamos esta librería para representar mediante
 gráficos los datos.</li>
@@ -1590,10 +1629,9 @@ archivo_utf8 &lt;- tempfile(fileext = &quot;.px&quot;)</code></pre>
 <p>Escribimos el contenido codificado en UTF-8 al archivo temporal</p>
 <pre class="r"><code>#Se escribe el contenido codificado en UTF-8 al archivo temporal
 writeLines(archivo_texto_utf8, archivo_utf8)</code></pre>
-<p>Y por último leemos este archivo temporal Nota: comentamos la linea
-del read.px ya que nos da un error al generar el html</p>
+<p>Y por último leemos este archivo temporal</p>
 <pre class="r"><code># Lee el archivo temporal con read.px
-#datos &lt;- read.px(archivo_utf8)</code></pre>
+datos &lt;- read.px(archivo_utf8)</code></pre>
 </div>
 <div id="importación-de-datos" class="section level2">
 <h2><strong>7. Importación de datos</strong></h2>

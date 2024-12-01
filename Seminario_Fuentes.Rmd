@@ -56,28 +56,28 @@ Explícación de las distintas librerias utilizadas durante el desarrollo del pr
 1. library(dplyr)
 Dplyr nos permite seleccionar, modificar, filtrar y agrupar los datos con los que hemos trabajado de forma sencilla.
 
-```{r , eval = FALSE}
+```{r , eval = TRUE}
 library(dplyr)
 ```
 
 2. library(tidyverse)
 Utilizamos tidyverse para importar, transformar y manipular los datos con los que trabajamos.
 
-```{r , eval = FALSE}
+```{r , eval = TRUE}
 library(tidyverse)
 ```
 
 3. library(pxR)
 Nos permite leer y manipular acrhivos que se encuentran en formato pc axis.
 
-```{r , eval = FALSE}
+```{r , eval = TRUE}
 library(pxR)
 ```
 
 4. library(ggplot2)
 Utilizamos esta librería para representar mediante gráficos los datos.
 
-```{r , eval = FALSE}
+```{r , eval = TRUE}
 library(ggplot2)
 ```
 
@@ -113,10 +113,9 @@ writeLines(archivo_texto_utf8, archivo_utf8)
 ```
 
 Y por último leemos este archivo temporal
-Nota: comentamos la linea del read.px ya que nos da un error al generar el html
 ```{r , eval = TRUE, warning = FALSE}
 # Lee el archivo temporal con read.px
-#datos <- read.px(archivo_utf8)
+datos <- read.px(archivo_utf8)
 ```
 
 
