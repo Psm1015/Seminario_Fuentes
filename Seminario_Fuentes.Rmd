@@ -136,6 +136,18 @@ IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1")
 IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
 ```
 
+```{r , eval = TRUE, warning = FALSE}
+
+#Crea un archivo temporal con extensión px.
+archivo_temp_IMC <- tempfile(fileext = ".px")
+
+#Para escribir el contenido de IMC_utf8 en el archivo temporal.
+writeLines(IMC_utf8, archivo_temp_IMC)
+
+# Lee el archivo temporal con read.px
+datos_IMC <- read.px(archivo_temp_IMC)
+```
+
 - Alimentación
 ```{r , eval = TRUE, warning = FALSE}
 Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1")
@@ -169,24 +181,8 @@ Debido a como estaban estructurados los datos solo hemos tenido que establecer l
 ### **8.1 IMC**
 Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modificaciones para que sean aptos para trabajar con ellos.
 
-#### **8.1.1 Lectura del archivo**
 
-Una vez tenemos cargados los archivos, necesitamos leerlos.
-
-```{r , eval = TRUE, warning = FALSE}
-
-#Crea un archivo temporal con extensión px.
-archivo_temp_IMC <- tempfile(fileext = ".px")
-
-#Para escribir el contenido de IMC_utf8 en el archivo temporal.
-writeLines(IMC_utf8, archivo_temp_IMC)
-
-# Lee el archivo temporal con read.px
-datos_IMC <- read.px(archivo_temp_IMC)
-```
-
-
-#### **8.1.2 Conversión a DATAFRAME y eliminación de caracteres incorrectos**
+#### **8.1.1 Conversión a DATAFRAME y eliminación de caracteres incorrectos**
 Almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -213,7 +209,7 @@ DF_IMC <- DF_mal %>%
 datatable(DF_IMC)
 ```
 
-#### **8.1.3 Eliminación de datos que no necesitamos**
+#### **8.1.2 Eliminación de datos que no necesitamos**
 Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -229,7 +225,7 @@ datatable(datos_IMC_df)
 ```
 
 
-#### **8.1.4 Eliminación de niveles**
+#### **8.1.3 Eliminación de niveles**
 Eliminamos los niveles de las columnas que no vamos a utilizar para evitar posibles errores al crear las gráficas.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -240,7 +236,7 @@ datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adul
 
 ```
 
-#### **8.1.5 Creación de datos de obesidad**
+#### **8.1.4 Creación de datos de obesidad**
 
 Creamos unos datos específicos de obesidad para facilitar la creación de determinadas gráficas.
 
@@ -253,7 +249,7 @@ datos_obesidad <- datos_IMC_df %>%
 datatable(datos_obesidad)
 ```
 
-#### **8.1.6 Datos necesarios para la gráfica de diferentes pesos**
+#### **8.1.5 Datos necesarios para la gráfica de diferentes pesos**
 
 Datos que van a ser necesarios para crear la gráfica que compara los diferentes pesos.
 ```{r , eval = TRUE,  message=FALSE, warning = FALSE}
@@ -262,7 +258,7 @@ IMC_grafica1<- datos_IMC_df %>%
   dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
 ```
 
-#### **8.1.7 Datos necesarios para la gráfica de obesidad**
+#### **8.1.6 Datos necesarios para la gráfica de obesidad**
 
 ```{r , eval = TRUE, warning = FALSE}
 media_por_grupo <- datos_obesidad %>%
@@ -793,6 +789,7 @@ A partir de este gráfico podemos concluir que en general el índice de masa cor
 
 ## **10. Conclusión**
 
+Una vez se han analizado todos los datos, llegamos a la conclusión de que la obseidad es una enfermedad muy compleja ya que es afectada por muchos factores. Entre estos destaca que la edad, el nivel de estudios y el género tienen una correlación directa, ya que en términos generales la mayor parte de personas que la padecen son de la tercera edad, tienen un nivel de estudios bajo y es ligeramente más frecuente en hombres.
 
 
 
