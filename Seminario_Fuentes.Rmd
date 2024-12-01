@@ -291,7 +291,7 @@ Desempleo_data <-  Desempleo_no_NA %>%
 #### **8.2.4 Comparación de desempleo entre hombres y mujeres en 2021**
 Mostramos un gráfico en el que se compara el desempleo entre hombres y mujeres de un grupo de edad de 18 a 24 años durante el 2021.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , echo = FALSE, warning=FALSE, message=FALSE}
 library(dplyr)
 library(tidyverse)
 library(pxR)
@@ -314,8 +314,6 @@ datos <- read.px(archivo_utf8)
 
 
 Desempleo_frame <- as.data.frame(datos)
-Desempleo_frame
-#view(Desempleo_frame)
 
 
 #Agrupación de los rangos de edades y correción de caraceteres extraños
@@ -354,14 +352,11 @@ Desempleo_agrup <- Desempleo_frame %>%
   #Cambio del nombre de la columna tiempo de búsqueda de empleo
   mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
   select(-Tiempo.de.bÃºsqueda.de.empleo)
-#view(Desempleo_agrup)
 
 
 #Eliminar filas es la que salia el valor NA
 Desempleo_no_NA <- Desempleo_agrup%>%
   drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
-Desempleo_no_NA
-#view(Desempleo_no_NA)
 
 
 
@@ -372,7 +367,6 @@ Desempleo_data <-  Desempleo_no_NA %>%
     Tiempo_de_búsqueda_de_empleo != "Total",
     Periodo == "2021"                             
   )
-#view(Desempleo_data)
 
 
 #GRÁFICAS
@@ -418,7 +412,6 @@ Desempleo_IMC_filtrado<- Desempleo_IMC%>%
 Y finalmente mostramos el gráfico resultante de esa relación.
 
 ```{r , eval = FALSE, warning = FALSE}
-library(ggplot2)
 #GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
 Desempleo_obesidad <- ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
   geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
