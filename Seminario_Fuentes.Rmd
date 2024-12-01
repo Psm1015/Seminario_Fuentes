@@ -23,6 +23,8 @@ knitr::opts_chunk$set(echo = TRUE)
   7. Importación de datos
   8. Análisis de datos
   9. Resultados
+  10. Conclusiones
+  11. Referencias
 
 ## **1. URL repositorio GitHub**
 https://github.com/Psm1015/Seminario_Fuentes.git
@@ -57,7 +59,7 @@ Explícación de las distintas librerias utilizadas durante el desarrollo del pr
 
 Dplyr nos permite seleccionar, modificar, filtrar y agrupar los datos con los que hemos trabajado de forma sencilla.
 
-```{r , eval = TRUE}
+```{r , eval = TRUE, warning = FALSE, message=FALSE}
 library(dplyr)
 ```
 
@@ -65,7 +67,7 @@ library(dplyr)
 
 Utilizamos tidyverse para importar, transformar y manipular los datos con los que trabajamos.
 
-```{r , eval = TRUE}
+```{r , eval = TRUE, warning = FALSE, message=FALSE}
 library(tidyverse)
 ```
 
@@ -73,14 +75,14 @@ library(tidyverse)
 
 Nos permite leer y manipular acrhivos que se encuentran en formato pc axis.
 
-```{r , eval = TRUE}
+```{r , eval = TRUE, warning = FALSE, message=FALSE}
 library(pxR)
 ```
 
 **4. library(DT)**
 
 Utilizamos esta librería para mostrar tablas de datos.
-```{r , eval = TRUE}
+```{r , eval = TRUE, warning = FALSE, message=FALSE}
 library(DT)
 ```
 
@@ -88,15 +90,22 @@ library(DT)
 
 Utilizamos esta librería para representar mediante gráficos los datos.
 
-```{r , eval = TRUE}
+```{r , eval = TRUE, warning = FALSE, message=FALSE}
 library(ggplot2)
 ```
 
 
 ## **6. Manipulación de datos**
 Los archivox .px son un formato estándar para almacenar datos estadísticos en forma de tablas multidimensionales.
+
+**Nota: ** 
 Iniciálmente nuestros datos px no se encontraban en una codificacion UTF-8 y nos daba problemas al intentar visualizar los datos al inicio ya que contienen carácteres extraños como la 'ñ'.
-Para solucionar nuestro problema convertimos la codificación de nuestros archivos, los cuales estaban en 'ISO-8859-1' a la codificación 'UTF-8'.
+Para solucionar nuestro problema hemos recurrido a la ayuda de chatgpt utlizando el siguiente prompt:
+
+Estoy tratando de leer un archivo pc axis en rstudio y me da distintos errores al intntar leerlo. 
+Quiero que me propongas una solución para poder leer el archivo
+
+La IA nos sugirió que convirtiesemos la codificación de nuestros archivos, los cuales estaban en 'ISO-8859-1' a la codificación 'UTF-8'.
 De esta forma ya podiamos visualizar y manipular nuestros datos.
 Para ello realizamos lo siguiente (hemos tomado como ejemplo el archivo de Desempleo.px pero se realiza de la misma forma en todos los archivos .px):
 
@@ -170,7 +179,107 @@ En el archivo IMC (indice de masa corporal) estudiaremos el peso corporal de las
 En todos ellos trabajaremos con unos rangos de edades de 8 a 24 años, 25 a 64 años y de 65 o más años.
 Debido a como estaban estructurados los datos solo hemos tenido que establecer los rangos de edades en Alimentación y desempleo.
 
-### **8.1 Alimentación**
+### **8.1 IMC**
+Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modificaciones para que sean aptos para trabajar con ellos.
+
+#### **8.1.1** Lectura del archivo
+
+Una vez tenemos cargados los archivos, necesitamos leerlos.
+
+```{r , eval = TRUE, warning = FALSE}
+
+#Crea un archivo temporal con extensión px.
+archivo_temp_IMC <- tempfile(fileext = ".px")
+
+#Para escribir el contenido de IMC_utf8 en el archivo temporal.
+writeLines(IMC_utf8, archivo_temp_IMC)
+
+# Lee el archivo temporal con read.px
+datos_IMC <- read.px(archivo_temp_IMC)
+```
+
+
+#### **8.1.2** Conversión a DATAFRAME y eliminación de caracteres incorrectos
+Almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
+
+```{r , eval = TRUE, warning = FALSE}
+DF_mal <- as.data.frame(datos_IMC)
+
+DF <- DF_mal %>%
+  transmute(
+    Masa.corporal.adultos = Masa.corporal.adultos,
+    Nivel.de.estudios = factor(case_when(
+      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
+      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
+      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
+      Nivel.de.estudios == "Superior" ~ "Superior",
+    )),
+    Edad = factor(case_when(
+      Edad == "TOTAL" ~ "TOTAL",
+      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
+      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
+      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
+    )),
+    Sexo = Sexo,
+    Porcentaje.personas = value
+  )
+```
+
+#### **8.1.3** Eliminación de datos que no necesitamos
+Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
+
+```{r , eval = TRUE, warning = FALSE}
+datos_IMC_df <- DF %>%
+  filter(
+    Masa.corporal.adultos != "TOTAL",    
+    Sexo != "Ambos sexos",                                  
+    Edad != "TOTAL",                                        
+    Nivel.de.estudios != "TOTAL"                            
+  )
+```
+
+
+#### **8.1.4** Eliminación de niveles
+Eliminamos los niveles de las columnas que no vamos a utilizar para evitar posibles errores al crear las gráficas.
+
+```{r , eval = TRUE, warning = FALSE}
+datos_IMC_df$Sexo <- droplevels(datos_IMC_df$Sexo)
+datos_IMC_df$Nivel.de.estudios <- droplevels(datos_IMC_df$Nivel.de.estudios)
+datos_IMC_df$Edad <- droplevels(datos_IMC_df$Edad)
+datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adultos)
+
+```
+
+#### **8.1.5** Creación de datos de obesidad.
+
+Creamos unos datos específicos de obesidad para facilitar la creación de determinadas gráficas.
+
+```{r , eval = TRUE, warning = FALSE}
+
+datos_obesidad <- datos_IMC_df %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+  )
+```
+
+#### **8.1.6** Datos necesarios para la gráfica de diferentes pesos.
+
+Datos que van a ser necesarios para crear la gráfica que compara los diferentes pesos.
+```{r , eval = TRUE, warning = FALSE}
+IMC_grafica1<- datos_IMC_df %>%
+  group_by(Masa.corporal.adultos) %>%
+  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
+```
+
+#### **8.1.7** Datos necesarios para la gráfica de obesidad.
+
+```{r , eval = TRUE, warning = FALSE}
+media_por_grupo <- datos_obesidad %>%
+  group_by(Nivel.de.estudios, Sexo, Edad) %>%
+  dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
+```
+
+### **8.2 Alimentación**
 
 Comenzamos creando un dataframe para ver los datos de nuestro archivo de alimentación
 
@@ -179,7 +288,7 @@ DF <- as.data.frame(Alimentacion_datos)
 datatable(DF)
 ```
 
-#### **8.1.1 Rangos de edades y corrección de carácteres extraños**
+#### **8.2.1 Rangos de edades y corrección de carácteres extraños**
 A continuación, se filtran diversos rangos de edad para la adaptación de los datos de este archivo con los demás set de datos.
 ```{r , eval = TRUE, warning = FALSE}
 # Filter para quitar diversos rangos de edad
@@ -228,7 +337,7 @@ datos_df1 <- DF1 %>%
   )
 ```
 
-#### **8.1.2 Eliminación de los valores NA**
+#### **8.2.2 Eliminación de los valores NA**
 Que aparezcan valores nulos en la tabla no es una buena condicón para poder trabajar con estos datos. Por ello se van a eliminar estos valores con la función **drop_na()** que elimina todos las líneas en la que alguna de sus columnas tenga el valor NA.
 ```{r , eval = TRUE, warning = FALSE}
 # ELIMINAR TODAS LAS FILAS QUE TENGAN NA
@@ -237,7 +346,7 @@ df_sin_NA <- datos_df1 %>%
 datatable(df_sin_NA)
 ```
 
-#### **8.1.3 Eliminación de valores inecesarios**
+#### **8.2.3 Eliminación de valores inecesarios**
 De la tabla anterior, los valores que corresponden a Total de la columna __Frecuencia__ no nos aportan ningún tipo de información adicional, por ello se eliminan utilizando la función **filter()**
 ```{r , eval = TRUE, warning = FALSE}
 # ELIMINAR FRECUENCIA TOTAL
@@ -247,7 +356,7 @@ datos_Alimentacion <-  df_sin_NA%>%
   )
 ```
 
-#### **8.1.4 Relación del tipo de alimentación a diario por rangos de edad**
+#### **8.2.4 Relación del tipo de alimentación a diario por rangos de edad**
 Como existe muchos tipos de comida, se seleccionan los más importante. Para ello, se utiliza la función **filter**.
 ```{r , eval = TRUE, warning = FALSE}
 Alimentacion_ADiario <- datos_Alimentacion %>%
@@ -279,7 +388,7 @@ Por último, indicar que a partir de los 65 años sigue aumentando el consumo de
 
 Un dato importante es que a el consumo de refrescos con azúcar va disminuyendo con la edad.
 
-#### **8.1.5 Relación de la alimentación de pescado y carne 3 o más veces a la semana pero no a diario por rango de edad y sexo**
+#### **8.2.5 Relación de la alimentación de pescado y carne 3 o más veces a la semana pero no a diario por rango de edad y sexo**
 En este apartado vamos a analizar a la vez la relación del pescado y de la carne por la frecuencia indicada, por edad y sexo.
 
 Para poder observar bien la gráfica hay que coger solo la frecuencia indicada y el alimento indicado para esto es necesario utilizar un filter
@@ -342,7 +451,7 @@ Es importante observar que la más joven de este estudio es la que consume más 
 
 Como conclusión, si se hace la una comparación de los resultados de ambas gráficas se puede ver que el consumo de carne 3 o más veces a la semana es mayor que el consumo de pescado.
 
-#### **8.1.6 Relación de la alimentación de comida rápida una o dos veces por semana, por sexo y rangos de edad**
+#### **8.2.6 Relación de la alimentación de comida rápida una o dos veces por semana, por sexo y rangos de edad**
 En este apartado vamos a analizar  la relación de comida rápida por la frecuencia indicada, por edad y sexo.
 
 Para poder observar bien la gráfica hay que coger solo la frecuencia indicada y el alimento indicado para esto es necesario utilizar un filter, de la misma forma que antes.
@@ -372,16 +481,16 @@ Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = S
 Grafica_CRapida
 ```
 
-### **8.2 Desempleo**
+### **8.3 Desempleo**
 
 Comenzamos creando un dataframe para ver los datos de nuestro archivo de desempleo.
 
 ```{r , eval = TRUE, warning = FALSE}
 Desempleo_frame <- as.data.frame(datos)
-Desempleo_frame
+datatable(Desempleo_frame)
 ```
 
-#### **8.2.1 Rangos de edades y corrección de carácteres extraños**
+#### **8.3.1 Rangos de edades y corrección de carácteres extraños**
 A continuación, realizamos un transmute para la agrupación de los diferentes rangos de edades y para corregir carácteres extraños como la ñ o las tíldes.
 Después del transmtue, hacemos un mutate para crear una nueva columna con el nombre de Tiempo_de_búsqueda_de_empleo y eliminamos la anterior columna Tiempo.de.bÃºsqueda.de.empleo con un select.
 
@@ -422,20 +531,21 @@ Desempleo_agrup <- Desempleo_frame %>%
   #Cambio del nombre de la columna tiempo de búsqueda de empleo
   mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
   select(-Tiempo.de.bÃºsqueda.de.empleo)
+datatable(Desempleo_agrup)
 ```
 
 
-#### **8.2.2 Eliminación de los valores NA**
+#### **8.3.2 Eliminación de los valores NA**
 Ahora se van a eliminar todos los valores NA que aparecian en las diferentes columnas.
 
 ```{r , eval = TRUE, warning = FALSE}
 #Eliminar filas es la que salia el valor NA
 Desempleo_no_NA <- Desempleo_agrup%>%
   drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
-Desempleo_no_NA
+datatable(Desempleo_no_NA)
 ```
 
-#### **8.2.3 Eliminación de valores inecesarios y selección de los datos del 2021**
+#### **8.3.3 Eliminación de valores inecesarios y selección de los datos del 2021**
 Por último vamos a eliminar los valores de ambos sexos y total que aparecian en las columnas de Sexo y de Tiempo_de_búsqueda_de_empleo y seleccionamos solo los datos del 2021 que son con los que vamos a trabajar.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -446,10 +556,11 @@ Desempleo_data <-  Desempleo_no_NA %>%
     Tiempo_de_búsqueda_de_empleo != "Total",
     Periodo == "2021"                             
   )
+datatable(Desempleo_data)
 ```
 
 
-#### **8.2.4 Relación tiempo de búsqueda de empleo con IMC**
+#### **8.3.4 Relación tiempo de búsqueda de empleo con IMC**
 Realizamos un inner_join para relacionar los datos de las tablas de Desempleo_data con los datos de datos_IMC_df.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -471,128 +582,10 @@ Desempleo_IMC_filtrado<- Desempleo_IMC%>%
     Masa.corporal.adultos=="Obesidad (IMC>=30 kg/m2)",
     Masa.corporal.adultos!="TOTAL",
     Nivel.de.estudios!="TOTAL"
-    
   )
+datatable(Desempleo_IMC_filtrado)
 ```
 
-Y finalmente mostramos el gráfico resultante de esa relación.
-
-```{r , eval = TRUE, warning = FALSE}
-#GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
-Desempleo_obesidad <- ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
-  geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
-  facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
-  labs(
-    title = "Índice de masa corporal según el tiempo de desempleo",
-    x = "Tiempo de desempleo", #creo que está mal
-    y = "Personas en desempleo"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
-  )
-Desempleo_obesidad
-```
-
-### **8.3 IMC**
-Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modificaciones para que sean aptos para trabajar con ellos.
-
-#### **8.3.2** Lectura del archivo
-
-Una vez tenemos cargados los archivos, necesitamos leerlos.
-
-```{r , eval = TRUE, warning = FALSE}
-
-#Crea un archivo temporal con extensión px.
-archivo_temp_IMC <- tempfile(fileext = ".px")
-
-#Para escribir el contenido de IMC_utf8 en el archivo temporal.
-writeLines(IMC_utf8, archivo_temp_IMC)
-
-# Lee el archivo temporal con read.px
-datos_IMC <- read.px(archivo_temp_IMC)
-```
-
-
-#### **8.3.2** Conversión a DATAFRAME y eliminación de caracteres incorrectos
-Almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
-
-```{r , eval = TRUE, warning = FALSE}
-DF_mal <- as.data.frame(datos_IMC)
-
-DF <- DF_mal %>%
-  transmute(
-    Masa.corporal.adultos = Masa.corporal.adultos,
-    Nivel.de.estudios = factor(case_when(
-      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
-      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
-      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
-      Nivel.de.estudios == "Superior" ~ "Superior",
-    )),
-    Edad = factor(case_when(
-      Edad == "TOTAL" ~ "TOTAL",
-      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
-    )),
-    Sexo = Sexo,
-    Porcentaje.personas = value
-  )
-```
-
-#### **8.3.3** Eliminación de datos que no necesitamos
-Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
-
-```{r , eval = TRUE, warning = FALSE}
-datos_IMC_df <- DF %>%
-  filter(
-    Masa.corporal.adultos != "TOTAL",    
-    Sexo != "Ambos sexos",                                  
-    Edad != "TOTAL",                                        
-    Nivel.de.estudios != "TOTAL"                            
-  )
-```
-
-
-#### **8.3.4** Eliminación de niveles
-Eliminamos los niveles de las columnas que no vamos a utilizar para evitar posibles errores al crear las gráficas.
-
-```{r , eval = TRUE, warning = FALSE}
-datos_IMC_df$Sexo <- droplevels(datos_IMC_df$Sexo)
-datos_IMC_df$Nivel.de.estudios <- droplevels(datos_IMC_df$Nivel.de.estudios)
-datos_IMC_df$Edad <- droplevels(datos_IMC_df$Edad)
-datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adultos)
-
-```
-
-#### **8.3.5** Creación de datos de obesidad.
-
-Creamos unos datos específicos de obesidad para facilitar la creación de determinadas gráficas.
-
-```{r , eval = TRUE, warning = FALSE}
-
-datos_obesidad <- datos_IMC_df %>%
-  filter(
-    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
-  )
-```
-
-#### **8.3.6** Datos necesarios para la gráfica de diferentes pesos.
-
-Datos que van a ser necesarios para crear la gráfica que compara los diferentes pesos.
-```{r , eval = TRUE, warning = FALSE}
-IMC_grafica1<- datos_IMC_df %>%
-  group_by(Masa.corporal.adultos) %>%
-  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
-```
-
-#### **8.3.7** Datos necesarios para la gráfica de obesidad.
-
-```{r , eval = TRUE, warning = FALSE}
-media_por_grupo <- datos_obesidad %>%
-  group_by(Nivel.de.estudios, Sexo, Edad) %>%
-  dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
-```
 
 ## **9. Resultados**
 En este apartado se van a mostrar los resultados de los estudios realizados en los diferentes sets de datos. 
@@ -668,87 +661,7 @@ Viendo este resultado se pueden sacar diferentes conclusiones sobre que porcenta
 
 A continuación, se muestra una gráfica donde mostramos una comparación entre el desempleo entre hombres y mujeres con en un grupo de edad desde los 18 a los 24 años durante el año 2021
 
-```{r , echo = FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(tidyverse)
-library(pxR)
-
-
-#Lectura del archivo línea por línea
-archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
-
-#Modifica la codificación original del texto a la codificación UTF-8
-archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
-
-#Creación del archivo temporal .px
-archivo_utf8 <- tempfile(fileext = ".px")
-
-#Se escribe el contenido codificado en UTF-8 al archivo temporal
-writeLines(archivo_texto_utf8, archivo_utf8)
-
-# Lee el archivo temporal con read.px
-datos <- read.px(archivo_utf8)
-
-
-Desempleo_frame <- as.data.frame(datos)
-
-
-#Agrupación de los rangos de edades y correción de caraceteres extraños
-Desempleo_agrup <- Desempleo_frame %>%
-  transmute(
-    Edad = case_when(
-      Edad == "De 16 a 19 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 20 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 29 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 30 a 34 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 35 a 39 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 40 a 44 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 45 a 49 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 50 a 54 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 55 a 59 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 60 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 a 69 aÃ±os" ~ "65 o más",
-      Edad == "70 y mÃ¡s aÃ±os" ~ "65 o más",
-    ),
-    Tiempo.de.bÃºsqueda.de.empleo = case_when(
-      Tiempo.de.bÃºsqueda.de.empleo == "2 aÃ±os o mÃ¡s" ~ "2 años o más",
-      Tiempo.de.bÃºsqueda.de.empleo == "Ya ha encontrado empleo" ~ "Ya ha encontrado empleo",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 mes a menos de 3 meses" ~ "De 1 mes a menos de 3 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 3 meses a menos de 6 meses" ~ "De 3 meses a menos de 6 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 6 meses a menos de 1 aÃ±o" ~ "De 6 meses a menos de 1 año",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 aÃ±o a menos de 2 aÃ±os" ~ "De 1 año a menos de 2 años",
-      Tiempo.de.bÃºsqueda.de.empleo == "Total" ~ "Total",
-      
-    ),
-    Periodo = Periodo,
-    Tiempo.de.bÃºsqueda.de.empleo=Tiempo.de.bÃºsqueda.de.empleo,
-    Edad = Edad,
-    Sexo = Sexo,
-    value = value, 
-  )%>%
-  #Cambio del nombre de la columna tiempo de búsqueda de empleo
-  mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
-  select(-Tiempo.de.bÃºsqueda.de.empleo)
-
-
-#Eliminar filas es la que salia el valor NA
-Desempleo_no_NA <- Desempleo_agrup%>%
-  drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
-
-
-
-#Elimino los valores de ambos sexos y total, y selecciono solo los datos del 2021
-Desempleo_data <-  Desempleo_no_NA %>%
-  filter(
-    Sexo != "Ambos sexos",                                  
-    Tiempo_de_búsqueda_de_empleo != "Total",
-    Periodo == "2021"                             
-  )
-
-
-#GRÁFICAS
-library(ggplot2)
-
+```{r, echo = TRUE}
 #GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
 Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
@@ -764,87 +677,7 @@ Podemos observar que el desempleo es ligeramente mayor en los hombres de 18 a 24
 Aun así el desempleo en ambos sexos es bastante elevado teniendo en cuenta que son datos de hace 3 años.
 Vamos a ver ahora los datos de desempleo en un grupo de edad de los 25 a 64 años.
 
-```{r , echo = FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(tidyverse)
-library(pxR)
-
-
-#Lectura del archivo línea por línea
-archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
-
-#Modifica la codificación original del texto a la codificación UTF-8
-archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
-
-#Creación del archivo temporal .px
-archivo_utf8 <- tempfile(fileext = ".px")
-
-#Se escribe el contenido codificado en UTF-8 al archivo temporal
-writeLines(archivo_texto_utf8, archivo_utf8)
-
-# Lee el archivo temporal con read.px
-datos <- read.px(archivo_utf8)
-
-
-Desempleo_frame <- as.data.frame(datos)
-
-
-#Agrupación de los rangos de edades y correción de caraceteres extraños
-Desempleo_agrup <- Desempleo_frame %>%
-  transmute(
-    Edad = case_when(
-      Edad == "De 16 a 19 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 20 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 29 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 30 a 34 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 35 a 39 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 40 a 44 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 45 a 49 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 50 a 54 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 55 a 59 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 60 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 a 69 aÃ±os" ~ "65 o más",
-      Edad == "70 y mÃ¡s aÃ±os" ~ "65 o más",
-    ),
-    Tiempo.de.bÃºsqueda.de.empleo = case_when(
-      Tiempo.de.bÃºsqueda.de.empleo == "2 aÃ±os o mÃ¡s" ~ "2 años o más",
-      Tiempo.de.bÃºsqueda.de.empleo == "Ya ha encontrado empleo" ~ "Ya ha encontrado empleo",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 mes a menos de 3 meses" ~ "De 1 mes a menos de 3 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 3 meses a menos de 6 meses" ~ "De 3 meses a menos de 6 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 6 meses a menos de 1 aÃ±o" ~ "De 6 meses a menos de 1 año",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 aÃ±o a menos de 2 aÃ±os" ~ "De 1 año a menos de 2 años",
-      Tiempo.de.bÃºsqueda.de.empleo == "Total" ~ "Total",
-      
-    ),
-    Periodo = Periodo,
-    Tiempo.de.bÃºsqueda.de.empleo=Tiempo.de.bÃºsqueda.de.empleo,
-    Edad = Edad,
-    Sexo = Sexo,
-    value = value, 
-  )%>%
-  #Cambio del nombre de la columna tiempo de búsqueda de empleo
-  mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
-  select(-Tiempo.de.bÃºsqueda.de.empleo)
-
-
-#Eliminar filas es la que salia el valor NA
-Desempleo_no_NA <- Desempleo_agrup%>%
-  drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
-
-
-
-#Elimino los valores de ambos sexos y total, y selecciono solo los datos del 2021
-Desempleo_data <-  Desempleo_no_NA %>%
-  filter(
-    Sexo != "Ambos sexos",                                  
-    Tiempo_de_búsqueda_de_empleo != "Total",
-    Periodo == "2021"                             
-  )
-
-
-#GRÁFICAS
-library(ggplot2)
-
+```{r, echo = TRUE}
 #GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
 Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 25 a 64 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
@@ -861,87 +694,7 @@ Aunque el desempleo sea mayor en hombres que en mujeres, el número de personas 
 
 Por último observaremos los datos para las personas mayores de 65 años.
 
-```{r , echo = FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(tidyverse)
-library(pxR)
-
-
-#Lectura del archivo línea por línea
-archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
-
-#Modifica la codificación original del texto a la codificación UTF-8
-archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
-
-#Creación del archivo temporal .px
-archivo_utf8 <- tempfile(fileext = ".px")
-
-#Se escribe el contenido codificado en UTF-8 al archivo temporal
-writeLines(archivo_texto_utf8, archivo_utf8)
-
-# Lee el archivo temporal con read.px
-datos <- read.px(archivo_utf8)
-
-
-Desempleo_frame <- as.data.frame(datos)
-
-
-#Agrupación de los rangos de edades y correción de caraceteres extraños
-Desempleo_agrup <- Desempleo_frame %>%
-  transmute(
-    Edad = case_when(
-      Edad == "De 16 a 19 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 20 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 29 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 30 a 34 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 35 a 39 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 40 a 44 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 45 a 49 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 50 a 54 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 55 a 59 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 60 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 a 69 aÃ±os" ~ "65 o más",
-      Edad == "70 y mÃ¡s aÃ±os" ~ "65 o más",
-    ),
-    Tiempo.de.bÃºsqueda.de.empleo = case_when(
-      Tiempo.de.bÃºsqueda.de.empleo == "2 aÃ±os o mÃ¡s" ~ "2 años o más",
-      Tiempo.de.bÃºsqueda.de.empleo == "Ya ha encontrado empleo" ~ "Ya ha encontrado empleo",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 mes a menos de 3 meses" ~ "De 1 mes a menos de 3 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 3 meses a menos de 6 meses" ~ "De 3 meses a menos de 6 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 6 meses a menos de 1 aÃ±o" ~ "De 6 meses a menos de 1 año",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 aÃ±o a menos de 2 aÃ±os" ~ "De 1 año a menos de 2 años",
-      Tiempo.de.bÃºsqueda.de.empleo == "Total" ~ "Total",
-      
-    ),
-    Periodo = Periodo,
-    Tiempo.de.bÃºsqueda.de.empleo=Tiempo.de.bÃºsqueda.de.empleo,
-    Edad = Edad,
-    Sexo = Sexo,
-    value = value, 
-  )%>%
-  #Cambio del nombre de la columna tiempo de búsqueda de empleo
-  mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
-  select(-Tiempo.de.bÃºsqueda.de.empleo)
-
-
-#Eliminar filas es la que salia el valor NA
-Desempleo_no_NA <- Desempleo_agrup%>%
-  drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
-
-
-
-#Elimino los valores de ambos sexos y total, y selecciono solo los datos del 2021
-Desempleo_data <-  Desempleo_no_NA %>%
-  filter(
-    Sexo != "Ambos sexos",                                  
-    Tiempo_de_búsqueda_de_empleo != "Total",
-    Periodo == "2021"                             
-  )
-
-
-#GRÁFICAS
-library(ggplot2)
-
+```{r, echo = TRUE}
 #GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
 Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "65 o más"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
@@ -956,3 +709,34 @@ Desempleo_HM
 En esta última gráfica podemos ver como hay mayor número de desempleo en hombres que en mujeres aunque la cantidad de personas desempleadas en muchisimo menor debido a la cercana edad de jubilación.
 
 Observando las tres gráficas podemos concluir que el desempleo en estos últimos años está siendo un grave problema en la sociedad española sobre todo entre los 25 y 64 años, lo cual puede ser debido a distintos factores económicos, sociales y estrucuturales.
+
+## **10. Conclusiones**
+
+- Conclusión desempleo
+
+Ahora vamos a observar la relación de imc entre hombres y mujeres según el timepo de desempleo.   
+
+```{r, echo = TRUE}
+#GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
+Desempleo_obesidad <- ggplot(data = Desempleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
+  geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
+  facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
+  labs(
+    title = "Índice de masa corporal según el tiempo de desempleo",
+    x = "Tiempo de desempleo", #creo que está mal
+    y = "Personas en desempleo"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
+  )
+Desempleo_obesidad
+```
+
+Las personas que han estado desempleadas 2 años o más son las que más índice de masa corporal han ganadado, siendo mayor en las mujeres que en los hombres.
+Tanto en las personas que están desempleadas durante 2 años o más, como las que están de 1 año a menos de 2 años, el imc es mayor en las mujeres. Mientras que en los tiempos cortos de desempleo el imc es mayor en los hombres.
+
+A partir de este gráfico podemos concluir que en general el índice de masa corporal aumenta en las personas según el tiempo que han estado desempleadas ya que se puede observar como a medida que se reduce el tiempo que han estado desempleadas, tienen un menor índice de masa corporal.
+
+## **11. Referencias**
+
