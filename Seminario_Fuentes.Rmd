@@ -81,6 +81,12 @@ Utilizamos esta librería para representar mediante gráficos los datos.
 library(ggplot2)
 ```
 
+5. library(DT)
+Utilizamos esta librería para mostrar tablas de datos.
+```{r , eval = TRUE}
+library(DT)
+```
+
 ## **6. Manipulación de datos**
 Los archivox .px son un formato estándar para almacenar datos estadísticos en forma de tablas multidimensionales.
 Iniciálmente nuestros datos px no se encontraban en una codificacion UTF-8 y nos daba problemas al intentar visualizar los datos al inicio ya que contienen carácteres extraños como la 'ñ'.
@@ -336,7 +342,25 @@ Desempleo_obesidad
 ### **8.3 IMC**
 Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modificaciones para que sean aptos para trabajar con ellos.
 
-Primero almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
+#### **8.3.2** Lectura del archivo
+
+Una vez tenemos cargados los archivos, necesitamos leerlos.
+
+```{r , eval = FALSE, warning = FALSE}
+
+#Crea un archivo temporal con extensión px.
+archivo_temp_IMC <- tempfile(fileext = ".px")
+
+#Para escribir el contenido de IMC_utf8 en el archivo temporal.
+writeLines(IMC_utf8, archivo_temp_IMC)
+
+# Lee el archivo temporal con read.px
+datos_IMC <- read.px(archivo_temp_IMC)
+```
+
+
+#### **8.3.2** Conversión a DATAFRAME y eliminación de caracteres incorrectos
+Almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
 
 ```{r , eval = FALSE, warning = FALSE}
 DF_mal <- as.data.frame(datos_IMC)
@@ -361,30 +385,58 @@ DF <- DF_mal %>%
   )
 ```
 
-Debido a que en las primera 20 filas había errores, se han eliminado estas.
-```{r , eval = FALSE, warning = FALSE}
-datos_IMC_df <- DF[-(1:20), ]
-```
-
-A partir de aquí hemos trabajado con unos datos generales y con unos datos específicos de obesidad.
+#### **8.3.3** Eliminación de datos que no necesitamos
+Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
 
 ```{r , eval = FALSE, warning = FALSE}
-datos_obesidad <- datos_IMC_df %>%
+datos_IMC_df <- DF %>%
   filter(
-    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+    Masa.corporal.adultos != "TOTAL",    
     Sexo != "Ambos sexos",                                  
     Edad != "TOTAL",                                        
     Nivel.de.estudios != "TOTAL"                            
   )
 ```
 
-En estos de obesidad para evitar errores hemos tenido que eliminar los niveles que no usamos en las columnas.
+
+#### **8.3.4** Eliminación de niveles
+Eliminamos los niveles de las columnas que no vamos a utilizar para evitar posibles errores al crear las gráficas.
 
 ```{r , eval = FALSE, warning = FALSE}
-datos_obesidad$Sexo <- droplevels(datos_obesidad$Sexo)
-datos_obesidad$Nivel.de.estudios <- droplevels(datos_obesidad$Nivel.de.estudios)
-datos_obesidad$Edad <- droplevels(datos_obesidad$Edad)
+datos_IMC_df$Sexo <- droplevels(datos_IMC_df$Sexo)
+datos_IMC_df$Nivel.de.estudios <- droplevels(datos_IMC_df$Nivel.de.estudios)
+datos_IMC_df$Edad <- droplevels(datos_IMC_df$Edad)
+datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adultos)
 
+```
+
+#### **8.3.5** Creación de datos de obesidad.
+
+Creamos unos datos específicos de obesidad para facilitar la creación de determinadas gráficas.
+
+```{r , eval = FALSE, warning = FALSE}
+
+datos_obesidad <- datos_IMC_df %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+  )
+```
+
+#### **8.3.6** Datos necesarios para la gráfica de diferentes pesos.
+
+Datos que van a ser necesarios para crear la gráfica que compara los diferentes pesos.
+```{r , eval = FALSE, warning = FALSE}
+IMC_grafica1<- datos_IMC_df %>%
+  group_by(Masa.corporal.adultos) %>%
+  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
+```
+
+#### **8.3.7** Datos necesarios para la gráfica de obesidad.
+
+```{r , eval = FALSE, warning = FALSE}
+media_por_grupo <- datos_obesidad %>%
+  group_by(Nivel.de.estudios, Sexo, Edad) %>%
+  dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
 ```
 
 ## **9. Resultados**
@@ -395,70 +447,16 @@ En este apartado se van a mostrar los resultados de los estudios realizados en l
 Para comenzar el análisis, hemos realizado una gráfica para analizar el porcentaje de personas que tienen un determinado peso.
 
 ```{r , echo = FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(tidyverse)
-library(pxR)
-IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
 
-IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
-
-archivo_utf8 <- tempfile(fileext = ".px")
-writeLines(IMC_utf8, archivo_utf8)
-
-# Lee el archivo temporal con read.px
-datos_IMC <- read.px(archivo_utf8)
-DF_mal <- as.data.frame(datos_IMC)
-
-DF <- DF_mal %>%
-  transmute(
-    Masa.corporal.adultos = Masa.corporal.adultos,
-    Nivel.de.estudios = factor(case_when(
-      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
-      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
-      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
-      Nivel.de.estudios == "Superior" ~ "Superior",
-    )),
-    Edad = factor(case_when(
-      Edad == "TOTAL" ~ "TOTAL",
-      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
-    )),
-    Sexo = Sexo,
-    Porcentaje.personas = value
-  )
-datos_IMC_df <- DF[-(1:20), ]
-
-datos_IMC_grafica3 <- datos_IMC_df %>%
-  filter(
-    Sexo != "Ambos sexos",                                  
-    Edad != "TOTAL",                                        
-    Nivel.de.estudios != "TOTAL",                           
-    Masa.corporal.adultos != "TOTAL"
-  )
-
-#View(datos_IMC_grafica2)
-
-#Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
-datos_IMC_grafica3$Sexo <- droplevels(datos_IMC_grafica3$Sexo)
-datos_IMC_grafica3$Edad <- droplevels(datos_IMC_grafica3$Edad)
-datos_IMC_grafica3$Nivel.de.estudios <- droplevels(datos_IMC_grafica3$Nivel.de.estudios)
-datos_IMC_grafica3$Masa.corporal.adultos <- droplevels(datos_IMC_grafica3$Masa.corporal.adultos)
-
-IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
-  group_by(Masa.corporal.adultos) %>%
-  dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
-
-#View(IMC_grafica3_sin_niveles)
-
-Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) + 
+Porcentaje_pesos<-ggplot(data = IMC_grafica1) + 
   geom_bar(
     mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
-    stat = "identity",  
+    stat = "identity",  # Para que se usen los valores de y que ya están calculados, si no da error porque intenta buscar categorías de masa.corporal.adultos
     show.legend = TRUE,
-    width = 1
+    width = 1 #Sin esto no salen bien cuadrados los diferentes triángulos, ya 
+    #que se queda un espacio en blanco entre ellos, y al ponerlo salen pegados.
   ) + 
-  scale_fill_manual(
+  scale_fill_manual( #Sin ponerlo manual los colores no salían como queríamos.
     values = c(
       "Peso insuficiente (IMC<18,5 kg/m2)" = "red",
       "Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)" = "green",
@@ -466,13 +464,14 @@ Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) +
       "Obesidad (IMC>=30 kg/m2)" = "blue"
     )
   ) +
-  theme(aspect.ratio = 1) +
   labs(
     title="Porcentaje de pesos",
     x = "Masa corporal de adultos", 
     fill = "Masa corporal de adultos") +
   coord_polar()+
-  theme(axis.text.x = element_blank()) 
+  theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda 
+  #dentro del gráfico, ya que no salen bien.
+
 Porcentaje_pesos
 
 ```
@@ -484,56 +483,12 @@ A pesar de esto, destaca que hay un porcentaje muy elevado de personas que tiene
 Seguido a esto, hemos realizado una gráfica que muestre la correlación que existe entre la obesidad, los niveles de estudio, la edad y el sexo.
 
 ```{r , echo = FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(tidyverse)
-library(pxR)
-IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
-
-IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
-
-archivo_utf8 <- tempfile(fileext = ".px")
-writeLines(IMC_utf8, archivo_utf8)
-
-# Lee el archivo temporal con read.px
-datos_IMC <- read.px(archivo_utf8)
-DF_mal <- as.data.frame(datos_IMC)
-
-DF <- DF_mal %>%
-  transmute(
-    Masa.corporal.adultos = Masa.corporal.adultos,
-    Nivel.de.estudios = factor(case_when(
-      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
-      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
-      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
-      Nivel.de.estudios == "Superior" ~ "Superior",
-    )),
-    Edad = factor(case_when(
-      Edad == "TOTAL" ~ "TOTAL",
-      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
-    )),
-    Sexo = Sexo,
-    Porcentaje.personas = value
-  )
-datos_IMC_df <- DF[-(1:20), ]
-
-datos_obesidad <- datos_IMC_df %>%
-  filter(
-    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
-    Sexo != "Ambos sexos",                                  
-    Edad != "TOTAL",                                        
-    Nivel.de.estudios != "TOTAL"                            
-  )
-
-media_por_grupo <- datos_obesidad %>%
-  group_by(Nivel.de.estudios, Sexo, Edad) %>%
-  dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
-
-
 Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ Edad) +  # Dividir por grupos de edad
+  geom_bar(stat = "identity", position = "dodge") + #Con stat=identity hacemos 
+  #que coja los datos ya calculados y con position dodge conseguimos que las 
+  #columans de cada sexo salgan al lado y no una encima de otra
+  facet_wrap(~ Edad) +  #Para que en el gráfico salgan datos para cada nivel de
+  #la columna Edad
   labs(
     title = "Distribución por Nivel de Estudios, Edad y Sexo",
     x = "Nivel de estudios",
@@ -542,7 +497,10 @@ Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = medi
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1) 
+    axis.text.x = element_text(angle = 45, , hjust = 1)  # Rotar etiquetas del 
+    #eje x para que se vean bien, ya que si no se superponen, y con hjust 
+    #hacemos que dichas etiquetas empiecen justo debaje del gráfico ya que sino
+    #salen dentro.
   )
 
 Relaciones_obesidad
