@@ -24,7 +24,8 @@ knitr::opts_chunk$set(echo = TRUE)
   8. Análisis de datos
   9. Resultados
   10. Conclusiones
-  11. Referencias
+  11. Exportación de datos
+  12. Referencias
 
 ## **1. URL repositorio GitHub**
 https://github.com/Psm1015/Seminario_Fuentes.git
