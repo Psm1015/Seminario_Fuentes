@@ -261,7 +261,7 @@ Alimentacion_IMC <- left_join(
   datos_IMC_df,
   by = join_by(Edad, Sexo)
 )
-view(Alimentacion_IMC)
+#view(Alimentacion_IMC)
 
 
 # Solo queremos ver las filas donde las personas sean obesas (Obesidad (IMC>=30 kg/m2))
