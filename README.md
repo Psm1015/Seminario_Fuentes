@@ -42,3 +42,6 @@ Para la manipulación de los datos y el correcto funcionamineto de las funciones
 • library(ggplot2)
 
 • library(tidyr)
+
+• library(DT)
+
