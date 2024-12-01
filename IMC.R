@@ -176,7 +176,7 @@ Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = medi
 Relaciones_obesidad
 
 ggsave(
-  filename = "Relaciones obesidad.jpeg",
+  filename = "Relaciones_obesidad.jpeg",
   plot = Relaciones_obesidad ,
   #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
   path = "OUTPUT/Figures/IMC", # ruta relativa

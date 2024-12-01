@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 https://github.com/Psm1015/Seminario_Fuentes.git
 
 ## **2. Datos utilizados**
-En este apartado es donde se indican las URL´s que se van a utilizar durante el desarrollo de este proyecto. 
+En este apartado es donde se indican las URLs que se van a utilizar durante el desarrollo de este proyecto. 
 
 - [Datos obesidad](https://datos.gob.es/es/catalogo/ea0010587-indice-de-masa-corporal-poblacion-adulta-segun-sexo-grupo-de-edad-y-nivel-de-estudios-poblacion-de-18-y-mas-anos-identificador-api-t15-p420-a2019-p06-l0-01005-px1)
 
@@ -169,7 +169,7 @@ Debido a como estaban estructurados los datos solo hemos tenido que establecer l
 ### **8.1 IMC**
 Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modificaciones para que sean aptos para trabajar con ellos.
 
-#### **8.1.1** Lectura del archivo
+#### **8.1.1 Lectura del archivo**
 
 Una vez tenemos cargados los archivos, necesitamos leerlos.
 
@@ -186,7 +186,7 @@ datos_IMC <- read.px(archivo_temp_IMC)
 ```
 
 
-#### **8.1.2** Conversión a DATAFRAME y eliminación de caracteres incorrectos
+#### **8.1.2 Conversión a DATAFRAME y eliminación de caracteres incorrectos**
 Almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -213,7 +213,7 @@ DF_IMC <- DF_mal %>%
 datatable(DF_IMC)
 ```
 
-#### **8.1.3** Eliminación de datos que no necesitamos
+#### **8.1.3 Eliminación de datos que no necesitamos**
 Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -240,7 +240,7 @@ datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adul
 
 ```
 
-#### **8.1.5** Creación de datos de obesidad.
+#### **8.1.5 Creación de datos de obesidad**
 
 Creamos unos datos específicos de obesidad para facilitar la creación de determinadas gráficas.
 
@@ -253,16 +253,16 @@ datos_obesidad <- datos_IMC_df %>%
 datatable(datos_obesidad)
 ```
 
-#### **8.1.6** Datos necesarios para la gráfica de diferentes pesos.
+#### **8.1.6 Datos necesarios para la gráfica de diferentes pesos**
 
 Datos que van a ser necesarios para crear la gráfica que compara los diferentes pesos.
-```{r , eval = TRUE, warning = FALSE}
+```{r , eval = TRUE,  message=FALSE, warning = FALSE}
 IMC_grafica1<- datos_IMC_df %>%
   group_by(Masa.corporal.adultos) %>%
   dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
 ```
 
-#### **8.1.7** Datos necesarios para la gráfica de obesidad.
+#### **8.1.7 Datos necesarios para la gráfica de obesidad**
 
 ```{r , eval = TRUE, warning = FALSE}
 media_por_grupo <- datos_obesidad %>%
@@ -523,7 +523,10 @@ datatable(Desempleo_IMC_filtrado)
 ## **9. Resultados**
 En este apartado se van a mostrar los resultados de los estudios realizados en los diferentes sets de datos. 
 
-- En primer lugar, se mostrará el resultado del estudio de IMC. 
+### **9.1 IMC, edad, nivel de estudio y género**
+En primer lugar se van a mostrar los diferentes gráficos que se han hecho con el set de datos de IMC.
+
+#### **9.1.1 Porcentaje de pesos de la población española**
 
 Para comenzar el análisis, hemos realizado una gráfica para analizar el porcentaje de personas que tienen un determinado peso.
 
@@ -561,6 +564,7 @@ En esta gráfica se puede apreciar que la mayor parte de la población tiene un 
 
 A pesar de esto, destaca que hay un porcentaje muy elevado de personas que tienen un peso mayor del recomendado (sobrepeso y obesidad), dentro de los cuales nosotros nos vamos a centrar en el análisis de la obesidad, que es mucho menor que el sobrepeso,pero que es mucho más preocupante en términos de salud. 
 
+#### **9.1.2 Relación IMC, edad , nivel de estudio y género**
 Seguido a esto, hemos realizado una gráfica que muestre la correlación que existe entre la obesidad, los niveles de estudio, la edad y el sexo.
 
 ```{r , echo = FALSE, warning=FALSE, message=FALSE}
@@ -595,7 +599,7 @@ En cuanto al nivel de estudios, destaca que en todos los rangos de edad los que 
 Respecto al sexo se puede observar que en términos generales hay una mayor obesidad en hombres que en mujeres. Hay ciertas excepciones, como las personas con un nivel de estudio bajo entre los 18 y los 24 años y más de 65 años, ya que en estos casos hay muchas más mujeres que hombres.
 Estos resultados nos podrían indicar que en general lás mujeres tienen un mayor cuidado con respecto a su condición física.
 
-### **9.2. Alimentación**
+### **9.2. Alimentación **
 En esta sección se van a mostrar los diferentes gráficos que se han ido haciendo con el set de datos de Alimentación.
 
 #### **9.2.1 Relación de la edad con el tipo de alimentación**
@@ -790,6 +794,31 @@ A partir de este gráfico podemos concluir que en general el índice de masa cor
 ## **11. Exportación de datos**
 En este apartado proporcionaremos el código necesario para la exportación de las gráficas como imágenes en formato .jpeg, las cuales se encuentran dentro de la carpeta OUTPUT/Figures.
 
+### **11.1 IMC**
+```{r, echo = TRUE}
+ggsave(
+  filename = "Porcentajes_pesos.jpeg",
+  plot = Porcentaje_pesos ,
+  path = "OUTPUT/Figures/IMC", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+ggsave(
+  filename = "Relaciones_obesidad.jpeg",
+  plot = Relaciones_obesidad ,
+  path = "OUTPUT/Figures/IMC", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+```
+
 ### **11.2 Alimentación**
 ```{r eval = TRUE, warning = FALSE}
 ggsave(
@@ -852,7 +881,7 @@ ggsave(
 )
 ```
 
--Desempleo
+### **11.2 Desempleo**
 
 ```{r, echo = TRUE}
 #GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
@@ -884,7 +913,6 @@ ggsave(
 )
 ```
 
--IMC
 
 ## **12. Referencias**
 
