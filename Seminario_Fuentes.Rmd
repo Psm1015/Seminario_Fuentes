@@ -361,7 +361,7 @@ datos_Alimentacion <-  df_sin_NA%>%
   )
 ```
 
-#### **8.2.4 Relación del tipo de alimentación a diario por rangos de edad**
+#### **8.2.4 Filtrados de Frecuencia y de Alimentos**
 Como existe muchos tipos de comida, se seleccionan los más importante. Para ello, se utiliza la función **filter**.
 ```{r , eval = TRUE, warning = FALSE}
 Alimentacion_ADiario <- datos_Alimentacion %>%
@@ -378,25 +378,7 @@ Este filter elimina de __datos_Alimentacion__ los siguientes alimentos:
 
 • Zumo natural de frutas o verduras.
 
-Como ya tenemos eliminados algunos alimentos se procede a crear una gráfica para ver cómo afecta la edad al tipo de alimenación
-```{r, echo = TRUE}
-Grafica_AlimentosXDia <- ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value)) +
-  geom_bar(aes(fill = Alimentos), position = "dodge", stat = "identity")
-Grafica_AlimentosXDia
-```
-
-En esta gráfica se puede observar que en el rango de edad entre 18 y 25 años el alimento que más se consume proviene de productos lácteos, como puede ser el queso o la propia leche, seguido del pan y cereales. Por otro lado el producto que menos se consume en este rango de edad es el pescado.
-
-En segundo lugar, observando el rango entre 25 y 64 años se observa que las preferencias son las mismas que en el anterior rango de edad pero hay un incremento en el consumo de verduras, hortalizas y ensaladas, y de fruta fresca.
-
-Por último, indicar que a partir de los 65 años sigue aumentando el consumo de fruta fresca.
-
-Un dato importante es que a el consumo de refrescos con azúcar va disminuyendo con la edad.
-
-#### **8.2.5 Relación de la alimentación de pescado y carne 3 o más veces a la semana pero no a diario por rango de edad y sexo**
-En este apartado vamos a analizar a la vez la relación del pescado y de la carne por la frecuencia indicada, por edad y sexo.
-
-Para poder observar bien la gráfica hay que coger solo la frecuencia indicada y el alimento indicado para esto es necesario utilizar un filter
+Ahora, solo se quiere visualizar el porcentaje de personas que consume pescado durante tres o más días a la semana pero no a diario. Como se ha explicado antes, esto se puede realizar con la función **filter()**
 ```{r, eval = TRUE, warning = FALSE}
 Alimentacion_pescado <- datos_Alimentacion %>%
   filter(
@@ -405,6 +387,8 @@ Alimentacion_pescado <- datos_Alimentacion %>%
   )
 datatable(Alimentacion_pescado)
 ```
+
+Después de esto, se quiere visualizar el porcentaje de personas que consume carne durante tres o más días a la semana pero no a diario.
 ```{r, eval = TRUE, warning = FALSE}
 Alimentacion_carne <- datos_Alimentacion %>%
   filter(
@@ -414,52 +398,7 @@ Alimentacion_carne <- datos_Alimentacion %>%
 datatable(Alimentacion_carne)
 ```
 
-Tras estos dos **filter()** ahora se pueden hacer las gráficas correspondientes:
-
-1. Gráfica Pescado
-```{r, echo = TRUE}
-Grafica_Pescado <- ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +  
-  labs(
-    title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
-    x = "Rango de Edad",
-    y = "Porcentaje de Personas"
-  ) +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  )
-Grafica_Pescado
-```
-
-Es importante observar que la más mayor de este estudio es la que consume más cantidad de pescado y esto se nota claramente ya que en el rango de 18 a 24 años la gente que consume pescado 3 o más veces a la semana no supera el 40%, sin embargo, en el rango de 64 o más años la gente que hace el mismo tipo de consumo supera notablemente el 40%.
-
-2. Gráfica Carne
-```{r, echo = TRUE}
-Grafica_Carne <- ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +  
-  labs(
-    title = "Porcentaje de Consumo de Carne 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
-    x = "Rango de Edad",
-    y = "Porcentaje de Personas"
-  ) +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  )
-Grafica_Carne
-```
-
-Es importante observar que la más joven de este estudio es la que consume más cantidad de carne y esto se nota claramente ya que en el rango de 18 a 24 años la gente que consume carne 3 o más veces a la semana supera el 70%, sin embargo, en el rango de 64 o más años la gente que hace el mismo tipo de consumo representa el 60%.
-
-Como conclusión, si se hace la una comparación de los resultados de ambas gráficas se puede ver que el consumo de carne 3 o más veces a la semana es mayor que el consumo de pescado.
-
-#### **8.2.6 Relación de la alimentación de comida rápida una o dos veces por semana, por sexo y rangos de edad**
-En este apartado vamos a analizar  la relación de comida rápida por la frecuencia indicada, por edad y sexo.
-
-Para poder observar bien la gráfica hay que coger solo la frecuencia indicada y el alimento indicado para esto es necesario utilizar un filter, de la misma forma que antes.
+Por último, se quiere observar el porcentaje de personas que consumen comida rápida una o dos veces por semana:
 ```{r, eval = TRUE, warning = FALSE}
 Alimentacion_rapida <- datos_Alimentacion %>%
   filter(
@@ -469,21 +408,25 @@ Alimentacion_rapida <- datos_Alimentacion %>%
 datatable(Alimentacion_rapida)
 ```
 
-A partir de esta tabla, se muestra una gráfica donde se ve cómo varía con la edad el porcentaje de personas que consumen comida rápida.
-```{r, echo = TRUE}
-Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +  
-  labs(
-    title = "Porcentaje de Consumo de comida rapida 1 o 2 veces a la Semana",
-    x = "Rango de Edad",
-    y = "Porcentaje de Personas"
-  ) +
-  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  )
-Grafica_CRapida
+#### **8.2.5 Relación de los alimentos con el IMC**
+Como el tipo de alimentos que se consumen el Índice de Masa Corporal se encuentran en diferentes set de datos, es necesario unir los datos de un set con los del otro. Esto se puede realizar gracias a la función **join()**, en este caso un **left_join()**. Esta unión queda de la siguiente forma:
+```{r, eval = TRUE, warning = FALSE}
+Alimentacion_IMC <- left_join(
+  Alimentacion_rapida,  
+  datos_IMC_df,
+  by = join_by(Edad, Sexo)
+)
+```
+
+Como solo se quieren ver las filas en las cuáles las personas sean obesas (IMC >=30 kg/m^2) se necesita la acción de un **filter()**. Además, se quieren eliminar *Ambos sexo* y los valores *Total* de todas las columnas
+```{r, eval = TRUE, warning = FALSE}
+C.Rapida_Obesidad <- Alimentacion_IMC %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    # Solo obesidad
+    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
+    Edad != "TOTAL",                                        # Excluir edad total
+    Nivel.de.estudios != "TOTAL")                           # Excluir nivel de estudios total
+datatable(C.Rapida_Obesidad)
 ```
 
 ### **8.3 Desempleo**
@@ -591,7 +534,6 @@ Desempleo_IMC_filtrado<- Desempleo_IMC%>%
 datatable(Desempleo_IMC_filtrado)
 ```
 
-
 ## **9. Resultados**
 En este apartado se van a mostrar los resultados de los estudios realizados en los diferentes sets de datos. 
 
@@ -658,7 +600,6 @@ Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = medi
 
 Relaciones_obesidad
 ```
-
 De esta gráfica obtenemos mucha información, destacando lo siguiente:
 
 En relación a la edad el mayor porcentaje de personas se da en la tercera edad, de los 65 años en adelante. Esto seguramente se deba a que con esas edades las personas llevan una vida mucho más sedentaria y tienen muchas más dificultades para realizar ejercicio físico.
@@ -668,8 +609,109 @@ En cuanto al nivel de estudios, destaca que en todos los rangos de edad los que 
 Respecto al sexo se puede observar que en términos generales hay una mayor obesidad en hombres que en mujeres. Hay ciertas excepciones, como las personas con un nivel de estudio bajo entre los 18 y los 24 años y más de 65 años, ya que en estos casos hay muchas más mujeres que hombres.
 Estos resultados nos podrían indicar que en general lás mujeres tienen un mayor cuidado con respecto a su condición física.
 
+### **9.2. Alimentación**
+En esta sección se van a mostrar los diferentes gráficos que se han ido haciendo con el set de datos de Alimentación.
 
+#### **9.2.1 Relación de la edad con el tipo de alimentación**
+Como ya tenemos eliminados algunos alimentos se procede a crear una gráfica para ver cómo afecta la edad al tipo de alimenación
+```{r, echo = TRUE}
+Grafica_AlimentosXDia <- ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value)) +
+  geom_bar(aes(fill = Alimentos), position = "dodge", stat = "identity") +
+  labs(
+    title = "Tipo de consumo por Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  )
+Grafica_AlimentosXDia
+```
 
+En esta gráfica se puede observar que en el rango de edad entre 18 y 25 años el alimento que más se consume proviene de productos lácteos, como puede ser el queso o la propia leche, seguido del pan y cereales. Por otro lado el producto que menos se consume en este rango de edad es el pescado.
+
+En segundo lugar, observando el rango entre 25 y 64 años se observa que las preferencias son las mismas que en el anterior rango de edad pero hay un incremento en el consumo de verduras, hortalizas y ensaladas, y de fruta fresca.
+
+Por último, indicar que a partir de los 65 años sigue aumentando el consumo de fruta fresca.
+
+Un dato importante es que a el consumo de refrescos con azúcar va disminuyendo con la edad.
+
+#### **9.2.2 Relación de la alimentación de pescado y carne 3 o más veces a la semana pero no a diario por rango de edad y sexo**
+En este apartado vamos a analizar a la vez la relación del pescado y de la carne por la frecuencia indicada, por edad y sexo.
+
+1. Gráfica Pescado
+```{r, echo = TRUE}
+Grafica_Pescado <- ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Grafica_Pescado
+```
+
+Es importante observar que la más mayor de este estudio es la que consume más cantidad de pescado y esto se nota claramente ya que en el rango de 18 a 24 años la gente que consume pescado 3 o más veces a la semana no supera el 40%. Sin embargo, en el rango de 64 o más años la gente que hace el mismo tipo de consumo supera notablemente el 40%.
+
+2. Gráfica Carne
+```{r, echo = TRUE}
+Grafica_Carne <- ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Carne 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Grafica_Carne
+```
+
+Es importante observar que la más joven de este estudio es la que consume más cantidad de carne y esto se nota claramente ya que en el rango de 18 a 24 años la gente que consume carne 3 o más veces a la semana supera el 70%, sin embargo, en el rango de 64 o más años la gente que hace el mismo tipo de consumo representa el 60%.
+
+Como conclusión, si se hace la una comparación de los resultados de ambas gráficas se puede ver que el consumo de carne 3 o más veces a la semana es mayor que el consumo de pescado.
+
+#### **9.2.3 Relación de la alimentación de comida rápida una o dos veces por semana, por sexo y rangos de edad**
+En este apartado vamos a analizar la relación de comida rápida por la frecuencia indicada, por edad y sexo.
+
+A partir de esta tabla, se muestra una gráfica donde se ve cómo varía con la edad el porcentaje de personas que consumen comida rápida.
+```{r, echo = TRUE}
+Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de comida rapida 1 o 2 veces a la Semana",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Grafica_CRapida
+```
+
+#### **9.2.4 ¿Cómo repercute el tipo de alimentación a la obesidad?**
+Para esto, se va a crear un gráfico con los datos que se encuentran en *C.Rapida_Obesidad*. En este gráfico se muestra como afecta el consumo de comida rápida en diferentes edades y por sexo.
+```{r, echo = TRUE}
+Grafica_CRapida_IMC <- ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) + 
+  geom_bar(stat = "identity", width = 1) + 
+  coord_polar() + 
+  theme_minimal() + 
+  labs(
+    title = "Porcentaje de personas con obesidad\nsegún nivel de estudios y sexo",
+    x = NULL,
+    y = NULL,
+    fill = "Edad"
+  ) +
+  facet_wrap(~Sexo)   # Crear gráficos separados por sexo
+#  theme(axis.text.x = element_blank()) 
+```
 
 - En segundo lugar se van a mostrar los resultados del estudio de desempleo.
 
@@ -724,7 +766,6 @@ En esta última gráfica podemos ver como hay mayor número de desempleo en homb
 
 Observando las tres gráficas podemos concluir que el desempleo en estos últimos años está siendo un grave problema en la sociedad española sobre todo entre los 25 y 64 años, lo cual puede ser debido a distintos factores económicos, sociales y estrucuturales.
 
-
 ## **10. Conclusiones**
 
 - Conclusión desempleo
@@ -738,7 +779,7 @@ Desempleo_obesidad <- ggplot(data = Desempleo_IMC_filtrado, aes(x = Tiempo_de_b�
   facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
   labs(
     title = "Índice de masa corporal según el tiempo de desempleo",
-    x = "Tiempo de desempleo", #creo que está mal
+    x = "Tiempo de desempleo",
     y = "Personas en desempleo"
   ) +
   theme_minimal() +
