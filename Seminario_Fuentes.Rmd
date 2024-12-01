@@ -275,7 +275,7 @@ IMC_grafica1<- datos_IMC_df %>%
 
 #### **8.1.6 Datos necesarios para la gráfica de obesidad**
 
-```{r , eval = TRUE, warning = FALSE}
+```{r , eval = TRUE, message=FALSE, warning = FALSE}
 media_por_grupo <- datos_obesidad %>%
   group_by(Nivel.de.estudios, Sexo, Edad) %>%
   dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
@@ -807,6 +807,7 @@ Una vez se han analizado todos los datos, llegamos a la conclusión de que la ob
 
 De la misma forma, podemos concluir que el desempleo es uno de los factores que afecta en gran parte a la obesidad, viendo como aumenta considerablemente a medida que se alarga el tiempo de búsqueda de empleo tanto en hombres como en mujeres.
 
+Por último, se puede ver que una buena alimentación es clave para prevenir la obesidad ya que abusar, por ejemplo, de comidas rápidas y refrescos azúcarada provocan un aumento de peso significativo. Por lo tanto, es importante llevar una dieta equilibrada para mantener un peso adecuado y que no aparezca la obesidad.
 
 
 ## **11. Exportación de datos**
@@ -956,7 +957,3 @@ ggsave(
 - README. (s. f.). https://cran.r-project.org/web/packages/pxR/readme/README.html
 
 - RPubs - Tablas en R Markdown. (s. f.). https://rpubs.com/Juve_Campos/tablasRMarkdown
-
-- README. (s. f.). https://cran.r-project.org/web/packages/pxR/readme/README.html
-
-
