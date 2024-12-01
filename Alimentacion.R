@@ -245,7 +245,7 @@ Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = S
 Grafica_CRapida
 
 ggsave(
-  filename = "Comida_Rapida_3oMAsVeces.jpeg",
+  filename = "Comida_Rapida_1o2.jpeg",
   plot = Grafica_CRapida ,
   #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
   path = "OUTPUT/Figures/Alimentacion", # ruta relativa

@@ -13,20 +13,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## **Índice**
-  1. URL repositorio GitHub
-  2. Datos utilizados
-  3. Introducción 
-  4. Objetivo general
-  5. Paquetes utilizados
-  6. Manipulación de datos
-  7. Importación de datos
-  8. Análisis de datos
-  9. Resultados
-  10. Conclusiones
-  11. Exportación de datos
-  12. Referencias
-
 ## **1. URL repositorio GitHub**
 https://github.com/Psm1015/Seminario_Fuentes.git
 
@@ -698,20 +684,27 @@ Grafica_CRapida
 
 #### **9.2.4 ¿Cómo repercute el tipo de alimentación a la obesidad?**
 Para esto, se va a crear un gráfico con los datos que se encuentran en *C.Rapida_Obesidad*. En este gráfico se muestra como afecta el consumo de comida rápida en diferentes edades y por sexo.
-```{r, echo = TRUE}
+```{r, echo = TRUE, message = FALSE, warning=FALSE}
 Grafica_CRapida_IMC <- ggplot(C.Rapida_Obesidad, aes(x = Edad, y = Porcentaje.personas, fill = Edad)) + 
   geom_bar(stat = "identity", width = 1) + 
   coord_polar() + 
   theme_minimal() + 
+  theme(
+    axis.text.x = element_blank()  # Oculta etiquetas del eje X
+  ) +
   labs(
-    title = "Porcentaje de personas con obesidad\nsegún nivel de estudios y sexo",
+    title = "Porcentaje de personas con obesidad\npor edad y sexo",
     x = NULL,
     y = NULL,
     fill = "Edad"
   ) +
   facet_wrap(~Sexo)   # Crear gráficos separados por sexo
-#  theme(axis.text.x = element_blank()) 
+Grafica_CRapida_IMC
 ```
+
+En este gráfico se puede ver que entre 18 y 24 años no hay un alarmante el porcentaje de personas obesas que puede ser debido al consumo de comida rápida. Sin embargo en los otros dos rango de edad si que el porcentaje es significativo y donde habría que poner más atención.
+
+Además, no se observa una relación significativa de la obesidad con el sexo. Solo siendo observable esta diferencia entre 25 y 64 años donde un 10% más de personas obesas que consumen comida rápida son hombres.
 
 - En segundo lugar se van a mostrar los resultados del estudio de desempleo.
 
@@ -797,7 +790,67 @@ A partir de este gráfico podemos concluir que en general el índice de masa cor
 ## **11. Exportación de datos**
 En este apartado proporcionaremos el código necesario para la exportación de las gráficas como imágenes en formato .jpeg, las cuales se encuentran dentro de la carpeta OUTPUT/Figures.
 
--Alimentación
+### **11.2 Alimentación**
+```{r eval = TRUE, warning = FALSE}
+ggsave(
+  filename = "Alimentos_A_Diario.jpeg",
+  plot = Grafica_AlimentosXDia ,
+  path = "OUTPUT/Figures/Alimentacion", 
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+ggsave(
+  filename = "Pescado_3oMasVeces.jpeg",
+  plot = Grafica_Pescado ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+ggsave(
+  filename = "Carne_3oMasVeces.jpeg",
+  plot = Grafica_Carne ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+ggsave(
+  filename = "Comida_Rapida_1o2.jpeg",
+  plot = Grafica_CRapida ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+ggsave(
+  filename = "ComidaRapida_Vs_IMC.jpeg",
+  plot = Grafica_CRapida_IMC ,
+  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
+  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+```
 
 -Desempleo
 
