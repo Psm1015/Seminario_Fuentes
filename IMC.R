@@ -31,10 +31,10 @@ DF_mal <- as.data.frame(datos_IMC)
 
 
 
-#UNA VEZ TENEMOS EL DATAFRAME, LO MODFIFICAMOS PARA HACERLO APTO PARA EL USO
+#UNA VEZ TENEMOS EL DATAFRAME, LO MODIFICAMOS PARA HACERLO APTO PARA EL USO
 
 #Cambiar de anios a años y de BÃ¡sico a básico
-DF <- DF_mal %>%
+DF_IMC <- DF_mal %>%
   transmute(
     Masa.corporal.adultos = Masa.corporal.adultos,
     Nivel.de.estudios = factor(case_when(
@@ -55,7 +55,8 @@ DF <- DF_mal %>%
 #view(DF)
 
 #Datos sin ambos sexos, sin los totales de edad y estudios.
-datos_IMC_df <- DF %>%
+datos_IMC_df <- DF_IMC %>%
+  drop_na()%>%
   filter(
     Masa.corporal.adultos != "TOTAL",    
     Sexo != "Ambos sexos",                                  

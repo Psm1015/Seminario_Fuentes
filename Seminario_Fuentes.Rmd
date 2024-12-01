@@ -171,7 +171,7 @@ archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 ```
 
 ## **8. Análisis de datos**
-En el archvido desempleo trabajaremos solo con los datos obtenidos del año 2021 en función del tiempo de búsqueda de empleo.
+En el archivo desempleo trabajaremos solo con los datos obtenidos del año 2021 en función del tiempo de búsqueda de empleo.
 
 En el archivo alimentación analizaremos las distintas frecuencias con las que las personas del mismo rango de edades anterior consumen carne, pescado, dulces etc
 
@@ -206,7 +206,7 @@ Almacenamos los datos en un dataframe y modificamos los valores de las columnas 
 ```{r , eval = TRUE, warning = FALSE}
 DF_mal <- as.data.frame(datos_IMC)
 
-DF <- DF_mal %>%
+DF_IMC <- DF_mal %>%
   transmute(
     Masa.corporal.adultos = Masa.corporal.adultos,
     Nivel.de.estudios = factor(case_when(
@@ -224,19 +224,22 @@ DF <- DF_mal %>%
     Sexo = Sexo,
     Porcentaje.personas = value
   )
+datatable(DF_IMC)
 ```
 
 #### **8.1.3** Eliminación de datos que no necesitamos
 Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
 
 ```{r , eval = TRUE, warning = FALSE}
-datos_IMC_df <- DF %>%
+datos_IMC_df <- DF_IMC %>%
+  drop_na()%>%
   filter(
     Masa.corporal.adultos != "TOTAL",    
     Sexo != "Ambos sexos",                                  
     Edad != "TOTAL",                                        
     Nivel.de.estudios != "TOTAL"                            
   )
+datatable(datos_IMC_df)
 ```
 
 
@@ -261,6 +264,7 @@ datos_obesidad <- datos_IMC_df %>%
   filter(
     Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
   )
+datatable(datos_obesidad)
 ```
 
 #### **8.1.6** Datos necesarios para la gráfica de diferentes pesos.
@@ -655,7 +659,16 @@ Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = medi
 Relaciones_obesidad
 ```
 
-Viendo este resultado se pueden sacar diferentes conclusiones sobre que porcentaje de personas padecen obesidad relacionado con la edad, nivel de estudios y sexo.
+De esta gráfica obtenemos mucha información, destacando lo siguiente:
+
+En relación a la edad el mayor porcentaje de personas se da en la tercera edad, de los 65 años en adelante. Esto seguramente se deba a que con esas edades las personas llevan una vida mucho más sedentaria y tienen muchas más dificultades para realizar ejercicio físico.
+
+En cuanto al nivel de estudios, destaca que en todos los rangos de edad los que mayor obesidad padecen son aquellas que tienen un menor nivel. Esto nos podía indicar que al tener un menor nivel, se vive en peores condiciones y las personas tienden a descuidarse más. Además se observa claramente que a mayor nivel de estudios hay un porcentaje de obesidad mucho menor.
+
+Respecto al sexo se puede observar que en términos generales hay una mayor obesidad en hombres que en mujeres. Hay ciertas excepciones, como las personas con un nivel de estudio bajo entre los 18 y los 24 años y más de 65 años, ya que en estos casos hay muchas más mujeres que hombres.
+Estos resultados nos podrían indicar que en general lás mujeres tienen un mayor cuidado con respecto a su condición física.
+
+
 
 
 - En segundo lugar se van a mostrar los resultados del estudio de desempleo.
