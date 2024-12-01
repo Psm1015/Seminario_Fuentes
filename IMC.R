@@ -232,24 +232,6 @@ Obesidad_azucares<-ggplot(data = Alim_IMC_filtrados1, aes(x = Porcentaje.persona
 
 Obesidad_azucares
 
-#Guardamos la imágen
-ggsave(
-  filename = "Obesidad_azucares.jpeg",
-  plot = Obesidad_azucares ,
-  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
-  path = "OUTPUT/Figures/IMC", # ruta relativa
-  scale = 0.5,
-  width = 40,
-  height = 20,
-  units = "cm",
-  dpi = 320
-)
-
-
-
-
-
-
 #INTENTO GRÁFICA DESEMPLEO Y IMC
 
 #View(Desempleo_data)
