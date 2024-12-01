@@ -19,7 +19,7 @@ Aunque existen influencias genéticas, conductuales, metabólicas y hormonales e
 
 ## **Objetivo**
 
-Durante este estudio vamos a realizar un estudio de como se ve afectada la obesidad en relación con el desempleo y la alimentación  respecto a la edad y muchos más factores.
+Durante este estudio vamos a analizar como se ve afectada la obesidad en relación con el desempleo y la alimentación respecto a la edad y muchos más factores.
 
 Los objetivos principales a analizar en este estudio son:
 
