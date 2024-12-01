@@ -3,21 +3,35 @@ library(tidyverse)
 library(pxR)
 
 
+
+
+#PRIMERO OBTENEMOS LOS DATOS EN FORMATO DE DATAFRAME
+
+#Leemos linea a linea el contenido del archivo.encoding es la codififcación dela rchivo original
 IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
 
+#Convertimos el archivo a UTF-8.
 IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
 
-archivo_utf8 <- tempfile(fileext = ".px")
-writeLines(IMC_utf8, archivo_utf8)
+#Crea un archivo temporal con extensión px.
+archivo_temp_IMC <- tempfile(fileext = ".px")
+
+#Para escribir el contenido de IMC_utf8 en el archivo temporal.
+writeLines(IMC_utf8, archivo_temp_IMC)
 
 # Lee el archivo temporal con read.px
-datos_IMC <- read.px(archivo_utf8)
+datos_IMC <- read.px(archivo_temp_IMC)
 
 #Este dataframe tiene mal los nombres.
 DF_mal <- as.data.frame(datos_IMC)
-DF_mal
+#DF_mal
 #view(DF_mal)
 
+
+
+
+
+#UNA VEZ TENEMOS EL DATAFRAME, LO MODFIFICAMOS PARA HACERLO APTO PARA EL USO
 
 #Cambiar de anios a años y de BÃ¡sico a básico
 DF <- DF_mal %>%
@@ -40,51 +54,32 @@ DF <- DF_mal %>%
   )
 #view(DF)
 
-
-#Eliminar las 20 primeras filas que salen mal
-datos_IMC_df <- DF[-(1:20), ]
-datos_IMC_df
-#view(datos_IMC_df)
-
-
-
-#Datos sin ambos sexos, sin los totales de edad y estudios y con los datos de obesidad
-datos_obesidad <- datos_IMC_df %>%
+#Datos sin ambos sexos, sin los totales de edad y estudios.
+datos_IMC_df <- DF %>%
   filter(
-    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+    Masa.corporal.adultos != "TOTAL",    
     Sexo != "Ambos sexos",                                  
     Edad != "TOTAL",                                        
     Nivel.de.estudios != "TOTAL"                            
   )
-#View(datos_obesidad)
+#view(datos_IMC_df)
 
-
-#DIFERENTES CÁLCULOS SIN IMPORTANCIA
-#La media del porcentaje de obesidad es la siguiente
-media_obesidad <- mean(datos_obesidad$Porcentaje.personas, na.rm = TRUE)
-print(media_obesidad)
-
-#La media de obesidad por hombres y mujeres es la siguiente
-datos_obesidad$Sexo <- droplevels(datos_obesidad$Sexo)#Al tener en los datos iniciales la columna
-#Sexo con los niveles ambos sexos, hombres y mujeres, tenemos que eliminar el nivel ambos sexos,
+#Al tener en los datos iniciales la columna Sexo con los niveles ambos sexos, 
+#hombres y mujeres, tenemos que eliminar el nivel ambos sexos,
 #y droplevels elimina los niveles que no se usan en el dataframe.
-media_por_sexo <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Sexo, mean, na.rm = TRUE)
-print(media_por_sexo)
+datos_IMC_df$Sexo <- droplevels(datos_IMC_df$Sexo)
 
+#Hacemos lo mismo con el resto de columnas en las que no se usan el nivel "TOTAL"
+datos_IMC_df$Nivel.de.estudios <- droplevels(datos_IMC_df$Nivel.de.estudios)
+datos_IMC_df$Edad <- droplevels(datos_IMC_df$Edad)
+datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adultos)
 
-#La media de obesidad por nivel de estudios
-datos_obesidad$Nivel.de.estudios <- droplevels(datos_obesidad$Nivel.de.estudios)
-#El droplevels para eliminar el nivel TOTAL
-media_por_estudios <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Nivel.de.estudios, mean, na.rm = TRUE)
-print(media_por_estudios)
-
-
-#La media de obesidad por edad
-datos_obesidad$Edad <- droplevels(datos_obesidad$Edad)
-#El droplevels para eliminar el nivel TOTAL
-media_por_edad <- tapply(datos_obesidad$Porcentaje.personas, datos_obesidad$Edad, mean, na.rm = TRUE)
-print(media_por_edad)
-
+#Datos específicos de obesidad
+datos_obesidad <- datos_IMC_df %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+  )
+#View(datos_obesidad)
 
 
 
@@ -95,36 +90,21 @@ print(media_por_edad)
 
 #CREACIÓN GRÁFICA POLAR QUE REPRESENTA EL PORCENTAJE QUE HAY DE PESOS
 
-datos_IMC_grafica3 <- datos_IMC_df %>%
-  filter(
-    Sexo != "Ambos sexos",                                  # Excluir ambos sexos
-    Edad != "TOTAL",                                        # Excluir edad total
-    Nivel.de.estudios != "TOTAL",                           # Excluir nivel de estudios total
-    Masa.corporal.adultos != "TOTAL"
-  )
-
-#View(datos_IMC_grafica2)
-
-#Eliminamos ahora los niveles que no utilizamos para que luego en la gráfica no aparezcan
-datos_IMC_grafica3$Sexo <- droplevels(datos_IMC_grafica3$Sexo)
-datos_IMC_grafica3$Edad <- droplevels(datos_IMC_grafica3$Edad)
-datos_IMC_grafica3$Nivel.de.estudios <- droplevels(datos_IMC_grafica3$Nivel.de.estudios)
-datos_IMC_grafica3$Masa.corporal.adultos <- droplevels(datos_IMC_grafica3$Masa.corporal.adultos)
-
-IMC_grafica3_sin_niveles <- datos_IMC_grafica3 %>%
+IMC_grafica1<- datos_IMC_df %>%
   group_by(Masa.corporal.adultos) %>%
   dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
 
-#View(IMC_grafica3_sin_niveles)
+#View(IMC_grafica1)
 
-Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) + 
+Porcentaje_pesos<-ggplot(data = IMC_grafica1) + 
   geom_bar(
     mapping = aes(x = Masa.corporal.adultos, y=Porcentaje.personas,fill = Masa.corporal.adultos),
     stat = "identity",  # Para que se usen los valores de y que ya están calculados, si no da error porque intenta buscar categorías de masa.corporal.adultos
     show.legend = TRUE,
-    width = 1
+    width = 1 #Sin esto no salen bien cuadrados los diferentes triángulos, ya 
+    #que se queda un espacio en blanco entre ellos, y al ponerlo salen pegados.
   ) + 
-  scale_fill_manual(
+  scale_fill_manual( #Sin ponerlo manual los colores no salían como queríamos.
     values = c(
       "Peso insuficiente (IMC<18,5 kg/m2)" = "red",
       "Normopeso (18,5 kg/m2 <=IMC<25 kg/m2)" = "green",
@@ -132,13 +112,13 @@ Porcentaje_pesos<-ggplot(data = IMC_grafica3_sin_niveles) +
       "Obesidad (IMC>=30 kg/m2)" = "blue"
     )
   ) +
-  theme(aspect.ratio = 1) +
   labs(
     title="Porcentaje de pesos",
     x = "Masa corporal de adultos", 
     fill = "Masa corporal de adultos") +
   coord_polar()+
-  theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda dentro del gráfico.
+  theme(axis.text.x = element_blank()) # Para que no se muestre la leyenda 
+  #dentro del gráfico, ya que no salen bien.
 
 Porcentaje_pesos
 
@@ -162,12 +142,8 @@ ggsave(
 
 
 
-
-
-
-
-
 #GRÁFICO QUE RELACIONA OBESIDAD, NIVEL DE ESTUDIOS, SEXO Y EDAD
+
 media_por_grupo <- datos_obesidad %>%
   group_by(Nivel.de.estudios, Sexo, Edad) %>%
   dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
@@ -177,8 +153,11 @@ str(media_por_grupo)
 #View(media_por_grupo5)
 
 Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = Sexo)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ Edad) +  # Dividir por grupos de edad
+  geom_bar(stat = "identity", position = "dodge") + #Con stat=identity hacemos 
+  #que coja los datos ya calculados y con position dodge conseguimos que las 
+  #columans de cada sexo salgan al lado y no una encima de otra
+  facet_wrap(~ Edad) +  #Para que en el gráfico salgan datos para cada nivel de
+  #la columna Edad
   labs(
     title = "Distribución por Nivel de Estudios, Edad y Sexo",
     x = "Nivel de estudios",
@@ -187,7 +166,10 @@ Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = medi
   scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon")) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
+    axis.text.x = element_text(angle = 45, , hjust = 1)  # Rotar etiquetas del 
+    #eje x para que se vean bien, ya que si no se superponen, y con hjust 
+    #hacemos que dichas etiquetas empiecen justo debaje del gráfico ya que sino
+    #salen dentro.
   )
 
 Relaciones_obesidad
@@ -209,18 +191,12 @@ ggsave(
 
 
 
-
-
-
-
-
-
-
 #GRÁFICA DE OBESIDAD Y PRODUCTOS AZUCARADOS
+
 Alimentacion_IMC <- left_join(
-  datos_Alimentacion,  # Primer DataFrame
+  datos_Alimentacion,  
   datos_IMC_df,
-  by = join_by(Edad, Sexo)# Segundo DataFrame  ,  # Tipo de join: "inner"  # Para diferenciar las columnas con el mismo nombre
+  by = join_by(Edad, Sexo)
 )
 #View(Alimentacion_IMC)
 
@@ -231,9 +207,6 @@ Alimentacion_IMC_sin_na<-Alimentacion_IMC%>%
 Alim_IMC_filtrados1<- Alimentacion_IMC_sin_na %>%
   drop_na() %>%
   filter(
-    Sexo != "Ambos sexos",                                  
-    Edad != "TOTAL",                                        
-    Nivel.de.estudios != "TOTAL",                           
     Frecuencia != "TOTAL",
     Frecuencia =="A diario",
     Alimentos == "Comida rápida" |
@@ -276,8 +249,8 @@ ggsave(
 
 
 
-
 #INTENTO GRÁFICA DESEMPLEO Y IMC
+
 #View(Desempleo_data)
 
 Desempleo_IMC <- left_join(
@@ -291,8 +264,6 @@ Desmepleo_IMC_filtrado<- Desempleo_IMC%>%
   filter(
     #Tiempo_de_búsqueda_de_empleo=="2 años o más",
     Masa.corporal.adultos=="Obesidad (IMC>=30 kg/m2)",
-    Masa.corporal.adultos!="TOTAL",
-    Nivel.de.estudios!="TOTAL"
     
   )
   #group_by(Tiempo_de_búsqueda_de_empleo,Edad)%>%
@@ -311,7 +282,6 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Porcentaje.personas, y = value)) +
   )
 
 
-
 ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value)) +
   geom_bar(stat = "identity", position = "dodge", aes(fill = factor(Sexo))) +
   facet_wrap(~ Masa.corporal.adultos) +  # Dividir por grupos de edad
@@ -322,7 +292,8 @@ ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y =
   ) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje x para que se vean bien
+    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotar etiquetas del eje
+    #x para que se vean bien
   )
   
 
