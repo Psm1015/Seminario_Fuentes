@@ -105,7 +105,7 @@ ggplot(Desempleo_data, aes(x = Periodo, y = value, fill = Edad)) +
 
 
 
-#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD_18_24
 Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
   labs(title = "Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
@@ -116,9 +116,8 @@ Desempleo_HM <- ggplot(Desempleo_data %>% filter(Edad == "De 18 a 24 años"), ae
 Desempleo_HM
 
 ggsave(
-  filename = "Desempleo_Hombres_Mujeres.jpeg",
+  filename = "Desempleo_Hombres_Mujeres_18_24.jpeg",
   plot = Desempleo_HM ,
-  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
   path = "OUTPUT/Figures/Desempleo", # ruta relativa
   scale = 0.5,
   width = 40,
@@ -127,6 +126,48 @@ ggsave(
   dpi = 320
 )
 
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD_25_64
+Desempleo_HM2 <- ggplot(Desempleo_data %>% filter(Edad == "De 25 a 64 años"), aes(x = Sexo, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
+  labs(title = "Comparación de Desempleo entre Hombres y Mujeres (25 a 64 años, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Desempleo_HM2
+
+ggsave(
+  filename = "Desempleo_Hombres_Mujeres_25_64.jpeg",
+  plot = Desempleo_HM2,
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
+
+
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD_65
+Desempleo_HM3 <- ggplot(Desempleo_data %>% filter(Edad == "65 o más"), aes(x = Sexo, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity",  aes(fill=factor(Sexo))) +
+  labs(title = "Comparación de Desempleo entre Hombres y Mujeres (65 o más, 2021)", x = "Sexo", y = "Cantidad de Desempleo") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Desempleo_HM3
+
+ggsave(
+  filename = "Desempleo_Hombres_Mujeres_65.jpeg",
+  plot = Desempleo_HM3,
+  path = "OUTPUT/Figures/Desempleo", # ruta relativa
+  scale = 0.5,
+  width = 40,
+  height = 20,
+  units = "cm",
+  dpi = 320
+)
 
 #RELACIÓN TIMEPO BÚSQUEDA DE EMPLEO CON IMC
 Desempleo_IMC <- inner_join( 
