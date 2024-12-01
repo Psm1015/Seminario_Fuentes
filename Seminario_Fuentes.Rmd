@@ -229,7 +229,7 @@ datatable(datos_IMC_df)
 ```
 
 
-#### **8.1.4** Eliminación de niveles
+#### **8.1.4 Eliminación de niveles**
 Eliminamos los niveles de las columnas que no vamos a utilizar para evitar posibles errores al crear las gráficas.
 
 ```{r , eval = TRUE, warning = FALSE}
@@ -915,4 +915,13 @@ ggsave(
 
 
 ## **12. Referencias**
+
+- datos.gob.es. (s. f.). Conjunto de datos - datos.gob.es. https://datos.gob.es/es/catalogo
+
+- README. (s. f.). https://cran.r-project.org/web/packages/pxR/readme/README.html
+
+- RPubs - Tablas en R Markdown. (s. f.). https://rpubs.com/Juve_Campos/tablasRMarkdown
+
+- README. (s. f.). https://cran.r-project.org/web/packages/pxR/readme/README.html
+
 
