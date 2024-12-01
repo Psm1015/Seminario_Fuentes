@@ -33,6 +33,10 @@ Aunque existen influencias genéticas, conductuales, metabólicas y hormonales e
 En este caso se realizará un estudio de como se ve afectada la obesidad en relación con el desempleo y la alimentación  respecto a la edad.
 
 ## **4. Objetivo general**
+Durante este estudio vamos a analizar como se ve afectada la obesidad en relación con el desempleo y la alimentación respecto a la edad y muchos más factores.
+
+Los objetivos principales a analizar en este estudio son:
+
 • Relación entre la obesidad, nivel de estudios, sexo y edad.
 
 • Relación entre desempleo y obesidad.
@@ -164,8 +168,19 @@ Alimentacion_datos<- read.px(archivo_Alimentacion)
 
 - Desempleo
 ```{r , eval = TRUE, warning = FALSE}
-archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
-archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
+Desempleo <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
+Desempleo_utf8 <- iconv(Desempleo, from = "ISO-8859-1", to = "UTF-8")
+```
+
+```{r , eval = TRUE, warning = FALSE}
+#Creación del archivo temporal .px
+archivo_desempleo <- tempfile(fileext = ".px")
+
+#Se escribe el contenido codificado en UTF-8 al archivo temporal
+writeLines(Desempleo_utf8, archivo_desempleo)
+
+# Lee el archivo temporal con read.px
+Desempleo_datos <- read.px(archivo_desempleo)
 ```
 
 ## **8. Análisis de datos**
@@ -789,7 +804,9 @@ A partir de este gráfico podemos concluir que en general el índice de masa cor
 
 ## **10. Conclusión**
 
-Una vez se han analizado todos los datos, llegamos a la conclusión de que la obseidad es una enfermedad muy compleja ya que es afectada por muchos factores. Entre estos destaca que la edad, el nivel de estudios y el género tienen una correlación directa, ya que en términos generales la mayor parte de personas que la padecen son de la tercera edad, tienen un nivel de estudios bajo y es ligeramente más frecuente en hombres.
+Una vez se han analizado todos los datos, llegamos a la conclusión de que la obesidad es una enfermedad muy compleja ya que es afectada por muchos factores. Entre estos destaca que la edad, el nivel de estudios y el género tienen una correlación directa, ya que en términos generales la mayor parte de personas que la padecen son de la tercera edad, tienen un nivel de estudios bajo y es ligeramente más frecuente en hombres.
+
+De la misma forma, podemos concluir que el desempleo es uno de los factores que afecta en gran parte a la obesidad, viendo como aumenta considerablemente a medida que se alarga el tiempo de búsqueda de empleo tanto en hombres como en mujeres.
 
 
 

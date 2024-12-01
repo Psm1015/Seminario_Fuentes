@@ -4,22 +4,22 @@ library(pxR)
 
 
 #Lectura del archivo línea por línea
-archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
+Desempleo <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
 
 #Modifica la codificación original del texto a la codificación UTF-8
-archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
+Desempleo_utf8 <- iconv(Desempleo, from = "ISO-8859-1", to = "UTF-8")
 
 #Creación del archivo temporal .px
-archivo_utf8 <- tempfile(fileext = ".px")
+archivo_desempleo <- tempfile(fileext = ".px")
 
 #Se escribe el contenido codificado en UTF-8 al archivo temporal
-writeLines(archivo_texto_utf8, archivo_utf8)
+writeLines(Desempleo_utf8, archivo_desempleo)
 
 # Lee el archivo temporal con read.px
-datos <- read.px(archivo_utf8)
+Desempleo_datos <- read.px(archivo_desempleo)
 
 
-Desempleo_frame <- as.data.frame(datos)
+Desempleo_frame <- as.data.frame(Desempleo_datos)
 Desempleo_frame
 #view(Desempleo_frame)
 
