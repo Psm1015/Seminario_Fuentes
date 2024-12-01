@@ -1762,7 +1762,93 @@ Desempleo_data &lt;-  Desempleo_no_NA %&gt;%
 2021</strong></h4>
 <p>Mostramos un gráfico en el que se compara el desempleo entre hombres
 y mujeres de un grupo de edad de 18 a 24 años durante el 2021.</p>
-<pre class="r"><code>#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
+<pre class="r"><code>library(dplyr)
+library(tidyverse)
+library(pxR)
+
+
+#Lectura del archivo línea por línea
+archivo_texto &lt;- readLines(&quot;INPUT/DATA/Desempleo.px&quot;, encoding = &quot;ISO-8859-1&quot;)
+
+#Modifica la codificación original del texto a la codificación UTF-8
+archivo_texto_utf8 &lt;- iconv(archivo_texto, from = &quot;ISO-8859-1&quot;, to = &quot;UTF-8&quot;)
+
+#Creación del archivo temporal .px
+archivo_utf8 &lt;- tempfile(fileext = &quot;.px&quot;)
+
+#Se escribe el contenido codificado en UTF-8 al archivo temporal
+writeLines(archivo_texto_utf8, archivo_utf8)
+
+# Lee el archivo temporal con read.px
+datos &lt;- read.px(archivo_utf8)
+
+
+Desempleo_frame &lt;- as.data.frame(datos)
+Desempleo_frame
+#view(Desempleo_frame)
+
+
+#Agrupación de los rangos de edades y correción de caraceteres extraños
+Desempleo_agrup &lt;- Desempleo_frame %&gt;%
+  transmute(
+    Edad = case_when(
+      Edad == &quot;De 16 a 19 aÃ±os&quot; ~ &quot;De 18 a 24 años&quot;,
+      Edad == &quot;De 20 a 24 aÃ±os&quot; ~ &quot;De 18 a 24 años&quot;,
+      Edad == &quot;De 25 a 29 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 30 a 34 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 35 a 39 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 40 a 44 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 45 a 49 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 50 a 54 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 55 a 59 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 60 a 64 aÃ±os&quot; ~ &quot;De 25 a 64 años&quot;,
+      Edad == &quot;De 65 a 69 aÃ±os&quot; ~ &quot;65 o más&quot;,
+      Edad == &quot;70 y mÃ¡s aÃ±os&quot; ~ &quot;65 o más&quot;,
+    ),
+    Tiempo.de.bÃºsqueda.de.empleo = case_when(
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;2 aÃ±os o mÃ¡s&quot; ~ &quot;2 años o más&quot;,
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;Ya ha encontrado empleo&quot; ~ &quot;Ya ha encontrado empleo&quot;,
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;De 1 mes a menos de 3 meses&quot; ~ &quot;De 1 mes a menos de 3 meses&quot;,
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;De 3 meses a menos de 6 meses&quot; ~ &quot;De 3 meses a menos de 6 meses&quot;,
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;De 6 meses a menos de 1 aÃ±o&quot; ~ &quot;De 6 meses a menos de 1 año&quot;,
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;De 1 aÃ±o a menos de 2 aÃ±os&quot; ~ &quot;De 1 año a menos de 2 años&quot;,
+      Tiempo.de.bÃºsqueda.de.empleo == &quot;Total&quot; ~ &quot;Total&quot;,
+      
+    ),
+    Periodo = Periodo,
+    Tiempo.de.bÃºsqueda.de.empleo=Tiempo.de.bÃºsqueda.de.empleo,
+    Edad = Edad,
+    Sexo = Sexo,
+    value = value, 
+  )%&gt;%
+  #Cambio del nombre de la columna tiempo de búsqueda de empleo
+  mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%&gt;%
+  select(-Tiempo.de.bÃºsqueda.de.empleo)
+#view(Desempleo_agrup)
+
+
+#Eliminar filas es la que salia el valor NA
+Desempleo_no_NA &lt;- Desempleo_agrup%&gt;%
+  drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
+Desempleo_no_NA
+#view(Desempleo_no_NA)
+
+
+
+#Elimino los valores de ambos sexos y total, y selecciono solo los datos del 2021
+Desempleo_data &lt;-  Desempleo_no_NA %&gt;%
+  filter(
+    Sexo != &quot;Ambos sexos&quot;,                                  
+    Tiempo_de_búsqueda_de_empleo != &quot;Total&quot;,
+    Periodo == &quot;2021&quot;                             
+  )
+#view(Desempleo_data)
+
+
+#GRÁFICAS
+library(ggplot2)
+
+#GRÁFICA PARA COMPARAR EL DESEMPLEO ENTRE HOMBRES Y MUJERES EN 2021 POR GRUPO_EDAD
 Desempleo_HM &lt;- ggplot(Desempleo_data %&gt;% filter(Edad == &quot;De 18 a 24 años&quot;), aes(x = Sexo, y = value, fill = Sexo)) +
   geom_bar(stat = &quot;identity&quot;,  aes(fill=factor(Sexo))) +
   labs(title = &quot;Comparación de Desempleo entre Hombres y Mujeres (18 a 24 años, 2021)&quot;, x = &quot;Sexo&quot;, y = &quot;Cantidad de Desempleo&quot;) +
@@ -1770,8 +1856,7 @@ Desempleo_HM &lt;- ggplot(Desempleo_data %&gt;% filter(Edad == &quot;De 18 a 24 
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
-Desempleo_HM
-  )</code></pre>
+Desempleo_HM</code></pre>
 </div>
 <div id="relación-tiempo-de-búsqueda-de-empleo-con-imc" class="section level4">
 <h4><strong>8.2.5 Relación tiempo de búsqueda de empleo con
