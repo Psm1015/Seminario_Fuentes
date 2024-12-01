@@ -521,6 +521,7 @@ DF <- DF_mal %>%
     Porcentaje.personas = value
   )
 datos_IMC_df <- DF[-(1:20), ]
+
 datos_IMC_grafica3 <- datos_IMC_df %>%
   filter(
     Sexo != "Ambos sexos",                                  
@@ -576,6 +577,48 @@ A pesar de esto, destaca que hay un porcentaje muy elevado de personas que tiene
 Seguido a esto, hemos realizado una gráfica que muestre la correlación que existe entre la obesidad, los niveles de estudio, la edad y el sexo.
 
 ```{r , echo = FALSE}
+library(dplyr)
+library(tidyverse)
+library(pxR)
+IMC <- readLines("INPUT/DATA/Indice-masa-corporal.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
+
+IMC_utf8 <- iconv(IMC, from = "ISO-8859-1", to = "UTF-8")
+
+archivo_utf8 <- tempfile(fileext = ".px")
+writeLines(IMC_utf8, archivo_utf8)
+
+# Lee el archivo temporal con read.px
+datos_IMC <- read.px(archivo_utf8)
+DF_mal <- as.data.frame(datos_IMC)
+
+DF <- DF_mal %>%
+  transmute(
+    Masa.corporal.adultos = Masa.corporal.adultos,
+    Nivel.de.estudios = factor(case_when(
+      Nivel.de.estudios == "TOTAL" ~ "TOTAL",
+      Nivel.de.estudios == "BÃ¡sico e inferior" ~ "Básico e inferior",
+      Nivel.de.estudios == "Intermedio" ~ "Intermedio",
+      Nivel.de.estudios == "Superior" ~ "Superior",
+    )),
+    Edad = factor(case_when(
+      Edad == "TOTAL" ~ "TOTAL",
+      Edad == "De 18 a 24 aÃ±os" ~ "De 18 a 24 años",
+      Edad == "De 25 a 64 aÃ±os" ~ "De 25 a 64 años",
+      Edad == "De 65 y mÃ¡s aÃ±os" ~ "De 65 y más años",
+    )),
+    Sexo = Sexo,
+    Porcentaje.personas = value
+  )
+datos_IMC_df <- DF[-(1:20), ]
+
+datos_obesidad <- datos_IMC_df %>%
+  filter(
+    Masa.corporal.adultos == "Obesidad (IMC>=30 kg/m2)",    
+    Sexo != "Ambos sexos",                                  
+    Edad != "TOTAL",                                        
+    Nivel.de.estudios != "TOTAL"                            
+  )
+
 media_por_grupo <- datos_obesidad %>%
   group_by(Nivel.de.estudios, Sexo, Edad) %>%
   dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
