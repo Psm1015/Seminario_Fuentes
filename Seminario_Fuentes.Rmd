@@ -576,7 +576,7 @@ A pesar de esto, destaca que hay un porcentaje muy elevado de personas que tiene
 
 Seguido a esto, hemos realizado una gráfica que muestre la correlación que existe entre la obesidad, los niveles de estudio, la edad y el sexo.
 
-```{r , echo = FALSE}
+```{r , echo = FALSE, warning=FALSE, message=FALSE}
 library(dplyr)
 library(tidyverse)
 library(pxR)
