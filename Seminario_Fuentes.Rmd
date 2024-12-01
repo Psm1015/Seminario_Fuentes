@@ -53,39 +53,45 @@ En este caso se realizará un estudio de como se ve afectada la obesidad en rela
 ## **5. Paquetes utilizados**
 Explícación de las distintas librerias utilizadas durante el desarrollo del proyecto:
 
-1. library(dplyr)
+**1. library(dplyr)**
+
 Dplyr nos permite seleccionar, modificar, filtrar y agrupar los datos con los que hemos trabajado de forma sencilla.
 
 ```{r , eval = TRUE}
 library(dplyr)
 ```
 
-2. library(tidyverse)
+**2. library(tidyverse)**
+
 Utilizamos tidyverse para importar, transformar y manipular los datos con los que trabajamos.
 
 ```{r , eval = TRUE}
 library(tidyverse)
 ```
 
-3. library(pxR)
+**3. library(pxR)**
+
 Nos permite leer y manipular acrhivos que se encuentran en formato pc axis.
 
 ```{r , eval = TRUE}
 library(pxR)
 ```
 
-4. library(ggplot2)
+**4. library(DT)**
+
+Utilizamos esta librería para mostrar tablas de datos.
+```{r , eval = TRUE}
+library(DT)
+```
+
+**5. library(ggplot2)**
+
 Utilizamos esta librería para representar mediante gráficos los datos.
 
 ```{r , eval = TRUE}
 library(ggplot2)
 ```
 
-5. library(DT)
-Utilizamos esta librería para mostrar tablas de datos.
-```{r , eval = TRUE}
-library(DT)
-```
 
 ## **6. Manipulación de datos**
 Los archivox .px son un formato estándar para almacenar datos estadísticos en forma de tablas multidimensionales.
@@ -140,8 +146,16 @@ Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1")
 Alimentacion_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
 ```
 
+```{r , eval = TRUE, warning = FALSE}
+archivo_Alimentacion <- tempfile(fileext = ".px")
+writeLines(Alimentacion_utf8, archivo_Alimentacion)
+
+# Lee el archivo temporal con read.px
+Alimentacion_datos<- read.px(archivo_Alimentacion)
+```
+
 - Desempleo
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 archivo_texto <- readLines("INPUT/DATA/Desempleo.px", encoding = "ISO-8859-1")
 archivo_texto_utf8 <- iconv(archivo_texto, from = "ISO-8859-1", to = "UTF-8")
 ```
@@ -158,70 +172,211 @@ Debido a como estaban estructurados los datos solo hemos tenido que establecer l
 
 ### **8.1 Alimentación**
 
-Comenzamos creando un dataframe para ver los datos de nuestro archivo de desempleo
+Comenzamos creando un dataframe para ver los datos de nuestro archivo de alimentación
 
-```{r , eval = FALSE, warning = FALSE}
-Desempleo_frame <- as.data.frame(datos)
-Desempleo_frame
+```{r , eval = TRUE, warning = FALSE}
+DF <- as.data.frame(Alimentacion_datos)
+datatable(DF)
 ```
 
-Acontinuación, realizamos un transmute para la agrupación de los diferentes rangos de edades y para corregir carácteres extraños como la ñ o las tíldes.
-Después del transmtue, hacemos un mutate para crear una nueva columna con el nombre de Tiempo_de_búsqueda_de_empleo y eliminamos la anterior columna Tiempo.de.bÃºsqueda.de.empleo con un select.
+#### **8.1.1 Rangos de edades y corrección de carácteres extraños**
+A continuación, se filtran diversos rangos de edad para la adaptación de los datos de este archivo con los demás set de datos.
+```{r , eval = TRUE, warning = FALSE}
+# Filter para quitar diversos rangos de edad
+DF1 <- DF %>%
+  filter(!(Edad %in% c("De 25 a 34 aÃ±os", "De 45 a 54 aÃ±os", "De 55 a 64 aÃ±os", "De 75 y mÃ¡s aÃ±os")))
+datatable(DF1)
+```
 
-```{r , eval = FALSE, warning = FALSE}
-#Agrupación de los rangos de edades y correción de caraceteres extraños
-Desempleo_agrup <- Desempleo_frame %>%
+Además se cambian los nombres de las de la columna __Edad__, __Frecuencia__ y __Alimentos__(caracteres extraños). Para ello utilizamos un __transmute__.
+```{r , eval = TRUE, warning = FALSE}
+# Cambios en las filas de la columna Edad, Frecuencia y Alimentos.
+datos_df1 <- DF1 %>%
   transmute(
     Edad = case_when(
-      Edad == "De 16 a 19 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 20 a 24 aÃ±os" ~ "De 18 a 24 años",
-      Edad == "De 25 a 29 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 30 a 34 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 35 a 39 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 40 a 44 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 45 a 49 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 50 a 54 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 55 a 59 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 60 a 64 aÃ±os" ~ "De 25 a 64 años",
-      Edad == "De 65 a 69 aÃ±os" ~ "65 o más",
-      Edad == "70 y mÃ¡s aÃ±os" ~ "65 o más",
+      Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 años",
+      Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 años",
+      Edad == "De 65 a 74 aÃ±os" ~ "De 65 y más años",
     ),
-    Tiempo.de.bÃºsqueda.de.empleo = case_when(
-      Tiempo.de.bÃºsqueda.de.empleo == "2 aÃ±os o mÃ¡s" ~ "2 años o más",
-      Tiempo.de.bÃºsqueda.de.empleo == "Ya ha encontrado empleo" ~ "Ya ha encontrado empleo",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 mes a menos de 3 meses" ~ "De 1 mes a menos de 3 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 3 meses a menos de 6 meses" ~ "De 3 meses a menos de 6 meses",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 6 meses a menos de 1 aÃ±o" ~ "De 6 meses a menos de 1 año",
-      Tiempo.de.bÃºsqueda.de.empleo == "De 1 aÃ±o a menos de 2 aÃ±os" ~ "De 1 año a menos de 2 años",
-      Tiempo.de.bÃºsqueda.de.empleo == "Total" ~ "Total",
-      
+    Frecuencia = case_when(
+      Frecuencia == "3 o mÃ¡s veces a la semana pero no a diario" ~ "3 o más veces a la semana pero no a diario",
+      Frecuencia == "Menos de 1 vez a la semana" ~ "Menos de 1 vez a la semana",
+      Frecuencia == "1 o 2 veces a la semana" ~ "1 o 2 veces a la semana",
+      Frecuencia == "A diario" ~ "A diario",
+      Frecuencia == "TOTAL" ~ "TOTAL",
+      Frecuencia == "Nunca" ~ "Nunca"
     ),
-    Periodo = Periodo,
-    Tiempo.de.bÃºsqueda.de.empleo=Tiempo.de.bÃºsqueda.de.empleo,
-    Edad = Edad,
+    Alimentos = case_when(
+      Alimentos == "Fruta fresca (excluye zumos)" ~ "Fruta fresca (excluye zumos)",
+      Alimentos == "Carne" ~ "Carne",
+      Alimentos == "Huevos" ~ "Huevos",
+      Alimentos == "Pescado" ~ "Pescado",
+      Alimentos == "Pasta,arroz,patatas" ~ "Pasta,arroz,patatas",
+      Alimentos == "Pan,cereales" ~ "Pan,cereales",
+      Alimentos == "Verduras, ensaladas y hortalizas" ~ "Verduras, ensaladas y hortalizas",
+      Alimentos == "Legumbres" ~ "Legumbres",
+      Alimentos == "Embutidos y fiambres" ~ "Embutidos y fiambres",
+      Alimentos == "Productos lÃ¡cteos" ~ "Productos lácteos",
+      Alimentos == "Dulces" ~ "Dulces",
+      Alimentos == "Refrescos con azÃºcar" ~ "Refrescos con azúcar",
+      Alimentos == "Comida rÃ¡pida" ~ "Comida rápida",
+      Alimentos == "Aperitivos o comidas saladas de picar" ~ "Aperitivos o comidas saladas de picar",
+      Alimentos == "Zumo natural de frutas o verduras" ~ "Zumo natural de frutas o verduras"
+    ),
     Sexo = Sexo,
-    value = value, 
-  )%>%
-  #Cambio del nombre de la columna tiempo de búsqueda de empleo
-  mutate(Desempleo_agrup,  Tiempo_de_búsqueda_de_empleo= Tiempo.de.bÃºsqueda.de.empleo)%>%
-  select(-Tiempo.de.bÃºsqueda.de.empleo)
+    value = value
+  )
 ```
 
-
-Ahora se van a eliminar todos los valores NA que aparecian en las diferentes columnas.
-```{r , eval = FALSE, warning = FALSE}
-#Eliminar filas es la que salia el valor NA
-Desempleo_no_NA <- Desempleo_agrup%>%
-  drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
-Desempleo_no_NA
+#### **8.1.2 Eliminación de los valores NA**
+Que aparezcan valores nulos en la tabla no es una buena condicón para poder trabajar con estos datos. Por ello se van a eliminar estos valores con la función **drop_na()** que elimina todos las líneas en la que alguna de sus columnas tenga el valor NA.
+```{r , eval = TRUE, warning = FALSE}
+# ELIMINAR TODAS LAS FILAS QUE TENGAN NA
+df_sin_NA <- datos_df1 %>% 
+  drop_na()
+datatable(df_sin_NA)
 ```
 
+#### **8.1.3 Eliminación de valores inecesarios**
+De la tabla anterior, los valores que corresponden a Total de la columna __Frecuencia__ no nos aportan ningún tipo de información adicional, por ello se eliminan utilizando la función **filter()**
+```{r , eval = TRUE, warning = FALSE}
+# ELIMINAR FRECUENCIA TOTAL
+datos_Alimentacion <-  df_sin_NA%>%
+  filter(
+    Frecuencia != "TOTAL",                                
+  )
+```
+
+#### **8.1.4 Relación del tipo de alimentación a diario por rangos de edad**
+Como existe muchos tipos de comida, se seleccionan los más importante. Para ello, se utiliza la función **filter**.
+```{r , eval = TRUE, warning = FALSE}
+Alimentacion_ADiario <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "A diario",
+    (!(Alimentos %in% c("Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
+  )
+datatable(Alimentacion_ADiario)
+```
+
+Este filter elimina de __datos_Alimentacion__ los siguientes alimentos:
+
+• Aperitivos o comidas saladas de picar.
+
+• Zumo natural de frutas o verduras.
+
+Como ya tenemos eliminados algunos alimentos se procede a crear una gráfica para ver cómo afecta la edad al tipo de alimenación
+```{r, echo = TRUE}
+Grafica_AlimentosXDia <- ggplot(data = Alimentacion_ADiario, aes(x = Edad, y = value)) +
+  geom_bar(aes(fill = Alimentos), position = "dodge", stat = "identity")
+Grafica_AlimentosXDia
+```
+
+En esta gráfica se puede observar que en el rango de edad entre 18 y 25 años el alimento que más se consume proviene de productos lácteos, como puede ser el queso o la propia leche, seguido del pan y cereales. Por otro lado el producto que menos se consume en este rango de edad es el pescado.
+
+En segundo lugar, observando el rango entre 25 y 64 años se observa que las preferencias son las mismas que en el anterior rango de edad pero hay un incremento en el consumo de verduras, hortalizas y ensaladas, y de fruta fresca.
+
+Por último, indicar que a partir de los 65 años sigue aumentando el consumo de fruta fresca.
+
+Un dato importante es que a el consumo de refrescos con azúcar va disminuyendo con la edad.
+
+#### **8.1.5 Relación de la alimentación de pescado y carne 3 o más veces a la semana pero no a diario por rango de edad y sexo**
+En este apartado vamos a analizar a la vez la relación del pescado y de la carne por la frecuencia indicada, por edad y sexo.
+
+Para poder observar bien la gráfica hay que coger solo la frecuencia indicada y el alimento indicado para esto es necesario utilizar un filter
+```{r, eval = TRUE, warning = FALSE}
+Alimentacion_pescado <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "3 o más veces a la semana pero no a diario",
+    Alimentos == "Pescado"
+  )
+datatable(Alimentacion_pescado)
+```
+```{r, eval = TRUE, warning = FALSE}
+Alimentacion_carne <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "3 o más veces a la semana pero no a diario",
+    Alimentos == "Carne"
+  )
+datatable(Alimentacion_carne)
+```
+
+Tras estos dos **filter()** ahora se pueden hacer las gráficas correspondientes:
+
+1. Gráfica Pescado
+```{r, echo = TRUE}
+Grafica_Pescado <- ggplot(Alimentacion_pescado, aes(x = Edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Pescado 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Grafica_Pescado
+```
+
+Es importante observar que la más mayor de este estudio es la que consume más cantidad de pescado y esto se nota claramente ya que en el rango de 18 a 24 años la gente que consume pescado 3 o más veces a la semana no supera el 40%, sin embargo, en el rango de 64 o más años la gente que hace el mismo tipo de consumo supera notablemente el 40%.
+
+2. Gráfica Carne
+```{r, echo = TRUE}
+Grafica_Carne <- ggplot(Alimentacion_carne, aes(x = Edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de Carne 3 o más Veces a la Semana, No Diario por Sexo y Rango de Edad",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Grafica_Carne
+```
+
+Es importante observar que la más joven de este estudio es la que consume más cantidad de carne y esto se nota claramente ya que en el rango de 18 a 24 años la gente que consume carne 3 o más veces a la semana supera el 70%, sin embargo, en el rango de 64 o más años la gente que hace el mismo tipo de consumo representa el 60%.
+
+Como conclusión, si se hace la una comparación de los resultados de ambas gráficas se puede ver que el consumo de carne 3 o más veces a la semana es mayor que el consumo de pescado.
+
+#### **8.1.6 Relación de la alimentación de comida rápida una o dos veces por semana, por sexo y rangos de edad**
+En este apartado vamos a analizar  la relación de comida rápida por la frecuencia indicada, por edad y sexo.
+
+Para poder observar bien la gráfica hay que coger solo la frecuencia indicada y el alimento indicado para esto es necesario utilizar un filter, de la misma forma que antes.
+```{r, eval = TRUE, warning = FALSE}
+Alimentacion_rapida <- datos_Alimentacion %>%
+  filter(
+    Frecuencia == "1 o 2 veces a la semana",
+  Alimentos == "Comida rápida"
+  )
+datatable(Alimentacion_rapida)
+```
+
+A partir de esta tabla, se muestra una gráfica donde se ve cómo varía con la edad el porcentaje de personas que consumen comida rápida.
+```{r, echo = TRUE}
+Grafica_CRapida <- ggplot(Alimentacion_rapida, aes(x = Edad, y = value, fill = Sexo)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  labs(
+    title = "Porcentaje de Consumo de comida rapida 1 o 2 veces a la Semana",
+    x = "Rango de Edad",
+    y = "Porcentaje de Personas"
+  ) +
+  scale_fill_manual(values = c("Hombres" = "steelblue", "Mujeres" = "salmon", "Ambos sexos" = "yellow")) +  
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+Grafica_CRapida
+```
 
 ### **8.2 Desempleo**
 
 Comenzamos creando un dataframe para ver los datos de nuestro archivo de desempleo.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 Desempleo_frame <- as.data.frame(datos)
 Desempleo_frame
 ```
@@ -230,7 +385,7 @@ Desempleo_frame
 A continuación, realizamos un transmute para la agrupación de los diferentes rangos de edades y para corregir carácteres extraños como la ñ o las tíldes.
 Después del transmtue, hacemos un mutate para crear una nueva columna con el nombre de Tiempo_de_búsqueda_de_empleo y eliminamos la anterior columna Tiempo.de.bÃºsqueda.de.empleo con un select.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 #Agrupación de los rangos de edades y correción de caraceteres extraños
 Desempleo_agrup <- Desempleo_frame %>%
   transmute(
@@ -273,7 +428,7 @@ Desempleo_agrup <- Desempleo_frame %>%
 #### **8.2.2 Eliminación de los valores NA**
 Ahora se van a eliminar todos los valores NA que aparecian en las diferentes columnas.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 #Eliminar filas es la que salia el valor NA
 Desempleo_no_NA <- Desempleo_agrup%>%
   drop_na(value, Tiempo_de_búsqueda_de_empleo, Edad, Periodo, Sexo)
@@ -283,7 +438,7 @@ Desempleo_no_NA
 #### **8.2.3 Eliminación de valores inecesarios y selección de los datos del 2021**
 Por último vamos a eliminar los valores de ambos sexos y total que aparecian en las columnas de Sexo y de Tiempo_de_búsqueda_de_empleo y seleccionamos solo los datos del 2021 que son con los que vamos a trabajar.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 #Elimino los valores de ambos sexos y total, y selecciono solo los datos del 2021
 Desempleo_data <-  Desempleo_no_NA %>%
   filter(
@@ -297,7 +452,7 @@ Desempleo_data <-  Desempleo_no_NA %>%
 #### **8.2.4 Relación tiempo de búsqueda de empleo con IMC**
 Realizamos un inner_join para relacionar los datos de las tablas de Desempleo_data con los datos de datos_IMC_df.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 #RELACIÓN TIMEPO BÚSQUEDA DE EMPLEO CON IMC
 Desempleo_IMC <- inner_join( 
   Desempleo_data, 
@@ -308,7 +463,7 @@ Desempleo_IMC <- inner_join(
 
 Luego creamos un objeto llamado Desempleo_IMC_filtrado donde vamos nos vamos a quedar solo con los datos de obesidad y vamos a eliminar los valores "TOTAL".
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 #Nos quedamos solo con la obesidad y eliminamos los valores total
 Desempleo_IMC_filtrado<- Desempleo_IMC%>%
   drop_na()%>%
@@ -322,7 +477,7 @@ Desempleo_IMC_filtrado<- Desempleo_IMC%>%
 
 Y finalmente mostramos el gráfico resultante de esa relación.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 #GRÁFICO QUE MUESTRA EL IMC DE HOMBRES Y MUJERES SEGÚN EL TIEMPO DE DESEMPLEO
 Desempleo_obesidad <- ggplot(data = Desmepleo_IMC_filtrado, aes(x = Tiempo_de_búsqueda_de_empleo, y = value, fill=Sexo)) +
   geom_bar(stat = "identity", position = "dodge", aes(fill=factor(Sexo))) +
@@ -346,7 +501,7 @@ Una vez tenemos los datos cargados, hemos tenido que realizar una serie de modif
 
 Una vez tenemos cargados los archivos, necesitamos leerlos.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 
 #Crea un archivo temporal con extensión px.
 archivo_temp_IMC <- tempfile(fileext = ".px")
@@ -362,7 +517,7 @@ datos_IMC <- read.px(archivo_temp_IMC)
 #### **8.3.2** Conversión a DATAFRAME y eliminación de caracteres incorrectos
 Almacenamos los datos en un dataframe y modificamos los valores de las columnas que tenían caracteres especiales.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 DF_mal <- as.data.frame(datos_IMC)
 
 DF <- DF_mal %>%
@@ -388,7 +543,7 @@ DF <- DF_mal %>%
 #### **8.3.3** Eliminación de datos que no necesitamos
 Eliminamos todos los datos del dataframe que no nos vana  ser útiles.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 datos_IMC_df <- DF %>%
   filter(
     Masa.corporal.adultos != "TOTAL",    
@@ -402,7 +557,7 @@ datos_IMC_df <- DF %>%
 #### **8.3.4** Eliminación de niveles
 Eliminamos los niveles de las columnas que no vamos a utilizar para evitar posibles errores al crear las gráficas.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 datos_IMC_df$Sexo <- droplevels(datos_IMC_df$Sexo)
 datos_IMC_df$Nivel.de.estudios <- droplevels(datos_IMC_df$Nivel.de.estudios)
 datos_IMC_df$Edad <- droplevels(datos_IMC_df$Edad)
@@ -414,7 +569,7 @@ datos_IMC_df$Masa.corporal.adultos <- droplevels(datos_IMC_df$Masa.corporal.adul
 
 Creamos unos datos específicos de obesidad para facilitar la creación de determinadas gráficas.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 
 datos_obesidad <- datos_IMC_df %>%
   filter(
@@ -425,7 +580,7 @@ datos_obesidad <- datos_IMC_df %>%
 #### **8.3.6** Datos necesarios para la gráfica de diferentes pesos.
 
 Datos que van a ser necesarios para crear la gráfica que compara los diferentes pesos.
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 IMC_grafica1<- datos_IMC_df %>%
   group_by(Masa.corporal.adultos) %>%
   dplyr::summarise(Porcentaje.personas = mean(Porcentaje.personas, na.rm = TRUE))
@@ -433,7 +588,7 @@ IMC_grafica1<- datos_IMC_df %>%
 
 #### **8.3.7** Datos necesarios para la gráfica de obesidad.
 
-```{r , eval = FALSE, warning = FALSE}
+```{r , eval = TRUE, warning = FALSE}
 media_por_grupo <- datos_obesidad %>%
   group_by(Nivel.de.estudios, Sexo, Edad) %>%
   dplyr::summarise(media_porcentaje = mean(Porcentaje.personas, na.rm = TRUE))
