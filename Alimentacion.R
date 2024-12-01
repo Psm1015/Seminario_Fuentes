@@ -8,14 +8,14 @@ Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1")
 Alimentacion_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
 
 str(Alimentacion)
-Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
-archivo_texto_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
+#Alimentacion <- readLines("INPUT/DATA/Alimentacion.px", encoding = "ISO-8859-1") #da un warning, ignorar por el momento
+#archivo_texto_utf8 <- iconv(Alimentacion, from = "ISO-8859-1", to = "UTF-8")
 
-archivo_utf8 <- tempfile(fileext = ".px")
-writeLines(archivo_texto_utf8, archivo_utf8)
+archivo_Alimentacion <- tempfile(fileext = ".px")
+writeLines(Alimentacion_utf8, archivo_Alimentacion)
 
 # Lee el archivo temporal con read.px
-datos <- read.px(archivo_utf8)
+Alimentacion_datos<- read.px(archivo_Alimentacion)
 
 #str(datos$Edad)
 
@@ -28,7 +28,7 @@ datos <- read.px(archivo_utf8)
 #Rango de edades: 18 a 24, 25 a 64, 65 o más
 
 
-DF <- as.data.frame(datos)
+DF <- as.data.frame(Alimentacion_datos)
 DF
 #view(DF)
 
@@ -51,17 +51,14 @@ DF1
 #  ))
 #datos_df
 #view(datos_df)
+
 # Cambiar los rangos de edad en la columna Edad.
 datos_df1 <- DF1 %>%
   transmute(
     Edad = case_when(
       Edad == "De 15 a 24 aÃ±os" ~ "De 18 a 24 años",
-      #    Edad == "De 25 a 34 aÃ±os" ~ "De 25 a 64 aÃ±os",
       Edad == "De 35 a 44 aÃ±os" ~ "De 25 a 64 años",
-      #    Edad == "De 45 a 54 aÃ±os" ~ "De 25 a 64 aÃ±os",
-      #   Edad == "De 55 a 64 aÃ±os" ~ "De 25 a 64 aÃ±os",
       Edad == "De 65 a 74 aÃ±os" ~ "De 65 y más años",
-      #    Edad == "De 75 y mÃ¡s aÃ±os" ~ "De 65 y mÃ¡s aÃ±os"
     ),
     Frecuencia = case_when(
       Frecuencia == "3 o mÃ¡s veces a la semana pero no a diario" ~ "3 o más veces a la semana pero no a diario",
@@ -95,20 +92,15 @@ datos_df1 <- DF1 %>%
 
 # ELIMINAR TODAS LAS FILAS QUE TENGAN NA EN LA COLUMNA Edad
 df_sin_NA <- datos_df1 %>% 
-  filter(!is.na(Edad))
+  drop_na()
 df_sin_NA
 #view(df_sin_NA)
 
 
 datos_Alimentacion <-  df_sin_NA%>%
   filter(
-    Frecuencia != "TOTAL",                                  # Excluir frecuencia total
+    Frecuencia != "TOTAL",                                  
   )
-#view(datos_Alimentacion)
-
-#datos_Alimentacion <- datos_Alimentacion_duplicaciones %>%
-#  group_by(Frecuencia, Alimentos, Sexo, Grupo_edad) %>%
-#  summarise(value = mean(value, na.rm = TRUE), .groups = 'drop')
 #view(datos_Alimentacion)
 
 # GRÁFICA QUE RELACIONA QUE COME CADA RANGO DE EDAD A DIARIO.
@@ -116,7 +108,7 @@ library(ggplot2)
 Alimentacion_ADiario <- datos_Alimentacion %>%
   filter(
     Frecuencia == "A diario",
-    (!(Alimentos %in% c("Productos lÃ¡cteos", "Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
+    (!(Alimentos %in% c("Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
  
   )
 Alimentacion_ADiario <- datos_Alimentacion %>%
@@ -140,7 +132,7 @@ ggplot(Alimentacion_ADiario, aes(x = Edad, y = value, fill = Alimentos)) +
 Alimentacion_ADiario <- datos_Alimentacion %>%
   filter(
     Frecuencia == "A diario",
-    (!(Alimentos %in% c("Productos lÃ¡cteos", "Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
+    (!(Alimentos %in% c("Aperitivos o comidas saladas de picar", "Zumo natural de frutas o verduras")))
     
   )
 # Para un gráfico de barras donde 'value' es la altura de las barras y 'Edad' es el eje x
@@ -152,8 +144,7 @@ Grafica_AlimentosXDia
 ggsave(
   filename = "Alimentos_A_Diario.jpeg",
   plot = Grafica_AlimentosXDia ,
-  #path = paste(getwd(), "/OUTPUT/Figures", sep = ""), # ruta absoluta
-  path = "OUTPUT/Figures/Alimentacion", # ruta relativa
+  path = "OUTPUT/Figures/Alimentacion", 
   scale = 0.5,
   width = 40,
   height = 20,
