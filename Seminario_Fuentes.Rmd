@@ -540,7 +540,7 @@ En primer lugar se van a mostrar los diferentes gráficos que se han hecho con e
 #### **9.1.1 Porcentaje de pesos de la población española**
 Para comenzar el análisis, hemos realizado una gráfica para analizar el porcentaje de personas que tienen un determinado peso.
 
-```{r , echo = FALSE, warning=FALSE, message=FALSE}
+```{r , echo = TRUE, warning=FALSE, message=FALSE}
 
 Porcentaje_pesos<-ggplot(data = IMC_grafica1) + 
   geom_bar(
@@ -577,7 +577,7 @@ A pesar de esto, destaca que hay un porcentaje muy elevado de personas que tiene
 #### **9.1.2 Relación IMC, edad , nivel de estudio y género**
 Seguido a esto, hemos realizado una gráfica que muestre la correlación que existe entre la obesidad, los niveles de estudio, la edad y el sexo.
 
-```{r , echo = FALSE, warning=FALSE, message=FALSE}
+```{r , echo = TRUE, warning=FALSE, message=FALSE}
 Relaciones_obesidad<-ggplot(media_por_grupo, aes(x = Nivel.de.estudios, y = media_porcentaje, fill = Sexo)) +
   geom_bar(stat = "identity", position = "dodge") + #Con stat=identity hacemos 
   #que coja los datos ya calculados y con position dodge conseguimos que las 
